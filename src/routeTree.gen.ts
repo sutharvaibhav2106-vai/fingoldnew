@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SipCalculatorRouteImport } from './routes/sip-calculator'
 import { Route as LumpsumCalculatorRouteImport } from './routes/lumpsum-calculator'
 import { Route as DigitalVsPhysicalGoldRouteImport } from './routes/digital-vs-physical-gold'
+import { Route as BeginnersGuideRouteImport } from './routes/beginners-guide'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SipCalculatorRoute = SipCalculatorRouteImport.update({
@@ -29,6 +30,11 @@ const DigitalVsPhysicalGoldRoute = DigitalVsPhysicalGoldRouteImport.update({
   path: '/digital-vs-physical-gold',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BeginnersGuideRoute = BeginnersGuideRouteImport.update({
+  id: '/beginners-guide',
+  path: '/beginners-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,12 +43,14 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/beginners-guide': typeof BeginnersGuideRoute
   '/digital-vs-physical-gold': typeof DigitalVsPhysicalGoldRoute
   '/lumpsum-calculator': typeof LumpsumCalculatorRoute
   '/sip-calculator': typeof SipCalculatorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/beginners-guide': typeof BeginnersGuideRoute
   '/digital-vs-physical-gold': typeof DigitalVsPhysicalGoldRoute
   '/lumpsum-calculator': typeof LumpsumCalculatorRoute
   '/sip-calculator': typeof SipCalculatorRoute
@@ -50,6 +58,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/beginners-guide': typeof BeginnersGuideRoute
   '/digital-vs-physical-gold': typeof DigitalVsPhysicalGoldRoute
   '/lumpsum-calculator': typeof LumpsumCalculatorRoute
   '/sip-calculator': typeof SipCalculatorRoute
@@ -58,18 +67,21 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/beginners-guide'
     | '/digital-vs-physical-gold'
     | '/lumpsum-calculator'
     | '/sip-calculator'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/beginners-guide'
     | '/digital-vs-physical-gold'
     | '/lumpsum-calculator'
     | '/sip-calculator'
   id:
     | '__root__'
     | '/'
+    | '/beginners-guide'
     | '/digital-vs-physical-gold'
     | '/lumpsum-calculator'
     | '/sip-calculator'
@@ -77,6 +89,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BeginnersGuideRoute: typeof BeginnersGuideRoute
   DigitalVsPhysicalGoldRoute: typeof DigitalVsPhysicalGoldRoute
   LumpsumCalculatorRoute: typeof LumpsumCalculatorRoute
   SipCalculatorRoute: typeof SipCalculatorRoute
@@ -105,6 +118,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DigitalVsPhysicalGoldRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/beginners-guide': {
+      id: '/beginners-guide'
+      path: '/beginners-guide'
+      fullPath: '/beginners-guide'
+      preLoaderRoute: typeof BeginnersGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -117,6 +137,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BeginnersGuideRoute: BeginnersGuideRoute,
   DigitalVsPhysicalGoldRoute: DigitalVsPhysicalGoldRoute,
   LumpsumCalculatorRoute: LumpsumCalculatorRoute,
   SipCalculatorRoute: SipCalculatorRoute,
