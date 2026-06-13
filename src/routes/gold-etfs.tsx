@@ -385,12 +385,12 @@ function GoldEtfsPage() {
                 Model target allocations and project SIP returns with precision before taking the next step.
               </p>
               <div className="mt-8 flex justify-center gap-4 flex-wrap">
-                <Link to="/sip-calculator" className="btn-gold btn-gold-hover btn-shine inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs font-semibold">
-                  Gold SIP Calculator <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-                <Link to="/lumpsum-calculator" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-xs font-semibold text-white hover:bg-white/10 transition-colors">
-                  Lump Sum Calculator
-                </Link>
+                <button className="btn-gold btn-gold-hover btn-shine inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs font-semibold cursor-pointer">
+                  Start Investing <ArrowRight className="h-3.5 w-3.5" />
+                </button>
+                <button className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-xs font-semibold text-white hover:bg-white/10 transition-colors cursor-pointer">
+                  Contact Advisor
+                </button>
               </div>
             </div>
           </Reveal>
