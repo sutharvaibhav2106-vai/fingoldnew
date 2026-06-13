@@ -40,7 +40,7 @@ export function Nav() {
 
           {/* Desktop CTA Button */}
           <div className="hidden md:block">
-            <a href="#cta" className="btn-gold btn-gold-hover btn-shine rounded-full px-5 py-2.5 text-sm font-semibold">
+            <a href="#cta" className="btn-gold btn-gold-hover btn-shine rounded-full px-5 py-2.5 text-sm font-semibold inline-flex items-center justify-center">
               Start Investing
             </a>
           </div>

@@ -131,6 +131,9 @@
 }
 
 @utility btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: var(--gradient-gold);
   color: #1B1B1B;
   border: 1px solid rgba(255, 220, 120, 0.5);
