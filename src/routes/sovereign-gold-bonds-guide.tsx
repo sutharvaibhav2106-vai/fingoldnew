@@ -336,9 +336,9 @@ function SovereignGoldBondsGuidePage() {
                 <a href="mailto:info@gallantventures.in" className="btn-gold btn-gold-hover inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs font-semibold">
                   Start Investing <ArrowRight className="h-3.5 w-3.5" />
                 </a>
-                <a href="mailto:info@gallantventures.in" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-xs font-semibold text-white hover:bg-white/10 transition-colors">
-                  Contact Advisor
-                </a>
+                <Link to="/sip-calculator" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-xs font-semibold text-white hover:bg-white/10 transition-colors">
+                  Try SIP Calculator
+                </Link>
               </div>
             </div>
           </Reveal>
