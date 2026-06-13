@@ -319,9 +319,9 @@ function BeginnersGuidePage() {
                 Put the principles into action. Build your safe-haven buffer starting from just ₹100.
               </p>
               <div className="mt-8 flex justify-center gap-4 flex-wrap">
-                <Link to="/sip-calculator" className="btn-gold btn-gold-hover inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs font-semibold">
-                  Try SIP Calculator <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
+                <a href="mailto:info@gallantventures.in" className="btn-gold btn-gold-hover inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs font-semibold">
+                  Start Investing <ArrowRight className="h-3.5 w-3.5" />
+                </a>
                 <a href="mailto:info@gallantventures.in" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-xs font-semibold text-white hover:bg-white/10 transition-colors">
                   Contact Advisor
                 </a>
