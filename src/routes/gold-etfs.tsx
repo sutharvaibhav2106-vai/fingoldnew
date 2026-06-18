@@ -75,10 +75,12 @@ function GoldEtfsPage() {
 
           <Reveal delay={100}>
             <h1 className="text-display text-[clamp(2.5rem,6vw,4.5rem)] leading-none">
-              Gold ETFs: A <span className="text-gold-gradient">Beginner-Friendly</span> Way to Invest.
+              Gold ETFs: A <span className="text-gold-gradient">Beginner-Friendly</span> Way to
+              Invest.
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-foreground/75 leading-relaxed font-sans max-w-3xl">
-              Discover how Exchange-Traded Funds offer the smartest way to gain exposure to gold prices without the burden of storing physical bullion.
+              Discover how Exchange-Traded Funds offer the smartest way to gain exposure to gold
+              prices without the burden of storing physical bullion.
             </p>
           </Reveal>
         </section>
@@ -89,10 +91,15 @@ function GoldEtfsPage() {
           <Reveal delay={150}>
             <div className="space-y-6 text-foreground/80 leading-relaxed text-base">
               <p>
-                Gold has fascinated people for thousands of years. Ancient civilizations used it as money, kingdoms stored it in vaults, and families passed it down through generations as a symbol of wealth and security. Even today, investors often turn to gold when they worry about inflation, economic uncertainty, or stock market volatility.
+                Gold has fascinated people for thousands of years. Ancient civilizations used it as
+                money, kingdoms stored it in vaults, and families passed it down through generations
+                as a symbol of wealth and security. Even today, investors often turn to gold when
+                they worry about inflation, economic uncertainty, or stock market volatility.
               </p>
               <p>
-                Traditionally, investing in gold meant buying coins, bars, or jewelry. But physical gold comes with practical challenges: storage, insurance, and the risk of loss or theft. This is where Gold ETFs (Exchange-Traded Funds) come in.
+                Traditionally, investing in gold meant buying coins, bars, or jewelry. But physical
+                gold comes with practical challenges: storage, insurance, and the risk of loss or
+                theft. This is where Gold ETFs (Exchange-Traded Funds) come in.
               </p>
 
               {/* Digital Wrapper Callout */}
@@ -101,16 +108,21 @@ function GoldEtfsPage() {
                 <div className="relative z-10 flex gap-4 items-start">
                   <span className="text-display text-4xl text-amber-400 leading-none">“</span>
                   <div className="space-y-2">
-                    <h3 className="text-display text-xl sm:text-2xl text-white">Think of a Gold ETF as a digital wrapper around gold.</h3>
+                    <h3 className="text-display text-xl sm:text-2xl text-white">
+                      Think of a Gold ETF as a digital wrapper around gold.
+                    </h3>
                     <p className="text-sm text-white/70">
-                      Instead of buying a gold bar and storing it yourself, you buy units of a fund that owns gold on behalf of investors. Your investment rises and falls with the price of gold, but you avoid the hassle of handling the metal directly.
+                      Instead of buying a gold bar and storing it yourself, you buy units of a fund
+                      that owns gold on behalf of investors. Your investment rises and falls with
+                      the price of gold, but you avoid the hassle of handling the metal directly.
                     </p>
                   </div>
                 </div>
               </div>
 
               <p>
-                For many beginners, Gold ETFs are one of the simplest and most accessible ways to get exposure to gold.
+                For many beginners, Gold ETFs are one of the simplest and most accessible ways to
+                get exposure to gold.
               </p>
             </div>
           </Reveal>
@@ -142,7 +154,10 @@ function GoldEtfsPage() {
                     desc: "Gold ETF prices track the live market price of gold transparently. You see the exact value during trading hours without negotiating with dealers.",
                   },
                 ].map((item, idx) => (
-                  <div key={idx} className="rounded-2xl border border-border/30 bg-background/30 p-6 space-y-2">
+                  <div
+                    key={idx}
+                    className="rounded-2xl border border-border/30 bg-background/30 p-6 space-y-2"
+                  >
                     <h3 className="font-semibold text-foreground">{item.title}</h3>
                     <p className="text-sm text-foreground/70 leading-relaxed">{item.desc}</p>
                   </div>
@@ -155,15 +170,22 @@ function GoldEtfsPage() {
                   <Briefcase className="h-4 w-4 text-amber-600" /> Portfolio Diversification
                 </h3>
                 <p className="text-sm text-foreground/70 leading-relaxed">
-                  Gold often behaves differently from stocks and bonds. When equity markets struggle, gold may hold its value better or even rise, helping to reduce overall portfolio volatility.
+                  Gold often behaves differently from stocks and bonds. When equity markets
+                  struggle, gold may hold its value better or even rise, helping to reduce overall
+                  portfolio volatility.
                 </p>
               </div>
 
               {/* Crisis Example Case Study */}
               <div className="border-l-2 border-amber-500 pl-6 space-y-2 my-4">
-                <span className="text-xs uppercase tracking-wider text-amber-700 font-semibold block">Historical Focus · 2008 Financial Crisis</span>
+                <span className="text-xs uppercase tracking-wider text-amber-700 font-semibold block">
+                  Historical Focus · 2008 Financial Crisis
+                </span>
                 <p className="text-sm text-foreground/75 italic">
-                  Many stock markets experienced steep declines. Gold, meanwhile, attracted investors seeking a perceived safe haven. While the exact performance varied, gold generally held up better than many risk assets during periods of extreme uncertainty.
+                  Many stock markets experienced steep declines. Gold, meanwhile, attracted
+                  investors seeking a perceived safe haven. While the exact performance varied, gold
+                  generally held up better than many risk assets during periods of extreme
+                  uncertainty.
                 </p>
               </div>
             </div>
@@ -179,13 +201,34 @@ function GoldEtfsPage() {
 
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {[
-                  { step: "1", title: "Fund Vaulting", desc: "The ETF buys physical gold and stores it in secure vaults through custodians." },
-                  { step: "2", title: "Buy Units", desc: "You purchase ETF units, effectively buying a proportional interest in the fund's gold." },
-                  { step: "3", title: "Price Tracking", desc: "The unit price tracks the gold price closely. It rises or falls as the gold market changes." },
-                  { step: "4", title: "Trade Instantly", desc: "You trade units through your standard brokerage account without physical deliveries." },
+                  {
+                    step: "1",
+                    title: "Fund Vaulting",
+                    desc: "The ETF buys physical gold and stores it in secure vaults through custodians.",
+                  },
+                  {
+                    step: "2",
+                    title: "Buy Units",
+                    desc: "You purchase ETF units, effectively buying a proportional interest in the fund's gold.",
+                  },
+                  {
+                    step: "3",
+                    title: "Price Tracking",
+                    desc: "The unit price tracks the gold price closely. It rises or falls as the gold market changes.",
+                  },
+                  {
+                    step: "4",
+                    title: "Trade Instantly",
+                    desc: "You trade units through your standard brokerage account without physical deliveries.",
+                  },
                 ].map((item, idx) => (
-                  <div key={idx} className="rounded-2xl bg-amber-500/[0.02] border border-amber-300/20 p-5 relative overflow-hidden">
-                    <span className="absolute right-4 top-2 text-[4rem] font-bold text-amber-600/5 leading-none">{item.step}</span>
+                  <div
+                    key={idx}
+                    className="rounded-2xl bg-amber-500/[0.02] border border-amber-300/20 p-5 relative overflow-hidden"
+                  >
+                    <span className="absolute right-4 top-2 text-[4rem] font-bold text-amber-600/5 leading-none">
+                      {item.step}
+                    </span>
                     <h4 className="font-semibold text-foreground text-sm mb-2">{item.title}</h4>
                     <p className="text-xs text-foreground/75 leading-relaxed">{item.desc}</p>
                   </div>
@@ -223,7 +266,8 @@ function GoldEtfsPage() {
                   </div>
                 </div>
                 <p className="text-[11px] text-foreground/55 italic">
-                  * Note: The exact return may differ slightly due to fund expenses, management fees, and tracking differences.
+                  * Note: The exact return may differ slightly due to fund expenses, management
+                  fees, and tracking differences.
                 </p>
               </div>
             </div>
@@ -236,7 +280,10 @@ function GoldEtfsPage() {
               <div className="space-y-2">
                 <h3 className="font-semibold text-lg">Historical Context</h3>
                 <p className="text-sm text-foreground/75 leading-relaxed">
-                  The first major Gold ETFs appeared in the early 2000s. They quickly became popular because they allowed ordinary investors to access gold through the stock market without dealing with physical delivery. Today, Gold ETFs are widely used by retail investors, financial advisors, and institutional investors around the world.
+                  The first major Gold ETFs appeared in the early 2000s. They quickly became popular
+                  because they allowed ordinary investors to access gold through the stock market
+                  without dealing with physical delivery. Today, Gold ETFs are widely used by retail
+                  investors, financial advisors, and institutional investors around the world.
                 </p>
               </div>
             </div>
@@ -254,18 +301,24 @@ function GoldEtfsPage() {
               <div className="space-y-3">
                 <h3 className="font-semibold text-lg text-foreground">1. Start Small</h3>
                 <p className="text-sm text-foreground/75">
-                  If you're new to investing, avoid putting a large portion of your money into gold immediately.
+                  If you're new to investing, avoid putting a large portion of your money into gold
+                  immediately.
                 </p>
                 <div className="bg-background/30 border border-border/30 rounded-2xl p-4 text-xs italic text-foreground/70">
-                  <strong>Example:</strong> Suppose you have ₹1,00,000 invested across stocks, bonds, and cash. A beginner might allocate 5%–10% (₹5,000–₹10,000) to a Gold ETF rather than making gold the majority of the portfolio.
+                  <strong>Example:</strong> Suppose you have ₹1,00,000 invested across stocks,
+                  bonds, and cash. A beginner might allocate 5%–10% (₹5,000–₹10,000) to a Gold ETF
+                  rather than making gold the majority of the portfolio.
                 </div>
               </div>
 
               {/* 2. Use Gold as a Diversifier */}
               <div className="space-y-4">
-                <h3 className="font-semibold text-lg text-foreground">2. Use Gold as a Diversifier</h3>
+                <h3 className="font-semibold text-lg text-foreground">
+                  2. Use Gold as a Diversifier
+                </h3>
                 <p className="text-sm text-foreground/75">
-                  Gold works best for many investors as a supporting asset, not the entire investment plan.
+                  Gold works best for many investors as a supporting asset, not the entire
+                  investment plan.
                 </p>
 
                 {/* Example Allocation Table */}
@@ -285,24 +338,34 @@ function GoldEtfsPage() {
                         { asset: "Cash", allocation: "5%" },
                       ].map((item, i) => (
                         <tr key={i} className="hover:bg-foreground/[0.01]">
-                          <td className="px-5 py-3.5 font-medium text-foreground/80">{item.asset}</td>
-                          <td className="px-5 py-3.5 text-amber-700 font-semibold">{item.allocation}</td>
+                          <td className="px-5 py-3.5 font-medium text-foreground/80">
+                            {item.asset}
+                          </td>
+                          <td className="px-5 py-3.5 text-amber-700 font-semibold">
+                            {item.allocation}
+                          </td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
-                <p className="text-xs text-foreground/55 italic">This type of mix aims to balance growth potential with stability.</p>
+                <p className="text-xs text-foreground/55 italic">
+                  This type of mix aims to balance growth potential with stability.
+                </p>
               </div>
 
               {/* 3. Invest Regularly */}
               <div className="space-y-3">
                 <h3 className="font-semibold text-lg text-foreground">3. Invest Regularly</h3>
                 <p className="text-sm text-foreground/75">
-                  Instead of trying to guess the perfect time to buy gold, many investors use a systematic investment approach.
+                  Instead of trying to guess the perfect time to buy gold, many investors use a
+                  systematic investment approach.
                 </p>
                 <div className="bg-background/30 border border-border/30 rounded-2xl p-4 text-xs text-foreground/70 space-y-1">
-                  <p><strong>Example (Systematic Plan):</strong> Invest ₹1,000 into a Gold ETF every month.</p>
+                  <p>
+                    <strong>Example (Systematic Plan):</strong> Invest ₹1,000 into a Gold ETF every
+                    month.
+                  </p>
                   <p>• When prices are high, you buy fewer units.</p>
                   <p>• When prices are low, you buy more units.</p>
                   <p>Over time, this can reduce the impact of short-term price swings.</p>
@@ -311,12 +374,17 @@ function GoldEtfsPage() {
 
               {/* 4. Avoid Emotional Decisions */}
               <div className="space-y-3">
-                <h3 className="font-semibold text-lg text-foreground">4. Avoid Emotional Decisions</h3>
+                <h3 className="font-semibold text-lg text-foreground">
+                  4. Avoid Emotional Decisions
+                </h3>
                 <p className="text-sm text-foreground/75 font-medium">
-                  Gold often receives a lot of attention during crises. Headlines may suggest that gold will either soar forever or crash dramatically.
+                  Gold often receives a lot of attention during crises. Headlines may suggest that
+                  gold will either soar forever or crash dramatically.
                 </p>
                 <div className="rounded-2xl border border-border/30 bg-background/25 p-5 space-y-3">
-                  <span className="text-xs uppercase tracking-wider text-amber-700 font-semibold block">A Practical Rule:</span>
+                  <span className="text-xs uppercase tracking-wider text-amber-700 font-semibold block">
+                    A Practical Rule:
+                  </span>
                   <ul className="space-y-2 text-xs text-foreground/80">
                     <li className="flex gap-2">
                       <span className="text-amber-600 font-bold">1.</span>
@@ -344,30 +412,53 @@ function GoldEtfsPage() {
             <div className="space-y-6">
               <h2 className="text-display text-2xl">A Simple Long-Term Perspective</h2>
               <p className="text-sm sm:text-base text-foreground/80 leading-relaxed">
-                Gold has survived empires, wars, currency changes, and financial crises. Its enduring appeal comes from scarcity, global acceptance, and its role as a store of value. However, gold is not a magic investment. It can experience long periods of flat or disappointing returns, and it does not generate income like dividends or interest.
+                Gold has survived empires, wars, currency changes, and financial crises. Its
+                enduring appeal comes from scarcity, global acceptance, and its role as a store of
+                value. However, gold is not a magic investment. It can experience long periods of
+                flat or disappointing returns, and it does not generate income like dividends or
+                interest.
               </p>
 
               <div className="rounded-3xl border border-border/40 bg-background/40 p-6 md:p-8 space-y-4">
-                <span className="text-xs uppercase tracking-wider text-amber-700 font-bold block">For most beginners, Gold ETFs offer a practical middle ground:</span>
+                <span className="text-xs uppercase tracking-wider text-amber-700 font-bold block">
+                  For most beginners, Gold ETFs offer a practical middle ground:
+                </span>
                 <ul className="space-y-2 text-xs sm:text-sm text-foreground/75">
-                  <li>✔ <strong>Easier:</strong> No hassle of storing physical gold bars or coins.</li>
-                  <li>✔ <strong>Affordable:</strong> More affordable than buying large bullion bars.</li>
-                  <li>✔ <strong>Transparent:</strong> More transparent pricing than traditional gold purchases.</li>
-                  <li>✔ <strong>Diversifying:</strong> Highly useful as a diversification tool within a broader portfolio.</li>
+                  <li>
+                    ✔ <strong>Easier:</strong> No hassle of storing physical gold bars or coins.
+                  </li>
+                  <li>
+                    ✔ <strong>Affordable:</strong> More affordable than buying large bullion bars.
+                  </li>
+                  <li>
+                    ✔ <strong>Transparent:</strong> More transparent pricing than traditional gold
+                    purchases.
+                  </li>
+                  <li>
+                    ✔ <strong>Diversifying:</strong> Highly useful as a diversification tool within
+                    a broader portfolio.
+                  </li>
                 </ul>
               </div>
 
               {/* Takeaway Container */}
               <div className="rounded-2xl bg-amber-500/10 border border-amber-300/30 p-6 space-y-2">
-                <span className="text-xs uppercase tracking-wider text-amber-700 font-semibold block">Key Takeaway</span>
+                <span className="text-xs uppercase tracking-wider text-amber-700 font-semibold block">
+                  Key Takeaway
+                </span>
                 <p className="text-sm text-foreground/85">
-                  If you're considering your first gold investment, a Gold ETF can be a sensible starting point. Begin with a modest allocation, invest regularly, and view gold as one component of a diversified long-term financial plan rather than a shortcut to quick profits.
+                  If you're considering your first gold investment, a Gold ETF can be a sensible
+                  starting point. Begin with a modest allocation, invest regularly, and view gold as
+                  one component of a diversified long-term financial plan rather than a shortcut to
+                  quick profits.
                 </p>
               </div>
 
               {/* Disclaimer */}
               <p className="text-[11px] text-foreground/50 italic leading-relaxed pt-4 border-t border-border/20">
-                Disclaimer: This article is for educational purposes only and is not financial advice. Investment values can rise or fall, and past performance does not guarantee future results.
+                Disclaimer: This article is for educational purposes only and is not financial
+                advice. Investment values can rise or fall, and past performance does not guarantee
+                future results.
               </p>
             </div>
           </Reveal>
@@ -377,12 +468,13 @@ function GoldEtfsPage() {
         <section className="mx-auto max-w-4xl mt-24">
           <Reveal>
             <div className="glass-dark relative overflow-hidden p-8 text-center text-white sm:p-12">
-              <span className="eyebrow-tag" style={{ color: "var(--gold-bright)" }}>Take Action</span>
-              <h2 className="text-display text-2xl sm:text-4xl mt-4">
-                Start your ETF investment.
-              </h2>
+              <span className="eyebrow-tag" style={{ color: "var(--gold-bright)" }}>
+                Take Action
+              </span>
+              <h2 className="text-display text-2xl sm:text-4xl mt-4">Start your ETF investment.</h2>
               <p className="mx-auto mt-4 max-w-lg text-sm text-white/70">
-                Model target allocations and project SIP returns with precision before taking the next step.
+                Model target allocations and project SIP returns with precision before taking the
+                next step.
               </p>
               <div className="mt-8 flex justify-center gap-4 flex-wrap">
                 <button className="btn-gold btn-gold-hover btn-shine inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs font-semibold cursor-pointer">
@@ -403,7 +495,10 @@ function GoldEtfsPage() {
           <div className="grid gap-12 lg:grid-cols-4">
             <div className="lg:col-span-2">
               <div className="flex items-center gap-2">
-                <span className="grid h-10 w-10 place-items-center rounded-full" style={{ background: "var(--gradient-gold)" }}>
+                <span
+                  className="grid h-10 w-10 place-items-center rounded-full"
+                  style={{ background: "var(--gradient-gold)" }}
+                >
                   <span className="font-display text-base font-bold text-[#1B1B1B]">F</span>
                 </span>
                 <span className="font-display text-2xl font-bold">
@@ -414,11 +509,17 @@ function GoldEtfsPage() {
                 Invest in gold. Secure your future.
               </p>
               <div className="mt-8 space-y-3 text-sm text-foreground/70">
-                <a href="mailto:info@gallantventures.in" className="flex items-center gap-2 hover:text-foreground">
+                <a
+                  href="mailto:info@gallantventures.in"
+                  className="flex items-center gap-2 hover:text-foreground"
+                >
                   <Mail className="h-4 w-4" style={{ color: "var(--bronze)" }} />
                   info@gallantventures.in
                 </a>
-                <a href="tel:+919879150287" className="flex items-center gap-2 hover:text-foreground">
+                <a
+                  href="tel:+919879150287"
+                  className="flex items-center gap-2 hover:text-foreground"
+                >
                   <Phone className="h-4 w-4" style={{ color: "var(--bronze)" }} />
                   +91 98791 50287
                 </a>

@@ -31,7 +31,7 @@ export function SipCalculator() {
   // Math calculations
   const results = useMemo(() => {
     if (mode === "returns") {
-      const P = isMonthlyInvestError ? 0 : (monthlyInvest === "" ? 0 : parseInt(monthlyInvest) || 0);
+      const P = isMonthlyInvestError ? 0 : monthlyInvest === "" ? 0 : parseInt(monthlyInvest) || 0;
       const r = expectedReturnReturns === "" ? 0 : parseFloat(expectedReturnReturns) || 0;
       const n = durationReturns === "" ? 1 : parseInt(durationReturns) || 1;
       const m = n * 12;
@@ -97,7 +97,15 @@ export function SipCalculator() {
         chartInvestedPct: FV > 0 ? (totalInvested / FV) * 100 : 50,
       };
     }
-  }, [mode, monthlyInvest, durationReturns, expectedReturnReturns, targetAmount, durationTarget, expectedReturnTarget]);
+  }, [
+    mode,
+    monthlyInvest,
+    durationReturns,
+    expectedReturnReturns,
+    targetAmount,
+    durationTarget,
+    expectedReturnTarget,
+  ]);
 
   return (
     <div className="mx-auto max-w-6xl rounded-3xl border border-border/40 bg-background/50 p-4 sm:p-10 shadow-soft backdrop-blur-xl">
@@ -155,7 +163,7 @@ export function SipCalculator() {
                     step="50"
                     value={monthlyInvest}
                     onChange={(e) => {
-                      const val = e.target.value.replace(/^0+(?=\d)/, '');
+                      const val = e.target.value.replace(/^0+(?=\d)/, "");
                       setMonthlyInvest(val);
                     }}
                     className={`w-full rounded-xl border bg-white p-4 text-lg font-medium shadow-inner transition focus:outline-none ${
@@ -193,7 +201,7 @@ export function SipCalculator() {
                     max="40"
                     value={durationReturns}
                     onChange={(e) => {
-                      const val = e.target.value.replace(/^0+(?=\d)/, '');
+                      const val = e.target.value.replace(/^0+(?=\d)/, "");
                       if (val === "") {
                         setDurationReturns("");
                       } else {
@@ -227,7 +235,7 @@ export function SipCalculator() {
                     step="0.5"
                     value={expectedReturnReturns}
                     onChange={(e) => {
-                      const val = e.target.value.replace(/^0+(?=\d)/, '');
+                      const val = e.target.value.replace(/^0+(?=\d)/, "");
                       if (val === "") {
                         setExpectedReturnReturns("");
                       } else {
@@ -264,7 +272,7 @@ export function SipCalculator() {
                     step="1000"
                     value={targetAmount}
                     onChange={(e) => {
-                      const val = e.target.value.replace(/^0+(?=\d)/, '');
+                      const val = e.target.value.replace(/^0+(?=\d)/, "");
                       setTargetAmount(val);
                     }}
                     className="w-full rounded-xl border border-border bg-white p-4 text-lg font-medium shadow-inner transition focus:border-foreground/30 focus:outline-none"
@@ -293,7 +301,7 @@ export function SipCalculator() {
                     max="40"
                     value={durationTarget}
                     onChange={(e) => {
-                      const val = e.target.value.replace(/^0+(?=\d)/, '');
+                      const val = e.target.value.replace(/^0+(?=\d)/, "");
                       if (val === "") {
                         setDurationTarget("");
                       } else {
@@ -327,7 +335,7 @@ export function SipCalculator() {
                     step="0.5"
                     value={expectedReturnTarget}
                     onChange={(e) => {
-                      const val = e.target.value.replace(/^0+(?=\d)/, '');
+                      const val = e.target.value.replace(/^0+(?=\d)/, "");
                       if (val === "") {
                         setExpectedReturnTarget("");
                       } else {
@@ -357,7 +365,9 @@ export function SipCalculator() {
           {/* Header Estimate Value */}
           <div className="flex items-center justify-between rounded-2xl bg-[#F4D03F]/10 p-4 border border-[#D4AF37]/25">
             <span className="text-sm font-medium text-foreground/60">{results.primaryLabel}</span>
-            <span className="text-2xl font-bold text-foreground">{formatINR(results.primaryVal)}</span>
+            <span className="text-2xl font-bold text-foreground">
+              {formatINR(results.primaryVal)}
+            </span>
           </div>
 
           {/* Details Box */}
@@ -366,16 +376,24 @@ export function SipCalculator() {
               {/* Total Invested */}
               <div className="flex items-center justify-between text-sm">
                 <span className="flex items-center gap-2 font-medium text-foreground/75">
-                  <span className="h-3 w-3 rounded-full bg-[#8A6A2F]" style={{ backgroundColor: "var(--bronze)" }} />
+                  <span
+                    className="h-3 w-3 rounded-full bg-[#8A6A2F]"
+                    style={{ backgroundColor: "var(--bronze)" }}
+                  />
                   Total Invested
                 </span>
-                <span className="font-semibold text-foreground/90">{formatINR(results.secondaryVal)}</span>
+                <span className="font-semibold text-foreground/90">
+                  {formatINR(results.secondaryVal)}
+                </span>
               </div>
 
               {/* Estimated returns or Target Value */}
               <div className="flex items-center justify-between text-sm">
                 <span className="flex items-center gap-2 font-medium text-foreground/75">
-                  <span className="h-3 w-3 rounded-full bg-[#D4AF37]" style={{ backgroundColor: "var(--gold)" }} />
+                  <span
+                    className="h-3 w-3 rounded-full bg-[#D4AF37]"
+                    style={{ backgroundColor: "var(--gold)" }}
+                  />
                   {mode === "returns" ? "Est. Returns" : "Target Value"}
                 </span>
                 <span className="font-semibold text-foreground/90">
@@ -386,7 +404,9 @@ export function SipCalculator() {
               {/* Maturity Value Highlight Box */}
               <div className="mt-4 flex items-center justify-between rounded-xl border border-[#D4AF37]/35 bg-[#F4D03F]/5 px-4 py-3 text-sm">
                 <span className="font-medium text-foreground">{results.maturityLabel}</span>
-                <span className="font-bold text-foreground text-lg">{formatINR(results.maturityVal)}</span>
+                <span className="font-bold text-foreground text-lg">
+                  {formatINR(results.maturityVal)}
+                </span>
               </div>
             </div>
 
@@ -400,7 +420,9 @@ export function SipCalculator() {
               >
                 {/* Center cutout to make it look extremely clean */}
                 <div className="absolute h-28 w-28 rounded-full bg-white flex flex-col items-center justify-center shadow-md">
-                  <span className="text-[10px] uppercase font-semibold text-foreground/50 tracking-wider">SIP Growth</span>
+                  <span className="text-[10px] uppercase font-semibold text-foreground/50 tracking-wider">
+                    SIP Growth
+                  </span>
                   <span className="text-xs font-bold text-foreground mt-0.5">
                     {results.chartInvestedPct.toFixed(0)}% Invested
                   </span>

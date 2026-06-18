@@ -6,6 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Nav } from "@/components/site/Nav";
+import { triggerAuthModal } from "../lib/utils";
 import { Reveal } from "@/components/site/Reveal";
 import goldBar from "@/assets/gold-bar-hero.jpg";
 import {
@@ -57,7 +58,11 @@ export const Route = createFileRoute("/")({
           "Premium gold investment platform. Buy digital gold, ETFs, SGBs and physical gold. Simple, secure, and accessible wealth building with Fingold.",
       },
       { property: "og:title", content: "FINGOLD — Invest in Gold, Secure Your Future" },
-      { property: "og:description", content: "Premium gold investment platform — buy, save, grow and redeem gold with confidence." },
+      {
+        property: "og:description",
+        content:
+          "Premium gold investment platform — buy, save, grow and redeem gold with confidence.",
+      },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
     ],
@@ -67,8 +72,16 @@ export const Route = createFileRoute("/")({
 });
 
 const whyGold = [
-  { icon: ShieldCheck, title: "Inflation Shield", desc: "Holds value as currencies lose purchasing power." },
-  { icon: TrendingUp, title: "Wealth Preservation", desc: "Compounds across generations and cycles." },
+  {
+    icon: ShieldCheck,
+    title: "Inflation Shield",
+    desc: "Holds value as currencies lose purchasing power.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Wealth Preservation",
+    desc: "Compounds across generations and cycles.",
+  },
   { icon: PieChart, title: "Diversification", desc: "Low correlation with stocks and bonds." },
   { icon: Droplets, title: "Liquidity", desc: "Convert to cash anywhere, anytime." },
   { icon: Globe2, title: "Global Acceptance", desc: "A universal, borderless store of value." },
@@ -76,13 +89,39 @@ const whyGold = [
 ];
 
 const options = [
-  { icon: Coins, title: "Physical Gold", includes: ["Coins", "Bars", "Jewelry"], benefits: ["Tangible asset", "Long-term storage", "Inheritable"] },
-  { icon: Smartphone, title: "Digital Gold", benefits: ["Start from ₹100", "Buy & sell anytime", "Insured storage", "Online instant"] },
-  { icon: LineChart, title: "Gold ETFs", benefits: ["High liquidity", "Zero storage", "Transparent pricing", "Easy diversification"] },
-  { icon: Landmark, title: "Sovereign Gold Bonds", benefits: ["Govt-backed", "Interest income", "No storage cost", "Long-term wealth"] },
-  { icon: Wallet, title: "Gold Mutual Funds", benefits: ["Pro management", "No demat needed", "SIP enabled"] },
+  {
+    icon: Coins,
+    title: "Physical Gold",
+    includes: ["Coins", "Bars", "Jewelry"],
+    benefits: ["Tangible asset", "Long-term storage", "Inheritable"],
+  },
+  {
+    icon: Smartphone,
+    title: "Digital Gold",
+    benefits: ["Start from ₹100", "Buy & sell anytime", "Insured storage", "Online instant"],
+  },
+  {
+    icon: LineChart,
+    title: "Gold ETFs",
+    benefits: ["High liquidity", "Zero storage", "Transparent pricing", "Easy diversification"],
+  },
+  {
+    icon: Landmark,
+    title: "Sovereign Gold Bonds",
+    benefits: ["Govt-backed", "Interest income", "No storage cost", "Long-term wealth"],
+  },
+  {
+    icon: Wallet,
+    title: "Gold Mutual Funds",
+    benefits: ["Pro management", "No demat needed", "SIP enabled"],
+  },
   { icon: Factory, title: "Gold Mining Stocks", benefits: ["Higher upside", "Industry exposure"] },
-  { icon: Activity, title: "Futures & Options", benefits: ["Trading edge", "Portfolio hedge"], risk: "High" },
+  {
+    icon: Activity,
+    title: "Futures & Options",
+    benefits: ["Trading edge", "Portfolio hedge"],
+    risk: "High",
+  },
 ];
 
 const whyChoose = [
@@ -94,26 +133,88 @@ const whyChoose = [
 ];
 
 const tools = [
-  { icon: Calculator, title: "Gold SIP Calculator", desc: "Project monthly investment value.", href: "/sip-calculator" },
-  { icon: Coins, title: "Lump Sum Calculator", desc: "See one-time growth over time.", href: "/lumpsum-calculator" },
-  { icon: Target, title: "Goal Planner", desc: "Map life goals to gold." },
-  { icon: TrendingUp, title: "Future Value", desc: "Forecast portfolio worth." },
+  {
+    icon: Calculator,
+    title: "Gold SIP Calculator",
+    desc: "Project monthly investment value.",
+    href: "/sip-calculator",
+  },
+  {
+    icon: Coins,
+    title: "Lump Sum Calculator",
+    desc: "See one-time growth over time.",
+    href: "/lumpsum-calculator",
+  },
+  {
+    icon: Target,
+    title: "Goal Planner",
+    desc: "Map life goals to gold.",
+    href: "/tools/goal-planner",
+  },
+  {
+    icon: TrendingUp,
+    title: "Future Value",
+    desc: "Forecast portfolio worth.",
+    href: "/tools/future-value",
+  },
 ];
 
 const learn = [
-  { tag: "Beginner", title: "Beginner's Guide to Gold Investing", desc: "Start your first gold investment with confidence.", href: "/beginners-guide" },
-  { tag: "Compare", title: "Digital Gold vs Physical Gold", desc: "Which form fits your goals best?", href: "/digital-vs-physical-gold" },
-  { tag: "Markets", title: "Gold ETFs Explained", desc: "How exchange-traded gold works.", href: "/gold-etfs" },
-  { tag: "Bonds", title: "Sovereign Gold Bonds Guide", desc: "Earn interest while owning gold.", href: "/sovereign-gold-bonds-guide" },
-  { tag: "Macro", title: "Gold and Inflation", desc: "Why gold shines when currencies weaken.", href: "/gold-and-inflation" },
-  { tag: "Tax", title: "Gold Investment Taxation", desc: "A clear breakdown across instruments.", href: "/gold-taxation" },
+  {
+    tag: "Beginner",
+    title: "Beginner's Guide to Gold Investing",
+    desc: "Start your first gold investment with confidence.",
+    href: "/beginners-guide",
+  },
+  {
+    tag: "Compare",
+    title: "Digital Gold vs Physical Gold",
+    desc: "Which form fits your goals best?",
+    href: "/digital-vs-physical-gold",
+  },
+  {
+    tag: "Markets",
+    title: "Gold ETFs Explained",
+    desc: "How exchange-traded gold works.",
+    href: "/gold-etfs",
+  },
+  {
+    tag: "Bonds",
+    title: "Sovereign Gold Bonds Guide",
+    desc: "Earn interest while owning gold.",
+    href: "/sovereign-gold-bonds-guide",
+  },
+  {
+    tag: "Macro",
+    title: "Gold and Inflation",
+    desc: "Why gold shines when currencies weaken.",
+    href: "/gold-and-inflation",
+  },
+  {
+    tag: "Tax",
+    title: "Gold Investment Taxation",
+    desc: "A clear breakdown across instruments.",
+    href: "/gold-taxation",
+  },
 ];
 
 const faqs = [
-  { q: "What is Digital Gold?", a: "Digital Gold lets you buy and own gold online — backed by physical gold stored in insured vaults — without handling it yourself." },
-  { q: "Can I start with a small amount?", a: "Yes. Fingold supports investments starting from as little as ₹100, with daily or monthly SIPs." },
-  { q: "Is gold a safe investment?", a: "Gold is regarded as a reliable long-term wealth preservation asset and a proven hedge in uncertain markets." },
-  { q: "Can I sell my gold anytime?", a: "Most Fingold instruments offer same-day liquidity at live market prices, with funds settled to your bank in 24h." },
+  {
+    q: "What is Digital Gold?",
+    a: "Digital Gold lets you buy and own gold online — backed by physical gold stored in insured vaults — without handling it yourself.",
+  },
+  {
+    q: "Can I start with a small amount?",
+    a: "Yes. Fingold supports investments starting from as little as ₹100, with daily or monthly SIPs.",
+  },
+  {
+    q: "Is gold a safe investment?",
+    a: "Gold is regarded as a reliable long-term wealth preservation asset and a proven hedge in uncertain markets.",
+  },
+  {
+    q: "Can I sell my gold anytime?",
+    a: "Most Fingold instruments offer same-day liquidity at live market prices, with funds settled to your bank in 24h.",
+  },
 ];
 
 const ticker = [
@@ -126,15 +227,43 @@ const ticker = [
 ];
 
 const steps = [
-  { n: "01", icon: UserPlus, title: "Open Account", desc: "Sign up in 60 seconds with PAN & Aadhaar. Zero paperwork." },
-  { n: "02", icon: ShoppingBag, title: "Choose Your Gold", desc: "Pick digital gold, ETFs, SGBs, mutual funds — or physical bullion." },
-  { n: "03", icon: TrendingUp, title: "Grow & Redeem", desc: "Track in real time. Redeem to cash or doorstep delivery, anytime." },
+  {
+    n: "01",
+    icon: UserPlus,
+    title: "Open Account",
+    desc: "Sign up in 60 seconds with PAN & Aadhaar. Zero paperwork.",
+  },
+  {
+    n: "02",
+    icon: ShoppingBag,
+    title: "Choose Your Gold",
+    desc: "Pick digital gold, ETFs, SGBs, mutual funds — or physical bullion.",
+  },
+  {
+    n: "03",
+    icon: TrendingUp,
+    title: "Grow & Redeem",
+    desc: "Track in real time. Redeem to cash or doorstep delivery, anytime.",
+  },
 ];
 
 const testimonials = [
-  { name: "Arjun Mehta", role: "Founder, Helix Studios", quote: "Fingold made gold feel as easy as a stock trade. The dashboard alone is worth it." },
-  { name: "Priya Iyer", role: "Wealth Advisor", quote: "I move client allocations through Fingold weekly. Transparent pricing, instant settlement." },
-  { name: "Rohit Shah", role: "Family Office", quote: "We hold bullion, SGBs and ETFs in one view. It replaced three of our legacy tools." },
+  {
+    name: "Arjun Mehta",
+    role: "Founder, Helix Studios",
+    quote: "Fingold made gold feel as easy as a stock trade. The dashboard alone is worth it.",
+  },
+  {
+    name: "Priya Iyer",
+    role: "Wealth Advisor",
+    quote:
+      "I move client allocations through Fingold weekly. Transparent pricing, instant settlement.",
+  },
+  {
+    name: "Rohit Shah",
+    role: "Family Office",
+    quote: "We hold bullion, SGBs and ETFs in one view. It replaced three of our legacy tools.",
+  },
 ];
 
 const compareRows = [
@@ -149,8 +278,14 @@ function Home() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-noise">
       {/* Ambient glow */}
-      <div className="pointer-events-none absolute -top-40 -right-40 h-[600px] w-[600px] rounded-full" style={{ background: "radial-gradient(circle, rgba(244,208,63,0.32), transparent 65%)" }} />
-      <div className="pointer-events-none absolute top-[40%] -left-40 h-[500px] w-[500px] rounded-full" style={{ background: "radial-gradient(circle, rgba(212,175,55,0.22), transparent 65%)" }} />
+      <div
+        className="pointer-events-none absolute -top-40 -right-40 h-[600px] w-[600px] rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(244,208,63,0.32), transparent 65%)" }}
+      />
+      <div
+        className="pointer-events-none absolute top-[40%] -left-40 h-[500px] w-[500px] rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(212,175,55,0.22), transparent 65%)" }}
+      />
 
       <Nav />
 
@@ -173,14 +308,20 @@ function Home() {
                   <span className="italic font-light text-foreground/85">build wealth.</span>
                 </h1>
                 <p className="max-w-lg text-base leading-relaxed text-foreground/65 sm:text-lg">
-                  A wealth platform engineered around a single, timeless asset.
-                  Buy, save, grow and redeem gold — with the precision of private banking.
+                  A wealth platform engineered around a single, timeless asset. Buy, save, grow and
+                  redeem gold — with the precision of private banking.
                 </p>
                 <div className="flex flex-wrap items-center gap-4">
-                  <a href="#cta" className="btn-gold btn-gold-hover inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold">
+                  <button
+                    onClick={() => triggerAuthModal("register")}
+                    className="btn-gold btn-gold-hover inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold cursor-pointer"
+                  >
                     Start Investing <ArrowRight className="h-4 w-4" />
-                  </a>
-                  <a href="#options" className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-foreground/60">
+                  </button>
+                  <a
+                    href="#options"
+                    className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-foreground/60"
+                  >
                     Explore options
                   </a>
                 </div>
@@ -192,7 +333,9 @@ function Home() {
                   ].map((s) => (
                     <div key={s.l}>
                       <dt className="text-display text-2xl sm:text-4xl">{s.v}</dt>
-                      <dd className="mt-2 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-foreground/55">{s.l}</dd>
+                      <dd className="mt-2 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-foreground/55">
+                        {s.l}
+                      </dd>
                     </div>
                   ))}
                 </dl>
@@ -201,7 +344,13 @@ function Home() {
 
             <Reveal delay={150}>
               <div className="relative mx-auto aspect-square w-full max-w-[560px]">
-                <div className="absolute inset-0 rounded-full" style={{ background: "radial-gradient(circle at 60% 40%, rgba(244,208,63,0.45), transparent 60%)" }} />
+                <div
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    background:
+                      "radial-gradient(circle at 60% 40%, rgba(244,208,63,0.45), transparent 60%)",
+                  }}
+                />
                 <img
                   src={goldBar}
                   alt="FINGOLD 999.9 fine gold investment bar"
@@ -212,8 +361,13 @@ function Home() {
                 />
                 <div className="glass-dark absolute -bottom-4 left-0 right-4 z-20 p-6 sm:right-8 sm:p-7">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] uppercase tracking-[0.22em] text-white/55">Live · 999.9</span>
-                    <span className="flex items-center gap-1 text-xs font-semibold" style={{ color: "var(--gold-bright)" }}>
+                    <span className="text-[10px] uppercase tracking-[0.22em] text-white/55">
+                      Live · 999.9
+                    </span>
+                    <span
+                      className="flex items-center gap-1 text-xs font-semibold"
+                      style={{ color: "var(--gold-bright)" }}
+                    >
                       <TrendingUp className="h-3.5 w-3.5" /> +0.84%
                     </span>
                   </div>
@@ -222,9 +376,15 @@ function Home() {
                     <span className="text-sm text-white/55">/ gram</span>
                   </div>
                   <div className="mt-4 grid grid-cols-3 gap-3 text-[11px] text-white/70">
-                    <div><span className="block text-white/45">24h H</span>7,438</div>
-                    <div><span className="block text-white/45">24h L</span>7,361</div>
-                    <div><span className="block text-white/45">Vol</span>2.4K kg</div>
+                    <div>
+                      <span className="block text-white/45">24h H</span>7,438
+                    </div>
+                    <div>
+                      <span className="block text-white/45">24h L</span>7,361
+                    </div>
+                    <div>
+                      <span className="block text-white/45">Vol</span>2.4K kg
+                    </div>
                   </div>
                 </div>
               </div>
@@ -239,7 +399,9 @@ function Home() {
               <div key={i} className="flex items-center gap-3 text-sm">
                 <span className="eyebrow-tag">{t.sym}</span>
                 <span className="font-display text-base font-semibold">{t.price}</span>
-                <span className={`flex items-center gap-1 text-xs font-semibold ${t.up ? "text-emerald-700" : "text-rose-700"}`}>
+                <span
+                  className={`flex items-center gap-1 text-xs font-semibold ${t.up ? "text-emerald-700" : "text-rose-700"}`}
+                >
                   {t.up ? <TrendingUp className="h-3 w-3" /> : <TrendingDown className="h-3 w-3" />}
                   {t.chg}
                 </span>
@@ -252,7 +414,11 @@ function Home() {
         {/* WHY GOLD */}
         <section id="why" className="mx-auto max-w-7xl px-4 py-24 sm:py-32">
           <Reveal>
-            <SectionHeader eyebrow="Fundamentals" title="Why gold, still." sub="Six reasons gold anchors the world's wealthiest portfolios." />
+            <SectionHeader
+              eyebrow="Fundamentals"
+              title="Why gold, still."
+              sub="Six reasons gold anchors the world's wealthiest portfolios."
+            />
           </Reveal>
           <div className="mt-16 grid divide-y divide-border/40 sm:grid-cols-2 sm:divide-y-0 sm:divide-x lg:grid-cols-3">
             {whyGold.map((c, i) => (
@@ -273,7 +439,11 @@ function Home() {
         {/* HOW IT WORKS */}
         <section className="mx-auto max-w-7xl px-4 py-24">
           <Reveal>
-            <SectionHeader eyebrow="The Process" title="Three steps to gold." sub="No paperwork. No friction. Just precision." />
+            <SectionHeader
+              eyebrow="The Process"
+              title="Three steps to gold."
+              sub="No paperwork. No friction. Just precision."
+            />
           </Reveal>
           <div className="mt-16 grid gap-8 md:grid-cols-3">
             {steps.map((s, i) => (
@@ -294,7 +464,11 @@ function Home() {
         {/* INVESTMENT OPTIONS */}
         <section id="options" className="mx-auto max-w-7xl px-4 py-24">
           <Reveal>
-            <SectionHeader eyebrow="Portfolio" title="Seven ways to own gold." sub="From bullion to bonds — pick your strategy." />
+            <SectionHeader
+              eyebrow="Portfolio"
+              title="Seven ways to own gold."
+              sub="From bullion to bonds — pick your strategy."
+            />
           </Reveal>
           <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {options.map((o, i) => (
@@ -317,12 +491,19 @@ function Home() {
                   <ul className="mt-5 space-y-2">
                     {o.benefits.map((b) => (
                       <li key={b} className="flex items-start gap-2 text-sm text-white/85">
-                        <Check className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--gold-bright)" }} />
+                        <Check
+                          className="mt-0.5 h-4 w-4 shrink-0"
+                          style={{ color: "var(--gold-bright)" }}
+                        />
                         {b}
                       </li>
                     ))}
                   </ul>
-                  <a href="#cta" className="mt-6 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: "var(--gold-bright)" }}>
+                  <a
+                    href="#cta"
+                    className="mt-6 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.18em]"
+                    style={{ color: "var(--gold-bright)" }}
+                  >
                     Invest <ArrowUpRight className="h-3.5 w-3.5" />
                   </a>
                 </article>
@@ -334,7 +515,11 @@ function Home() {
         {/* COMPARE */}
         <section className="mx-auto max-w-7xl px-4 py-24">
           <Reveal>
-            <SectionHeader eyebrow="Decisions" title="Compare instruments." sub="One table, four pathways. Pick what fits." />
+            <SectionHeader
+              eyebrow="Decisions"
+              title="Compare instruments."
+              sub="One table, four pathways. Pick what fits."
+            />
           </Reveal>
           <Reveal delay={120}>
             <div className="glass-light mt-14 overflow-hidden rounded-3xl">
@@ -351,12 +536,17 @@ function Home() {
                   </thead>
                   <tbody>
                     {compareRows.map((r, i) => (
-                      <tr key={r.f} className={i !== compareRows.length - 1 ? "border-b border-border/30" : ""}>
+                      <tr
+                        key={r.f}
+                        className={i !== compareRows.length - 1 ? "border-b border-border/30" : ""}
+                      >
                         <td className="px-6 py-5 font-semibold text-foreground/80">{r.f}</td>
                         <td className="px-6 py-5 text-foreground/75">{r.a}</td>
                         <td className="px-6 py-5 text-foreground/75">{r.b}</td>
                         <td className="px-6 py-5 text-foreground/75">{r.c}</td>
-                        <td className="px-6 py-5 text-foreground/75">{r.d === "—" ? <Minus className="h-4 w-4 text-foreground/40" /> : r.d}</td>
+                        <td className="px-6 py-5 text-foreground/75">
+                          {r.d === "—" ? <Minus className="h-4 w-4 text-foreground/40" /> : r.d}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -369,7 +559,11 @@ function Home() {
         {/* WHY CHOOSE */}
         <section className="mx-auto max-w-7xl px-4 py-24">
           <Reveal>
-            <SectionHeader eyebrow="The Fingold Edge" title="Engineered for trust." sub="Five commitments behind every transaction." />
+            <SectionHeader
+              eyebrow="The Fingold Edge"
+              title="Engineered for trust."
+              sub="Five commitments behind every transaction."
+            />
           </Reveal>
           <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
             {whyChoose.map((c, i) => (
@@ -387,7 +581,11 @@ function Home() {
         {/* TOOLS */}
         <section id="tools" className="mx-auto max-w-7xl px-4 py-24">
           <Reveal>
-            <SectionHeader eyebrow="Plan" title="Tools & Calculators" sub="Model every gold scenario in seconds." />
+            <SectionHeader
+              eyebrow="Plan"
+              title="Tools & Calculators"
+              sub="Model every gold scenario in seconds."
+            />
           </Reveal>
           <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {tools.map((t, i) => {
@@ -419,7 +617,11 @@ function Home() {
         {/* TESTIMONIALS */}
         <section className="mx-auto max-w-7xl px-4 py-24">
           <Reveal>
-            <SectionHeader eyebrow="Voices" title="Quietly trusted." sub="Founders, advisors and family offices on Fingold." />
+            <SectionHeader
+              eyebrow="Voices"
+              title="Quietly trusted."
+              sub="Founders, advisors and family offices on Fingold."
+            />
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-3">
             {testimonials.map((t, i) => (
@@ -436,7 +638,11 @@ function Home() {
                     </div>
                     <div className="flex gap-0.5">
                       {Array.from({ length: 5 }).map((_, k) => (
-                        <Star key={k} className="h-3.5 w-3.5 fill-current" style={{ color: "var(--gold)" }} />
+                        <Star
+                          key={k}
+                          className="h-3.5 w-3.5 fill-current"
+                          style={{ color: "var(--gold)" }}
+                        />
                       ))}
                     </div>
                   </figcaption>
@@ -449,13 +655,24 @@ function Home() {
         {/* LEARN */}
         <section id="learn" className="mx-auto max-w-7xl px-4 py-24">
           <Reveal>
-            <SectionHeader eyebrow="Knowledge" title="Learn with Fingold." sub="Deep-dive guides written by gold strategists." />
+            <SectionHeader
+              eyebrow="Knowledge"
+              title="Learn with Fingold."
+              sub="Deep-dive guides written by gold strategists."
+            />
           </Reveal>
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {learn.map((l, i) => {
               const CardContent = (
                 <article className="group h-full overflow-hidden rounded-3xl border border-border/40 bg-background/40 transition-all hover:border-foreground/40 cursor-pointer">
-                  <div className="relative h-44 overflow-hidden" style={{ background: "var(--gradient-gold-shine)", backgroundSize: "200% auto", animation: "gold-shine 10s linear infinite" }}>
+                  <div
+                    className="relative h-44 overflow-hidden"
+                    style={{
+                      background: "var(--gradient-gold-shine)",
+                      backgroundSize: "200% auto",
+                      animation: "gold-shine 10s linear infinite",
+                    }}
+                  >
                     <div className="absolute inset-0 grid place-items-center">
                       <Coins className="h-14 w-14 text-[#1B1B1B]/25" />
                     </div>
@@ -467,7 +684,9 @@ function Home() {
                     <h3 className="text-display text-xl">{l.title}</h3>
                     <p className="mt-3 text-sm text-foreground/65">{l.desc}</p>
                     <div className="hairline-t mt-6 flex items-center justify-between pt-4">
-                      <span className="text-xs uppercase tracking-[0.18em] text-foreground/50">5 min read</span>
+                      <span className="text-xs uppercase tracking-[0.18em] text-foreground/50">
+                        5 min read
+                      </span>
                       <ArrowUpRight className="h-5 w-5 text-foreground/40 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-foreground" />
                     </div>
                   </div>
@@ -491,17 +710,27 @@ function Home() {
         {/* FAQ */}
         <section id="faq" className="mx-auto max-w-4xl px-4 py-24">
           <Reveal>
-            <SectionHeader eyebrow="Answers" title="Common questions." sub="Quick clarity on what investors ask most." />
+            <SectionHeader
+              eyebrow="Answers"
+              title="Common questions."
+              sub="Quick clarity on what investors ask most."
+            />
           </Reveal>
           <Reveal delay={120}>
             <div className="mt-14 rounded-3xl border border-border/40 bg-background/40 px-4 py-2 sm:px-10">
               <Accordion type="single" collapsible className="w-full">
                 {faqs.map((f, i) => (
-                  <AccordionItem key={f.q} value={`item-${i}`} className="border-b border-border/30 last:border-0">
+                  <AccordionItem
+                    key={f.q}
+                    value={`item-${i}`}
+                    className="border-b border-border/30 last:border-0"
+                  >
                     <AccordionTrigger className="py-6 text-left text-display text-lg hover:no-underline">
                       {f.q}
                     </AccordionTrigger>
-                    <AccordionContent className="pb-6 text-base text-foreground/70">{f.a}</AccordionContent>
+                    <AccordionContent className="pb-6 text-base text-foreground/70">
+                      {f.a}
+                    </AccordionContent>
                   </AccordionItem>
                 ))}
               </Accordion>
@@ -513,9 +742,21 @@ function Home() {
         <section id="cta" className="mx-auto max-w-6xl px-4 py-24">
           <Reveal>
             <div className="glass-dark relative overflow-hidden px-6 py-12 text-center text-white sm:p-20">
-              <div className="absolute -top-32 -right-32 h-80 w-80 rounded-full" style={{ background: "radial-gradient(circle, rgba(244,208,63,0.5), transparent 65%)" }} />
-              <div className="absolute -bottom-32 -left-32 h-80 w-80 rounded-full" style={{ background: "radial-gradient(circle, rgba(212,175,55,0.4), transparent 65%)" }} />
-              <span className="eyebrow-tag relative" style={{ color: "var(--gold-bright)" }}>Begin</span>
+              <div
+                className="absolute -top-32 -right-32 h-80 w-80 rounded-full"
+                style={{
+                  background: "radial-gradient(circle, rgba(244,208,63,0.5), transparent 65%)",
+                }}
+              />
+              <div
+                className="absolute -bottom-32 -left-32 h-80 w-80 rounded-full"
+                style={{
+                  background: "radial-gradient(circle, rgba(212,175,55,0.4), transparent 65%)",
+                }}
+              />
+              <span className="eyebrow-tag relative" style={{ color: "var(--gold-bright)" }}>
+                Begin
+              </span>
               <h2 className="relative mt-6 text-display text-[clamp(2.5rem,6vw,5rem)]">
                 Your gold journey.
                 <br />
@@ -525,10 +766,16 @@ function Home() {
                 Invest smart. Invest in gold. Invest with Fingold.
               </p>
               <div className="relative mt-10 flex flex-wrap justify-center gap-4">
-                <a href="mailto:info@gallantventures.in" className="btn-gold btn-gold-hover inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-semibold">
+                <button
+                  onClick={() => triggerAuthModal("register")}
+                  className="btn-gold btn-gold-hover inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-semibold cursor-pointer"
+                >
                   Start Investing <ArrowRight className="h-4 w-4" />
-                </a>
-                <a href="#footer" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-8 py-4 text-sm font-semibold text-white transition hover:bg-white/10">
+                </button>
+                <a
+                  href="#footer"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/25 px-8 py-4 text-sm font-semibold text-white transition hover:bg-white/10"
+                >
                   Contact Us
                 </a>
               </div>
@@ -542,7 +789,10 @@ function Home() {
             <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
               <div className="sm:col-span-2 lg:col-span-2">
                 <div className="flex items-center gap-2">
-                  <span className="grid h-10 w-10 place-items-center rounded-full" style={{ background: "var(--gradient-gold)" }}>
+                  <span
+                    className="grid h-10 w-10 place-items-center rounded-full"
+                    style={{ background: "var(--gradient-gold)" }}
+                  >
                     <span className="font-display text-base font-bold text-[#1B1B1B]">F</span>
                   </span>
                   <span className="font-display text-2xl font-bold">
@@ -553,11 +803,17 @@ function Home() {
                   Invest in gold. Secure your future.
                 </p>
                 <div className="mt-8 space-y-3 text-sm text-foreground/70">
-                  <a href="mailto:info@gallantventures.in" className="flex items-center gap-2 hover:text-foreground">
+                  <a
+                    href="mailto:info@gallantventures.in"
+                    className="flex items-center gap-2 hover:text-foreground"
+                  >
                     <Mail className="h-4 w-4" style={{ color: "var(--bronze)" }} />
                     info@gallantventures.in
                   </a>
-                  <a href="tel:+919879150287" className="flex items-center gap-2 hover:text-foreground">
+                  <a
+                    href="tel:+919879150287"
+                    className="flex items-center gap-2 hover:text-foreground"
+                  >
                     <Phone className="h-4 w-4" style={{ color: "var(--bronze)" }} />
                     +91 98791 50287
                   </a>
@@ -586,7 +842,12 @@ function Home() {
                 <h4 className="eyebrow-tag">Follow</h4>
                 <div className="mt-5 flex gap-3">
                   {[Linkedin, Instagram, Facebook, Twitter].map((Icon, i) => (
-                    <a key={i} href="#" aria-label="social" className="grid h-10 w-10 place-items-center rounded-full border border-border/50 transition-colors hover:border-foreground/60">
+                    <a
+                      key={i}
+                      href="#"
+                      aria-label="social"
+                      className="grid h-10 w-10 place-items-center rounded-full border border-border/50 transition-colors hover:border-foreground/60"
+                    >
                       <Icon className="h-4 w-4" style={{ color: "var(--bronze)" }} />
                     </a>
                   ))}
@@ -611,9 +872,7 @@ function SectionHeader({ eyebrow, title, sub }: { eyebrow: string; title: string
         <span className="h-px w-10 bg-foreground/30" />
         <span className="eyebrow-tag">{eyebrow}</span>
       </div>
-      <h2 className="mt-6 text-display text-[clamp(2.25rem,5vw,4rem)]">
-        {title}
-      </h2>
+      <h2 className="mt-6 text-display text-[clamp(2.25rem,5vw,4rem)]">{title}</h2>
       <p className="mt-5 max-w-2xl text-base text-foreground/60 sm:text-lg">{sub}</p>
     </div>
   );

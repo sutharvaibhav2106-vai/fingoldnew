@@ -46,7 +46,8 @@ function LumpsumCalculatorPage() {
               Gold <span className="text-gold-gradient">Lumpsum Calculator.</span>
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base text-foreground/60 sm:text-lg">
-              Calculate the value of your one-time investment and see the compound growth of your wealth in fine gold over time.
+              Calculate the value of your one-time investment and see the compound growth of your
+              wealth in fine gold over time.
             </p>
           </Reveal>
         </section>
@@ -61,18 +62,23 @@ function LumpsumCalculatorPage() {
         {/* Info & Educational Content */}
         <section className="mx-auto max-w-4xl mt-24 space-y-8 text-foreground/85">
           <Reveal delay={150}>
-            <h2 className="text-display text-2xl font-bold">Why choose a Gold Lumpsum Investment?</h2>
+            <h2 className="text-display text-2xl font-bold">
+              Why choose a Gold Lumpsum Investment?
+            </h2>
             <div className="mt-4 grid gap-6 sm:grid-cols-2">
               <div className="rounded-2xl border border-border/30 bg-background/30 p-6">
                 <h3 className="font-semibold text-lg">Compound Growth</h3>
                 <p className="text-sm text-foreground/70 mt-2">
-                  Investing a single lump sum allows your entire principal to appreciate from day one. Compound returns benefit from the full duration of your investment timeline.
+                  Investing a single lump sum allows your entire principal to appreciate from day
+                  one. Compound returns benefit from the full duration of your investment timeline.
                 </p>
               </div>
               <div className="rounded-2xl border border-border/30 bg-background/30 p-6">
                 <h3 className="font-semibold text-lg">Portfolio Diversification</h3>
                 <p className="text-sm text-foreground/70 mt-2">
-                  Instantly stabilize your portfolio during periods of high inflation or stock market volatility by allocating a significant portion of idle capital directly to gold.
+                  Instantly stabilize your portfolio during periods of high inflation or stock
+                  market volatility by allocating a significant portion of idle capital directly to
+                  gold.
                 </p>
               </div>
             </div>
@@ -86,7 +92,10 @@ function LumpsumCalculatorPage() {
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
             <div className="sm:col-span-2 lg:col-span-2">
               <div className="flex items-center gap-2">
-                <span className="grid h-10 w-10 place-items-center rounded-full" style={{ background: "var(--gradient-gold)" }}>
+                <span
+                  className="grid h-10 w-10 place-items-center rounded-full"
+                  style={{ background: "var(--gradient-gold)" }}
+                >
                   <span className="font-display text-base font-bold text-[#1B1B1B]">F</span>
                 </span>
                 <span className="font-display text-2xl font-bold">
@@ -97,11 +106,17 @@ function LumpsumCalculatorPage() {
                 Invest in gold. Secure your future.
               </p>
               <div className="mt-8 space-y-3 text-sm text-foreground/70">
-                <a href="mailto:info@gallantventures.in" className="flex items-center gap-2 hover:text-foreground">
+                <a
+                  href="mailto:info@gallantventures.in"
+                  className="flex items-center gap-2 hover:text-foreground"
+                >
                   <Mail className="h-4 w-4" style={{ color: "var(--bronze)" }} />
                   info@gallantventures.in
                 </a>
-                <a href="tel:+919879150287" className="flex items-center gap-2 hover:text-foreground">
+                <a
+                  href="tel:+919879150287"
+                  className="flex items-center gap-2 hover:text-foreground"
+                >
                   <Phone className="h-4 w-4" style={{ color: "var(--bronze)" }} />
                   +91 98791 50287
                 </a>

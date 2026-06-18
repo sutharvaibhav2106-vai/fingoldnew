@@ -79,7 +79,8 @@ function BeginnersGuidePage() {
               Beginner's Guide to <span className="text-gold-gradient">Gold Investing.</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-foreground/75 leading-relaxed font-sans max-w-3xl">
-              Start your first gold investment with confidence. Learn the fundamentals of wealth preservation, common pitfalls, and strategies to build a robust portfolio.
+              Start your first gold investment with confidence. Learn the fundamentals of wealth
+              preservation, common pitfalls, and strategies to build a robust portfolio.
             </p>
           </Reveal>
         </section>
@@ -94,19 +95,30 @@ function BeginnersGuidePage() {
                   <Award className="h-6 w-6" />
                 </div>
                 <div>
-                  <h2 className="text-display text-2xl font-bold">Why Gold Has Always Been Valuable</h2>
-                  <p className="text-xs uppercase tracking-wider text-foreground/45 mt-1">A historical store of wealth</p>
+                  <h2 className="text-display text-2xl font-bold">
+                    Why Gold Has Always Been Valuable
+                  </h2>
+                  <p className="text-xs uppercase tracking-wider text-foreground/45 mt-1">
+                    A historical store of wealth
+                  </p>
                 </div>
               </div>
               <div className="space-y-4 text-foreground/80 text-sm leading-relaxed">
                 <p>
-                  For thousands of years, gold has been trusted as a store of wealth. From ancient civilizations to modern economies, people have turned to gold during times of uncertainty because it holds value over the long term.
+                  For thousands of years, gold has been trusted as a store of wealth. From ancient
+                  civilizations to modern economies, people have turned to gold during times of
+                  uncertainty because it holds value over the long term.
                 </p>
                 <p>
-                  Unlike paper money, gold cannot be printed by governments. It is limited in supply, widely accepted around the world, and has a long history of protecting wealth. This is why many investors include gold as part of their financial planning.
+                  Unlike paper money, gold cannot be printed by governments. It is limited in
+                  supply, widely accepted around the world, and has a long history of protecting
+                  wealth. This is why many investors include gold as part of their financial
+                  planning.
                 </p>
                 <p className="font-semibold text-foreground">
-                  Today, investing in gold is easier than ever. You no longer need to buy and store physical gold bars or coins. Digital platforms now allow anyone to start investing in gold with small amounts of money.
+                  Today, investing in gold is easier than ever. You no longer need to buy and store
+                  physical gold bars or coins. Digital platforms now allow anyone to start investing
+                  in gold with small amounts of money.
                 </p>
               </div>
             </div>
@@ -120,7 +132,8 @@ function BeginnersGuidePage() {
                 <h2 className="text-display text-2xl">What Is Gold Investing?</h2>
               </div>
               <p className="text-foreground/85 leading-relaxed max-w-3xl">
-                Gold investing simply means putting your money into gold with the expectation that its value will grow over time or help protect your wealth.
+                Gold investing simply means putting your money into gold with the expectation that
+                its value will grow over time or help protect your wealth.
               </p>
               <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
                 {[
@@ -130,7 +143,10 @@ function BeginnersGuidePage() {
                   "To achieve long-term financial goals",
                   "To build a secure financial future",
                 ].map((reason, idx) => (
-                  <div key={idx} className="glass-light rounded-2xl p-5 flex items-start gap-3 border border-border/30">
+                  <div
+                    key={idx}
+                    className="glass-light rounded-2xl p-5 flex items-start gap-3 border border-border/30"
+                  >
                     <span className="text-xs font-semibold text-amber-700 bg-amber-500/10 h-6 w-6 rounded-full flex items-center justify-center shrink-0">
                       {idx + 1}
                     </span>
@@ -139,7 +155,8 @@ function BeginnersGuidePage() {
                 ))}
               </div>
               <p className="text-sm text-foreground/60 italic">
-                * Gold is often considered a "safe-haven asset" because investors tend to trust it during market volatility.
+                * Gold is often considered a "safe-haven asset" because investors tend to trust it
+                during market volatility.
               </p>
             </div>
           </Reveal>
@@ -160,10 +177,13 @@ function BeginnersGuidePage() {
                     <h3 className="font-semibold text-lg">1. Protection Against Inflation</h3>
                   </div>
                   <p className="text-sm text-foreground/75 leading-relaxed">
-                    Over time, the prices of goods and services increase. This reduces the purchasing power of money.
+                    Over time, the prices of goods and services increase. This reduces the
+                    purchasing power of money.
                   </p>
                   <p className="text-sm text-foreground/75 leading-relaxed">
-                    Gold has historically helped preserve wealth because its value often rises when inflation increases. For example, if the cost of living rises significantly, gold may help protect the value of your savings.
+                    Gold has historically helped preserve wealth because its value often rises when
+                    inflation increases. For example, if the cost of living rises significantly,
+                    gold may help protect the value of your savings.
                   </p>
                 </div>
 
@@ -174,10 +194,12 @@ function BeginnersGuidePage() {
                     <h3 className="font-semibold text-lg">2. Stability During Uncertain Times</h3>
                   </div>
                   <p className="text-sm text-foreground/75 leading-relaxed">
-                    Stock markets can experience sharp ups and downs. Economic crises, geopolitical events, and market volatility can impact investments.
+                    Stock markets can experience sharp ups and downs. Economic crises, geopolitical
+                    events, and market volatility can impact investments.
                   </p>
                   <p className="text-sm text-foreground/75 leading-relaxed">
-                    Gold often performs differently from stocks, making it a useful asset during uncertain periods.
+                    Gold often performs differently from stocks, making it a useful asset during
+                    uncertain periods.
                   </p>
                 </div>
 
@@ -191,7 +213,8 @@ function BeginnersGuidePage() {
                     Financial experts recommend not putting all your money into a single investment.
                   </p>
                   <p className="text-sm text-foreground/75 leading-relaxed">
-                    By including gold alongside stocks, mutual funds, and other investments, you can reduce overall portfolio risk.
+                    By including gold alongside stocks, mutual funds, and other investments, you can
+                    reduce overall portfolio risk.
                   </p>
                 </div>
 
@@ -202,7 +225,8 @@ function BeginnersGuidePage() {
                     <h3 className="font-semibold text-lg">4. Long-Term Wealth Preservation</h3>
                   </div>
                   <p className="text-sm text-foreground/75 leading-relaxed">
-                    Gold is not usually viewed as a "get rich quick" investment. Instead, it is often used as a long-term wealth preservation tool.
+                    Gold is not usually viewed as a "get rich quick" investment. Instead, it is
+                    often used as a long-term wealth preservation tool.
                   </p>
                   <p className="text-sm text-foreground/75 leading-relaxed">
                     Many investors hold gold for years or even decades.
@@ -215,17 +239,31 @@ function BeginnersGuidePage() {
           {/* Section 4: How Much Gold Should You Invest In? */}
           <Reveal>
             <div className="glass-dark p-8 text-white rounded-3xl relative overflow-hidden">
-              <div className="absolute -top-16 -right-16 h-48 w-48 rounded-full" style={{ background: "radial-gradient(circle, rgba(244,208,63,0.3), transparent 65%)" }} />
+              <div
+                className="absolute -top-16 -right-16 h-48 w-48 rounded-full"
+                style={{
+                  background: "radial-gradient(circle, rgba(244,208,63,0.3), transparent 65%)",
+                }}
+              />
               <div className="relative z-10 grid gap-6 md:grid-cols-[1.2fr_1fr] items-center">
                 <div className="space-y-4">
-                  <span className="eyebrow-tag" style={{ color: "var(--gold-bright)" }}>Allocation Guide</span>
-                  <h2 className="text-display text-3xl font-bold">How Much Gold Should You Invest In?</h2>
+                  <span className="eyebrow-tag" style={{ color: "var(--gold-bright)" }}>
+                    Allocation Guide
+                  </span>
+                  <h2 className="text-display text-3xl font-bold">
+                    How Much Gold Should You Invest In?
+                  </h2>
                   <p className="text-sm text-white/80 leading-relaxed">
-                    There is no one-size-fits-all answer. Many financial planners suggest allocating approximately <strong className="text-amber-300">5% to 15%</strong> of an investment portfolio to gold, depending on individual goals, risk tolerance, and financial situation.
+                    There is no one-size-fits-all answer. Many financial planners suggest allocating
+                    approximately <strong className="text-amber-300">5% to 15%</strong> of an
+                    investment portfolio to gold, depending on individual goals, risk tolerance, and
+                    financial situation.
                   </p>
                 </div>
                 <div className="rounded-2xl bg-white/5 border border-white/10 p-5 space-y-3">
-                  <span className="text-xs text-white/50 uppercase tracking-wider block">Key Factors:</span>
+                  <span className="text-xs text-white/50 uppercase tracking-wider block">
+                    Key Factors:
+                  </span>
                   <ul className="space-y-1.5 text-xs text-white/90">
                     <li>• Your age & timeline</li>
                     <li>• Income level & stability</li>
@@ -264,7 +302,10 @@ function BeginnersGuidePage() {
                     desc: "Before investing, clarify: Why am I investing? How long do I plan to invest? What financial goal am I trying to achieve? Clear goals help make better decisions.",
                   },
                 ].map((item, idx) => (
-                  <div key={idx} className="rounded-2xl border border-border/30 bg-background/30 p-6 space-y-2">
+                  <div
+                    key={idx}
+                    className="rounded-2xl border border-border/30 bg-background/30 p-6 space-y-2"
+                  >
                     <h3 className="font-semibold text-foreground flex items-center gap-2">
                       <TrendingDown className="h-4 w-4 text-rose-500" />
                       {item.title}
@@ -287,19 +328,22 @@ function BeginnersGuidePage() {
                 <div className="rounded-2xl border border-amber-300/30 bg-amber-500/[0.03] p-6 space-y-3">
                   <h3 className="font-semibold text-lg text-amber-800">Start Small</h3>
                   <p className="text-xs text-foreground/75 leading-relaxed">
-                    You do not need a large amount of money to begin investing in gold. Starting small allows you to learn while gradually building your investment.
+                    You do not need a large amount of money to begin investing in gold. Starting
+                    small allows you to learn while gradually building your investment.
                   </p>
                 </div>
                 <div className="rounded-2xl border border-amber-300/30 bg-amber-500/[0.03] p-6 space-y-3">
                   <h3 className="font-semibold text-lg text-amber-800">Invest Consistently</h3>
                   <p className="text-xs text-foreground/75 leading-relaxed">
-                    Regular investments can help build discipline and reduce the impact of market volatility. Consider setting up SIPs.
+                    Regular investments can help build discipline and reduce the impact of market
+                    volatility. Consider setting up SIPs.
                   </p>
                 </div>
                 <div className="rounded-2xl border border-amber-300/30 bg-amber-500/[0.03] p-6 space-y-3">
                   <h3 className="font-semibold text-lg text-amber-800">Think Long Term</h3>
                   <p className="text-xs text-foreground/75 leading-relaxed">
-                    Gold is built for decades. Focus on long-term wealth protection and asset security rather than short-term price swings.
+                    Gold is built for decades. Focus on long-term wealth protection and asset
+                    security rather than short-term price swings.
                   </p>
                 </div>
               </div>
@@ -311,18 +355,25 @@ function BeginnersGuidePage() {
         <section className="mx-auto max-w-4xl mt-24">
           <Reveal>
             <div className="glass-dark relative overflow-hidden p-8 text-center text-white sm:p-12">
-              <span className="eyebrow-tag" style={{ color: "var(--gold-bright)" }}>Ready to Begin?</span>
-              <h2 className="text-display text-2xl sm:text-4xl mt-4">
-                Start your gold journey.
-              </h2>
+              <span className="eyebrow-tag" style={{ color: "var(--gold-bright)" }}>
+                Ready to Begin?
+              </span>
+              <h2 className="text-display text-2xl sm:text-4xl mt-4">Start your gold journey.</h2>
               <p className="mx-auto mt-4 max-w-lg text-sm text-white/70">
-                Put the principles into action. Build your safe-haven buffer starting from just ₹100.
+                Put the principles into action. Build your safe-haven buffer starting from just
+                ₹100.
               </p>
               <div className="mt-8 flex justify-center gap-4 flex-wrap">
-                <Link to="/sip-calculator" className="btn-gold btn-gold-hover inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs font-semibold">
+                <Link
+                  to="/sip-calculator"
+                  className="btn-gold btn-gold-hover inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs font-semibold"
+                >
                   Try SIP Calculator <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
-                <a href="mailto:info@gallantventures.in" className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-xs font-semibold text-white hover:bg-white/10 transition-colors">
+                <a
+                  href="mailto:info@gallantventures.in"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-xs font-semibold text-white hover:bg-white/10 transition-colors"
+                >
                   Contact Advisor
                 </a>
               </div>
@@ -337,7 +388,10 @@ function BeginnersGuidePage() {
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
             <div className="sm:col-span-2 lg:col-span-2">
               <div className="flex items-center gap-2">
-                <span className="grid h-10 w-10 place-items-center rounded-full" style={{ background: "var(--gradient-gold)" }}>
+                <span
+                  className="grid h-10 w-10 place-items-center rounded-full"
+                  style={{ background: "var(--gradient-gold)" }}
+                >
                   <span className="font-display text-base font-bold text-[#1B1B1B]">F</span>
                 </span>
                 <span className="font-display text-2xl font-bold">
@@ -348,11 +402,17 @@ function BeginnersGuidePage() {
                 Invest in gold. Secure your future.
               </p>
               <div className="mt-8 space-y-3 text-sm text-foreground/70">
-                <a href="mailto:info@gallantventures.in" className="flex items-center gap-2 hover:text-foreground">
+                <a
+                  href="mailto:info@gallantventures.in"
+                  className="flex items-center gap-2 hover:text-foreground"
+                >
                   <Mail className="h-4 w-4" style={{ color: "var(--bronze)" }} />
                   info@gallantventures.in
                 </a>
-                <a href="tel:+919879150287" className="flex items-center gap-2 hover:text-foreground">
+                <a
+                  href="tel:+919879150287"
+                  className="flex items-center gap-2 hover:text-foreground"
+                >
                   <Phone className="h-4 w-4" style={{ color: "var(--bronze)" }} />
                   +91 98791 50287
                 </a>

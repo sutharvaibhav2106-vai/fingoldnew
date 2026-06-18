@@ -73,7 +73,10 @@ export function LumpsumCalculator() {
 
   const results = useMemo(() => {
     const totalInvested = calcLumpsumAmount;
-    const lastYear = yearlyData[yearlyData.length - 1] || { totalValue: totalInvested, estReturns: 0 };
+    const lastYear = yearlyData[yearlyData.length - 1] || {
+      totalValue: totalInvested,
+      estReturns: 0,
+    };
     const totalValue = lastYear.totalValue;
     const estReturns = lastYear.estReturns;
 
@@ -96,7 +99,7 @@ export function LumpsumCalculator() {
     setLumpsumAmount("100000");
     setDuration("5");
     setExpectedReturn("11");
-    
+
     setCalcLumpsumAmount(100000);
     setCalcDuration(5);
     setCalcExpectedReturn(11);
@@ -142,7 +145,7 @@ export function LumpsumCalculator() {
                     step="1000"
                     value={lumpsumAmount}
                     onChange={(e) => {
-                      const val = e.target.value.replace(/^0+(?=\d)/, '');
+                      const val = e.target.value.replace(/^0+(?=\d)/, "");
                       setLumpsumAmount(val);
                     }}
                     className="w-full sm:w-36 rounded-xl border border-border bg-white py-2 pl-7 pr-3 text-right font-semibold text-foreground shadow-sm focus:outline-none focus:ring-1 focus:ring-ring"
@@ -174,7 +177,7 @@ export function LumpsumCalculator() {
                     max="20"
                     value={duration}
                     onChange={(e) => {
-                      const val = e.target.value.replace(/^0+(?=\d)/, '');
+                      const val = e.target.value.replace(/^0+(?=\d)/, "");
                       if (val === "") {
                         setDuration("");
                       } else {
@@ -206,7 +209,8 @@ export function LumpsumCalculator() {
                   <div className="group relative">
                     <HelpCircle className="h-4 w-4 text-foreground/45 cursor-help" />
                     <div className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 w-64 -translate-x-1/2 rounded-lg bg-foreground p-2.5 text-xs text-background opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
-                      Historical CAGR for gold in India is around 10-12% annually over the last 20 years.
+                      Historical CAGR for gold in India is around 10-12% annually over the last 20
+                      years.
                     </div>
                   </div>
                 </div>
@@ -218,7 +222,7 @@ export function LumpsumCalculator() {
                     step="0.5"
                     value={expectedReturn}
                     onChange={(e) => {
-                      const val = e.target.value.replace(/^0+(?=\d)/, '');
+                      const val = e.target.value.replace(/^0+(?=\d)/, "");
                       if (val === "") {
                         setExpectedReturn("");
                       } else {
@@ -258,12 +262,23 @@ export function LumpsumCalculator() {
           {/* Header Summary Cards */}
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
             <div className="rounded-2xl border border-border/30 bg-background/30 p-3 sm:p-4">
-              <span className="text-[10px] sm:text-xs font-semibold text-foreground/50 uppercase tracking-wider block truncate">Invested Amount</span>
-              <span className="text-lg sm:text-xl font-bold text-foreground block mt-1 truncate">{formatINR(results.totalInvested)}</span>
+              <span className="text-[10px] sm:text-xs font-semibold text-foreground/50 uppercase tracking-wider block truncate">
+                Invested Amount
+              </span>
+              <span className="text-lg sm:text-xl font-bold text-foreground block mt-1 truncate">
+                {formatINR(results.totalInvested)}
+              </span>
             </div>
             <div className="rounded-2xl border border-border/30 bg-background/30 p-3 sm:p-4">
-              <span className="text-[10px] sm:text-xs font-semibold text-foreground/50 uppercase tracking-wider block truncate">Maturity Value</span>
-              <span className="text-lg sm:text-xl font-bold text-foreground block mt-1 truncate" style={{ color: "var(--bronze)" }}>{formatINR(results.totalValue)}</span>
+              <span className="text-[10px] sm:text-xs font-semibold text-foreground/50 uppercase tracking-wider block truncate">
+                Maturity Value
+              </span>
+              <span
+                className="text-lg sm:text-xl font-bold text-foreground block mt-1 truncate"
+                style={{ color: "var(--bronze)" }}
+              >
+                {formatINR(results.totalValue)}
+              </span>
             </div>
           </div>
 
@@ -277,25 +292,28 @@ export function LumpsumCalculator() {
 
             {/* The Chart Scroll Wrapper */}
             <div className="overflow-x-auto max-w-full pb-3 mt-4 scrollbar-thin">
-              <div 
+              <div
                 className="relative flex items-end justify-between h-48 border-b border-border/40 pb-2 gap-2"
                 style={{ minWidth: "100%", width: `${(parseInt(duration) || 0) * 45}px` }}
               >
                 {/* Y-Axis Guideline Marks (Simulated) */}
                 <div className="absolute left-0 right-0 top-0 border-t border-dashed border-foreground/5 pointer-events-none" />
                 <div className="absolute left-0 right-0 top-1/2 border-t border-dashed border-foreground/5 pointer-events-none" />
-                
+
                 {/* Yearly Bars */}
                 {yearlyData.map((d) => {
                   // Height percentage relative to maxChartValue for the total height of the bar container
                   const barHeightPct = (d.totalValue / maxChartValue) * 100;
-                  
+
                   // Heights of inner components relative to totalValue (summing to 100%)
                   const returnsHeightPct = (d.estReturns / d.totalValue) * 100;
                   const savedHeightPct = (d.savedAmount / d.totalValue) * 100;
 
                   return (
-                    <div key={d.year} className="flex-1 flex flex-col items-center group relative h-full justify-end min-w-[28px]">
+                    <div
+                      key={d.year}
+                      className="flex-1 flex flex-col items-center group relative h-full justify-end min-w-[28px]"
+                    >
                       {/* Tooltip */}
                       <div className="pointer-events-none absolute bottom-full mb-2 z-10 hidden group-hover:flex flex-col items-center bg-foreground text-background text-xs rounded-lg py-2 px-3 shadow-md min-w-[120px] transition-all">
                         <span className="font-semibold mb-1">Year {d.year}</span>
@@ -374,31 +392,47 @@ export function LumpsumCalculator() {
           className="rounded-xl border border-[#D4AF37]/45 bg-white/70 hover:bg-white px-6 py-3 font-semibold text-foreground/85 shadow-sm transition flex items-center gap-2 cursor-pointer hover:border-foreground/30 focus:outline-none"
         >
           {showAllReturns ? "Hide Detailed Yearly Returns" : "See All Year Returns"}
-          <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${showAllReturns ? "rotate-180" : ""}`} />
+          <ChevronDown
+            className={`h-4 w-4 transition-transform duration-300 ${showAllReturns ? "rotate-180" : ""}`}
+          />
         </button>
       </div>
 
       {/* Collapsible Yearly Table */}
       {showAllReturns && (
         <div className="mt-6 overflow-hidden rounded-3xl border border-[#D4AF37]/25 bg-white/90 p-4 sm:p-6 shadow-soft animate-reveal">
-          <h3 className="text-display text-xl sm:text-2xl mb-4 font-semibold text-foreground">Detailed Yearly Growth Breakdown</h3>
+          <h3 className="text-display text-xl sm:text-2xl mb-4 font-semibold text-foreground">
+            Detailed Yearly Growth Breakdown
+          </h3>
           <div className="overflow-x-auto max-h-[350px] overflow-y-auto pr-1">
             <table className="w-full text-left text-sm border-collapse min-w-[500px]">
               <thead className="sticky top-0 bg-white border-b border-border/40 z-10">
                 <tr>
                   <th className="py-3 px-4 font-semibold text-foreground/60">Year</th>
-                  <th className="py-3 px-4 font-semibold text-foreground/60 text-right">Saved Amount</th>
-                  <th className="py-3 px-4 font-semibold text-foreground/60 text-right">Estimated Returns</th>
-                  <th className="py-3 px-4 font-semibold text-foreground/60 text-right">Total Value</th>
+                  <th className="py-3 px-4 font-semibold text-foreground/60 text-right">
+                    Saved Amount
+                  </th>
+                  <th className="py-3 px-4 font-semibold text-foreground/60 text-right">
+                    Estimated Returns
+                  </th>
+                  <th className="py-3 px-4 font-semibold text-foreground/60 text-right">
+                    Total Value
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/20">
                 {yearlyData.map((d) => (
                   <tr key={d.year} className="hover:bg-foreground/[0.02] transition-colors">
                     <td className="py-3 px-4 font-semibold text-foreground/75">Year {d.year}</td>
-                    <td className="py-3 px-4 text-right text-foreground/70">{formatINR(d.savedAmount)}</td>
-                    <td className="py-3 px-4 text-right text-emerald-700 font-medium">{formatINR(d.estReturns)}</td>
-                    <td className="py-3 px-4 text-right font-bold text-foreground">{formatINR(d.totalValue)}</td>
+                    <td className="py-3 px-4 text-right text-foreground/70">
+                      {formatINR(d.savedAmount)}
+                    </td>
+                    <td className="py-3 px-4 text-right text-emerald-700 font-medium">
+                      {formatINR(d.estReturns)}
+                    </td>
+                    <td className="py-3 px-4 text-right font-bold text-foreground">
+                      {formatINR(d.totalValue)}
+                    </td>
                   </tr>
                 ))}
               </tbody>

@@ -83,7 +83,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "FINGOLD — Invest in Gold, Secure Your Future" },
       {
         property: "og:description",
-        content: "Premium gold investment platform — buy, save, grow and redeem gold with confidence.",
+        content:
+          "Premium gold investment platform — buy, save, grow and redeem gold with confidence.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -119,6 +120,9 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+import { Toaster } from "../components/ui/sonner";
+import { AuthModal } from "../components/site/AuthModal";
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
@@ -126,6 +130,8 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <Toaster />
+      <AuthModal />
     </QueryClientProvider>
   );
 }

@@ -46,7 +46,8 @@ function SipCalculatorPage() {
               Gold <span className="text-gold-gradient">SIP Calculator.</span>
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base text-foreground/60 sm:text-lg">
-              Calculate the value of your monthly investments or plan target amounts to secure your wealth in fine gold.
+              Calculate the value of your monthly investments or plan target amounts to secure your
+              wealth in fine gold.
             </p>
           </Reveal>
         </section>
@@ -66,13 +67,15 @@ function SipCalculatorPage() {
               <div className="rounded-2xl border border-border/30 bg-background/30 p-6">
                 <h3 className="font-semibold text-lg">Rupee Cost Averaging</h3>
                 <p className="text-sm text-foreground/70 mt-2">
-                  Investing a fixed amount regularly helps average out purchase cost over market fluctuations, buying more grams when price drops and fewer when price rises.
+                  Investing a fixed amount regularly helps average out purchase cost over market
+                  fluctuations, buying more grams when price drops and fewer when price rises.
                 </p>
               </div>
               <div className="rounded-2xl border border-border/30 bg-background/30 p-6">
                 <h3 className="font-semibold text-lg">Discipline & Consistency</h3>
                 <p className="text-sm text-foreground/70 mt-2">
-                  Automating monthly investments builds long-term habits without the stress of timing the market or relying on one-off manual buys.
+                  Automating monthly investments builds long-term habits without the stress of
+                  timing the market or relying on one-off manual buys.
                 </p>
               </div>
             </div>
@@ -86,7 +89,10 @@ function SipCalculatorPage() {
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
             <div className="sm:col-span-2 lg:col-span-2">
               <div className="flex items-center gap-2">
-                <span className="grid h-10 w-10 place-items-center rounded-full" style={{ background: "var(--gradient-gold)" }}>
+                <span
+                  className="grid h-10 w-10 place-items-center rounded-full"
+                  style={{ background: "var(--gradient-gold)" }}
+                >
                   <span className="font-display text-base font-bold text-[#1B1B1B]">F</span>
                 </span>
                 <span className="font-display text-2xl font-bold">
@@ -97,11 +103,17 @@ function SipCalculatorPage() {
                 Invest in gold. Secure your future.
               </p>
               <div className="mt-8 space-y-3 text-sm text-foreground/70">
-                <a href="mailto:info@gallantventures.in" className="flex items-center gap-2 hover:text-foreground">
+                <a
+                  href="mailto:info@gallantventures.in"
+                  className="flex items-center gap-2 hover:text-foreground"
+                >
                   <Mail className="h-4 w-4" style={{ color: "var(--bronze)" }} />
                   info@gallantventures.in
                 </a>
-                <a href="tel:+919879150287" className="flex items-center gap-2 hover:text-foreground">
+                <a
+                  href="tel:+919879150287"
+                  className="flex items-center gap-2 hover:text-foreground"
+                >
                   <Phone className="h-4 w-4" style={{ color: "var(--bronze)" }} />
                   +91 98791 50287
                 </a>

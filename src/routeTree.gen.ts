@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SovereignGoldBondsGuideRouteImport } from './routes/sovereign-gold-bonds-guide'
 import { Route as SipCalculatorRouteImport } from './routes/sip-calculator'
+import { Route as PrdRouteImport } from './routes/prd'
 import { Route as LumpsumCalculatorRouteImport } from './routes/lumpsum-calculator'
 import { Route as GoldTaxationRouteImport } from './routes/gold-taxation'
 import { Route as GoldEtfsRouteImport } from './routes/gold-etfs'
@@ -18,6 +19,8 @@ import { Route as GoldAndInflationRouteImport } from './routes/gold-and-inflatio
 import { Route as DigitalVsPhysicalGoldRouteImport } from './routes/digital-vs-physical-gold'
 import { Route as BeginnersGuideRouteImport } from './routes/beginners-guide'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ToolsGoalPlannerRouteImport } from './routes/tools/goal-planner'
+import { Route as ToolsFutureValueRouteImport } from './routes/tools/future-value'
 
 const SovereignGoldBondsGuideRoute = SovereignGoldBondsGuideRouteImport.update({
   id: '/sovereign-gold-bonds-guide',
@@ -27,6 +30,11 @@ const SovereignGoldBondsGuideRoute = SovereignGoldBondsGuideRouteImport.update({
 const SipCalculatorRoute = SipCalculatorRouteImport.update({
   id: '/sip-calculator',
   path: '/sip-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrdRoute = PrdRouteImport.update({
+  id: '/prd',
+  path: '/prd',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LumpsumCalculatorRoute = LumpsumCalculatorRouteImport.update({
@@ -64,6 +72,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ToolsGoalPlannerRoute = ToolsGoalPlannerRouteImport.update({
+  id: '/tools/goal-planner',
+  path: '/tools/goal-planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsFutureValueRoute = ToolsFutureValueRouteImport.update({
+  id: '/tools/future-value',
+  path: '/tools/future-value',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -73,8 +91,11 @@ export interface FileRoutesByFullPath {
   '/gold-etfs': typeof GoldEtfsRoute
   '/gold-taxation': typeof GoldTaxationRoute
   '/lumpsum-calculator': typeof LumpsumCalculatorRoute
+  '/prd': typeof PrdRoute
   '/sip-calculator': typeof SipCalculatorRoute
   '/sovereign-gold-bonds-guide': typeof SovereignGoldBondsGuideRoute
+  '/tools/future-value': typeof ToolsFutureValueRoute
+  '/tools/goal-planner': typeof ToolsGoalPlannerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -84,8 +105,11 @@ export interface FileRoutesByTo {
   '/gold-etfs': typeof GoldEtfsRoute
   '/gold-taxation': typeof GoldTaxationRoute
   '/lumpsum-calculator': typeof LumpsumCalculatorRoute
+  '/prd': typeof PrdRoute
   '/sip-calculator': typeof SipCalculatorRoute
   '/sovereign-gold-bonds-guide': typeof SovereignGoldBondsGuideRoute
+  '/tools/future-value': typeof ToolsFutureValueRoute
+  '/tools/goal-planner': typeof ToolsGoalPlannerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -96,8 +120,11 @@ export interface FileRoutesById {
   '/gold-etfs': typeof GoldEtfsRoute
   '/gold-taxation': typeof GoldTaxationRoute
   '/lumpsum-calculator': typeof LumpsumCalculatorRoute
+  '/prd': typeof PrdRoute
   '/sip-calculator': typeof SipCalculatorRoute
   '/sovereign-gold-bonds-guide': typeof SovereignGoldBondsGuideRoute
+  '/tools/future-value': typeof ToolsFutureValueRoute
+  '/tools/goal-planner': typeof ToolsGoalPlannerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -109,8 +136,11 @@ export interface FileRouteTypes {
     | '/gold-etfs'
     | '/gold-taxation'
     | '/lumpsum-calculator'
+    | '/prd'
     | '/sip-calculator'
     | '/sovereign-gold-bonds-guide'
+    | '/tools/future-value'
+    | '/tools/goal-planner'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -120,8 +150,11 @@ export interface FileRouteTypes {
     | '/gold-etfs'
     | '/gold-taxation'
     | '/lumpsum-calculator'
+    | '/prd'
     | '/sip-calculator'
     | '/sovereign-gold-bonds-guide'
+    | '/tools/future-value'
+    | '/tools/goal-planner'
   id:
     | '__root__'
     | '/'
@@ -131,8 +164,11 @@ export interface FileRouteTypes {
     | '/gold-etfs'
     | '/gold-taxation'
     | '/lumpsum-calculator'
+    | '/prd'
     | '/sip-calculator'
     | '/sovereign-gold-bonds-guide'
+    | '/tools/future-value'
+    | '/tools/goal-planner'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -143,8 +179,11 @@ export interface RootRouteChildren {
   GoldEtfsRoute: typeof GoldEtfsRoute
   GoldTaxationRoute: typeof GoldTaxationRoute
   LumpsumCalculatorRoute: typeof LumpsumCalculatorRoute
+  PrdRoute: typeof PrdRoute
   SipCalculatorRoute: typeof SipCalculatorRoute
   SovereignGoldBondsGuideRoute: typeof SovereignGoldBondsGuideRoute
+  ToolsFutureValueRoute: typeof ToolsFutureValueRoute
+  ToolsGoalPlannerRoute: typeof ToolsGoalPlannerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -161,6 +200,13 @@ declare module '@tanstack/react-router' {
       path: '/sip-calculator'
       fullPath: '/sip-calculator'
       preLoaderRoute: typeof SipCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prd': {
+      id: '/prd'
+      path: '/prd'
+      fullPath: '/prd'
+      preLoaderRoute: typeof PrdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lumpsum-calculator': {
@@ -212,6 +258,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tools/goal-planner': {
+      id: '/tools/goal-planner'
+      path: '/tools/goal-planner'
+      fullPath: '/tools/goal-planner'
+      preLoaderRoute: typeof ToolsGoalPlannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/future-value': {
+      id: '/tools/future-value'
+      path: '/tools/future-value'
+      fullPath: '/tools/future-value'
+      preLoaderRoute: typeof ToolsFutureValueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -223,8 +283,11 @@ const rootRouteChildren: RootRouteChildren = {
   GoldEtfsRoute: GoldEtfsRoute,
   GoldTaxationRoute: GoldTaxationRoute,
   LumpsumCalculatorRoute: LumpsumCalculatorRoute,
+  PrdRoute: PrdRoute,
   SipCalculatorRoute: SipCalculatorRoute,
   SovereignGoldBondsGuideRoute: SovereignGoldBondsGuideRoute,
+  ToolsFutureValueRoute: ToolsFutureValueRoute,
+  ToolsGoalPlannerRoute: ToolsGoalPlannerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
