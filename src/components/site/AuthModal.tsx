@@ -53,7 +53,49 @@ export function AuthModal() {
     };
 
     window.addEventListener("open-auth", handleOpen);
-    return () => window.removeEventListener("open-auth", handleOpen);
+
+    // Listen for auth state changes (e.g. user clicked confirmation link in email)
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (session?.user) {
+        const pending = localStorage.getItem("pending_profile");
+        if (pending) {
+          try {
+            const profileData = JSON.parse(pending);
+            const { error: profileError } = await supabase
+              .from("profiles")
+              .update({
+                name: profileData.name,
+                date_of_birth: profileData.dob,
+                gender: profileData.gender,
+                phone: profileData.phone,
+                updated_at: new Date().toISOString(),
+              })
+              .eq("id", session.user.id);
+
+            if (profileError) {
+              console.error("Error updating profile from pending storage:", profileError);
+            } else {
+              toast.success(`Welcome to Fingold, ${profileData.name}! Account verified.`);
+            }
+          } catch (e) {
+            console.error("Error parsing pending profile:", e);
+          } finally {
+            localStorage.removeItem("pending_profile");
+            // Reload page after a short delay to reflect logged-in state in UI
+            setTimeout(() => {
+              window.location.reload();
+            }, 1500);
+          }
+        }
+      }
+    });
+
+    return () => {
+      window.removeEventListener("open-auth", handleOpen);
+      subscription.unsubscribe();
+    };
   }, []);
 
   const handleClose = () => {
@@ -77,6 +119,7 @@ export function AuthModal() {
         email,
         password,
         options: {
+          emailRedirectTo: window.location.origin,
           data: {
             name,
             phone: `+91${phoneNumber}`,
@@ -94,6 +137,17 @@ export function AuthModal() {
       if (!user) {
         throw new Error("Sign up completed but no user returned.");
       }
+
+      // Store pending profile details in localStorage in case they use email link confirmation
+      localStorage.setItem(
+        "pending_profile",
+        JSON.stringify({
+          name,
+          dob,
+          gender,
+          phone: `+91${phoneNumber}`,
+        }),
+      );
 
       // Check if session exists immediately (email confirmation disabled in Supabase)
       if (data.session) {
@@ -113,6 +167,7 @@ export function AuthModal() {
           console.error("Profile update error:", profileError);
         }
 
+        localStorage.removeItem("pending_profile");
         toast.success("Registration successful!");
         setStep(3); // Success
       } else {
@@ -557,42 +612,61 @@ export function AuthModal() {
           </>
         )}
 
-        {/* Step 2: Email Verification Code Entry */}
+        {/* Step 2: Email Verification Link & Code Entry */}
         {step === 2 && (
           <form onSubmit={handleVerifyEmail} className="space-y-5">
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <label
-                  htmlFor="emailOtp"
-                  className="block text-xs font-semibold uppercase tracking-wider text-white/70"
-                >
-                  Email Verification Code
-                </label>
-                <button
-                  type="button"
-                  onClick={() => setStep(1)}
-                  className="text-xs text-white/40 hover:text-white transition-colors"
-                >
-                  Back to Form
-                </button>
+            <div className="space-y-4">
+              {/* Verification link info */}
+              <div className="rounded-2xl bg-[#D4AF37]/10 border border-[#D4AF37]/20 p-4 text-xs text-amber-200 space-y-1.5">
+                <p className="font-semibold text-[#D4AF37]">Verification Link Sent</p>
+                <p className="leading-relaxed text-white/80">
+                  We have sent a verification link to{" "}
+                  <strong className="text-white">{email}</strong>. Please check your inbox (and spam
+                  folder) and click the link to confirm your account.
+                </p>
+                <p className="text-[11px] text-[#D4AF37]/80 italic">
+                  Once clicked, this screen will update and log you in automatically.
+                </p>
               </div>
-              <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" />
-                <input
-                  id="emailOtp"
-                  type="text"
-                  maxLength={6}
-                  placeholder="Enter 6-digit code"
-                  value={emailOtp}
-                  onChange={(e) => setEmailOtp(e.target.value.replace(/\D/g, ""))}
-                  disabled={loading}
-                  className="w-full rounded-2xl border border-[#D4AF37]/25 bg-black/40 py-3.5 pl-11 pr-4 text-sm text-white placeholder-white/20 focus:border-[#D4AF37] focus:outline-none transition-colors"
-                  required
-                />
+
+              <div className="relative flex py-1 items-center">
+                <div className="flex-grow border-t border-white/10"></div>
+                <span className="flex-shrink mx-4 text-[10px] text-white/40 uppercase font-semibold">
+                  Or enter code
+                </span>
+                <div className="flex-grow border-t border-white/10"></div>
               </div>
-              <p className="text-[10px] text-white/40">
-                Enter the verification code sent to {email}.
-              </p>
+
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <label
+                    htmlFor="emailOtp"
+                    className="block text-xs font-semibold uppercase tracking-wider text-white/70"
+                  >
+                    6-Digit Verification Code
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => setStep(1)}
+                    className="text-xs text-white/40 hover:text-white transition-colors"
+                  >
+                    Back to Form
+                  </button>
+                </div>
+                <div className="relative">
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" />
+                  <input
+                    id="emailOtp"
+                    type="text"
+                    maxLength={6}
+                    placeholder="Enter 6-digit code"
+                    value={emailOtp}
+                    onChange={(e) => setEmailOtp(e.target.value.replace(/\D/g, ""))}
+                    disabled={loading}
+                    className="w-full rounded-2xl border border-[#D4AF37]/25 bg-black/40 py-3.5 pl-11 pr-4 text-sm text-white placeholder-white/20 focus:border-[#D4AF37] focus:outline-none transition-colors"
+                  />
+                </div>
+              </div>
             </div>
 
             <button
@@ -603,7 +677,7 @@ export function AuthModal() {
               {loading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
               ) : (
-                "Verify & Complete Registration"
+                "Verify Code & Complete Registration"
               )}
             </button>
           </form>
