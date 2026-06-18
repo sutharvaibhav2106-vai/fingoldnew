@@ -265,6 +265,27 @@ export function AuthModal() {
             <div className="flex-1">
               <p className="font-semibold">Notice</p>
               <p className="mt-0.5 leading-relaxed text-red-200/80">{error}</p>
+              {error.toLowerCase().includes("provider") && (
+                <div className="mt-3 pt-3 border-t border-red-500/10 space-y-1 text-amber-300 font-semibold">
+                  <p>How to resolve this:</p>
+                  <ol className="list-decimal pl-4 font-normal text-amber-200/90 space-y-1">
+                    <li>
+                      Go to your <strong>Supabase Dashboard</strong>.
+                    </li>
+                    <li>
+                      Navigate to <strong>Auth</strong> &rarr; <strong>Providers</strong> &rarr;{" "}
+                      <strong>Google</strong>.
+                    </li>
+                    <li>Toggle Google Auth on, and configure your client details.</li>
+                  </ol>
+                  {window.location.hostname === "localhost" && (
+                    <p className="mt-2 text-amber-300/80 text-[11px] font-normal italic">
+                      💡 Tip: For local testing, click the "Developer Google Simulation" button
+                      below!
+                    </p>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         )}
