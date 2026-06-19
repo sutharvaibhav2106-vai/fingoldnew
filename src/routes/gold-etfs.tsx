@@ -510,11 +510,11 @@ function GoldEtfsPage() {
               </p>
               <div className="mt-8 space-y-3 text-sm text-foreground/70">
                 <a
-                  href="mailto:info@gallantventures.in"
+                  href="mailto:fingoldgdm@gmail.com"
                   className="flex items-center gap-2 hover:text-foreground"
                 >
                   <Mail className="h-4 w-4" style={{ color: "var(--bronze)" }} />
-                  info@gallantventures.in
+                  fingoldgdm@gmail.com
                 </a>
                 <a
                   href="tel:+919879150287"
@@ -569,3 +569,4 @@ function GoldEtfsPage() {
     </div>
   );
 }
+

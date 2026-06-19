@@ -371,7 +371,7 @@ function BeginnersGuidePage() {
                   Try SIP Calculator <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
                 <a
-                  href="mailto:info@gallantventures.in"
+                  href="mailto:fingoldgdm@gmail.com"
                   className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-xs font-semibold text-white hover:bg-white/10 transition-colors"
                 >
                   Contact Advisor
@@ -403,11 +403,11 @@ function BeginnersGuidePage() {
               </p>
               <div className="mt-8 space-y-3 text-sm text-foreground/70">
                 <a
-                  href="mailto:info@gallantventures.in"
+                  href="mailto:fingoldgdm@gmail.com"
                   className="flex items-center gap-2 hover:text-foreground"
                 >
                   <Mail className="h-4 w-4" style={{ color: "var(--bronze)" }} />
-                  info@gallantventures.in
+                  fingoldgdm@gmail.com
                 </a>
                 <a
                   href="tel:+919879150287"
@@ -462,3 +462,4 @@ function BeginnersGuidePage() {
     </div>
   );
 }
+

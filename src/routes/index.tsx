@@ -9,6 +9,12 @@ import { Nav } from "@/components/site/Nav";
 import { triggerAuthModal } from "../lib/utils";
 import { Reveal } from "@/components/site/Reveal";
 import goldBar from "@/assets/gold-bar-hero.jpg";
+import learnBeginner from "@/assets/learn-beginner.png";
+import learnCompare from "@/assets/learn-compare.png";
+import learnMarkets from "@/assets/learn-markets.png";
+import learnBonds from "@/assets/learn-bonds.png";
+import learnMacro from "@/assets/learn-macro.png";
+import learnTax from "@/assets/learn-tax.png";
 import {
   ShieldCheck,
   TrendingUp,
@@ -165,36 +171,42 @@ const learn = [
     title: "Beginner's Guide to Gold Investing",
     desc: "Start your first gold investment with confidence.",
     href: "/beginners-guide",
+    image: learnBeginner,
   },
   {
     tag: "Compare",
     title: "Digital Gold vs Physical Gold",
     desc: "Which form fits your goals best?",
     href: "/digital-vs-physical-gold",
+    image: learnCompare,
   },
   {
     tag: "Markets",
     title: "Gold ETFs Explained",
     desc: "How exchange-traded gold works.",
     href: "/gold-etfs",
+    image: learnMarkets,
   },
   {
     tag: "Bonds",
     title: "Sovereign Gold Bonds Guide",
     desc: "Earn interest while owning gold.",
     href: "/sovereign-gold-bonds-guide",
+    image: learnBonds,
   },
   {
     tag: "Macro",
     title: "Gold and Inflation",
     desc: "Why gold shines when currencies weaken.",
     href: "/gold-and-inflation",
+    image: learnMacro,
   },
   {
     tag: "Tax",
     title: "Gold Investment Taxation",
     desc: "A clear breakdown across instruments.",
     href: "/gold-taxation",
+    image: learnTax,
   },
 ];
 
@@ -665,17 +677,25 @@ function Home() {
             {learn.map((l, i) => {
               const CardContent = (
                 <article className="group h-full overflow-hidden rounded-3xl border border-border/40 bg-background/40 transition-all hover:border-foreground/40 cursor-pointer">
-                  <div
-                    className="relative h-44 overflow-hidden"
-                    style={{
-                      background: "var(--gradient-gold-shine)",
-                      backgroundSize: "200% auto",
-                      animation: "gold-shine 10s linear infinite",
-                    }}
-                  >
-                    <div className="absolute inset-0 grid place-items-center">
-                      <Coins className="h-14 w-14 text-[#1B1B1B]/25" />
-                    </div>
+                  <div className="relative h-44 overflow-hidden bg-muted/20">
+                    {l.image ? (
+                      <img
+                        src={l.image}
+                        alt={l.title}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div
+                        className="absolute inset-0 grid place-items-center"
+                        style={{
+                          background: "var(--gradient-gold-shine)",
+                          backgroundSize: "200% auto",
+                          animation: "gold-shine 10s linear infinite",
+                        }}
+                      >
+                        <Coins className="h-14 w-14 text-[#1B1B1B]/25" />
+                      </div>
+                    )}
                     <span className="absolute left-5 top-5 rounded-full bg-black/55 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur">
                       {l.tag}
                     </span>
@@ -804,11 +824,11 @@ function Home() {
                 </p>
                 <div className="mt-8 space-y-3 text-sm text-foreground/70">
                   <a
-                    href="mailto:info@gallantventures.in"
+                    href="mailto:fingoldgdm@gmail.com"
                     className="flex items-center gap-2 hover:text-foreground"
                   >
                     <Mail className="h-4 w-4" style={{ color: "var(--bronze)" }} />
-                    info@gallantventures.in
+                    fingoldgdm@gmail.com
                   </a>
                   <a
                     href="tel:+919879150287"
@@ -877,3 +897,4 @@ function SectionHeader({ eyebrow, title, sub }: { eyebrow: string; title: string
     </div>
   );
 }
+
