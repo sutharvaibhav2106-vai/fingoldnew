@@ -106,16 +106,19 @@ const options = [
     icon: Smartphone,
     title: "Digital Gold",
     benefits: ["Start from ₹100", "Buy & sell anytime", "Insured storage", "Online instant"],
+    href: "/digital-vs-physical-gold",
   },
   {
     icon: LineChart,
     title: "Gold ETFs",
     benefits: ["High liquidity", "Zero storage", "Transparent pricing", "Easy diversification"],
+    href: "/gold-etfs",
   },
   {
     icon: Landmark,
     title: "Sovereign Gold Bonds",
     benefits: ["Govt-backed", "Interest income", "No storage cost", "Long-term wealth"],
+    href: "/sovereign-gold-bonds-guide",
   },
   {
     icon: Wallet,
@@ -484,9 +487,9 @@ function Home() {
             />
           </Reveal>
           <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {options.map((o, i) => (
-              <Reveal key={o.title} delay={i * 50}>
-                <article className="glass-dark card-lift relative h-full p-7 text-white">
+            {options.map((o, i) => {
+              const CardContent = (
+                <article className="glass-dark card-lift relative h-full p-7 text-white cursor-pointer">
                   <div className="flex items-center justify-between">
                     <o.icon className="h-7 w-7" style={{ color: "var(--gold-bright)" }} />
                     {o.risk && (
@@ -512,16 +515,29 @@ function Home() {
                       </li>
                     ))}
                   </ul>
-                  <a
-                    href="#cta"
+                  <div
                     className="mt-6 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.18em]"
                     style={{ color: "var(--gold-bright)" }}
                   >
-                    Invest <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
+                    Learn More <ArrowUpRight className="h-3.5 w-3.5" />
+                  </div>
                 </article>
-              </Reveal>
-            ))}
+              );
+
+              return (
+                <Reveal key={o.title} delay={i * 50}>
+                  {o.href ? (
+                    <Link to={o.href} className="block h-full">
+                      {CardContent}
+                    </Link>
+                  ) : (
+                    <div onClick={() => triggerAuthModal("register")} className="block h-full">
+                      {CardContent}
+                    </div>
+                  )}
+                </Reveal>
+              );
+            })}
           </div>
         </section>
 

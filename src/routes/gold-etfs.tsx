@@ -1,35 +1,33 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav } from "@/components/site/Nav";
 import { Reveal } from "@/components/site/Reveal";
 import { Footer } from "@/components/site/Footer";
+import { toast } from "sonner";
 import {
   ArrowLeft,
-  Coins,
-  ShieldCheck,
   TrendingUp,
-  Layers,
-  History,
-  AlertTriangle,
+  ShieldCheck,
+  Coins,
   ArrowRight,
-  Briefcase,
-  Eye,
-  BarChart3,
-  Mail,
-  Phone,
-  Linkedin,
-  Instagram,
-  Facebook,
-  Twitter,
+  Layers,
+  Sparkles,
+  DollarSign,
+  Activity,
+  Award,
+  CheckCircle2,
+  Loader2,
+  ChevronDown,
 } from "lucide-react";
 
 export const Route = createFileRoute("/gold-etfs")({
   head: () => ({
     meta: [
-      { title: "Gold ETFs Explained — FINGOLD" },
+      { title: "Gold ETFs — Invest in Gold Digitally | FINGOLD" },
       {
         name: "description",
         content:
-          "Learn how Gold ETFs work, their benefits, historical performance, and beginner-friendly investment strategies.",
+          "Gold Exchange Traded Funds (ETFs) allow you to invest in gold digitally through stock exchanges. Safe, liquid, and convenient.",
       },
     ],
   }),
@@ -37,462 +35,333 @@ export const Route = createFileRoute("/gold-etfs")({
 });
 
 function GoldEtfsPage() {
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    amount: "₹1 Lakh - ₹5 Lakhs",
+    message: "",
+  });
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const investmentOptions = [
+    "Under ₹1 Lakh",
+    "₹1 Lakh - ₹5 Lakhs",
+    "₹5 Lakhs - ₹20 Lakhs",
+    "Above ₹20 Lakhs",
+  ];
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const validate = () => {
+    const newErrors: Record<string, string> = {};
+    if (!formState.name.trim()) newErrors.name = "Full name is required";
+    if (!formState.email.trim()) {
+      newErrors.email = "Email address is required";
+    } else if (!/\S+@\S+\.\S+/.test(formState.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    if (!formState.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else if (!/^\+?[0-9\s-]{8,15}$/.test(formState.phone.trim())) {
+      newErrors.phone = "Please enter a valid phone number";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validate()) {
+      toast.error("Please correct the errors in the form before submitting.");
+      return;
+    }
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      toast.success("Thank you! Your ETF investment inquiry has been received.", {
+        description: "An advisor will get in touch with you shortly.",
+      });
+    }, 1200);
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-noise">
-      {/* Ambient glow */}
+      {/* Ambient decorative glow */}
       <div
         className="pointer-events-none absolute -top-40 -right-40 h-[600px] w-[600px] rounded-full"
-        style={{ background: "radial-gradient(circle, rgba(244,208,63,0.32), transparent 65%)" }}
+        style={{ background: "radial-gradient(circle, rgba(244,208,63,0.25), transparent 65%)" }}
       />
       <div
-        className="pointer-events-none absolute top-[40%] -left-40 h-[500px] w-[500px] rounded-full"
-        style={{ background: "radial-gradient(circle, rgba(212,175,55,0.22), transparent 65%)" }}
+        className="pointer-events-none absolute top-[50%] -left-40 h-[500px] w-[500px] rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(212,175,55,0.18), transparent 65%)" }}
       />
 
       <Nav />
 
-      <main className="pt-32 pb-24 px-4">
+      <main className="pt-32 pb-24 px-4 sm:px-6">
         {/* Back navigation & Header */}
         <section className="mx-auto max-w-4xl mb-16">
           <Reveal>
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-foreground/60 hover:text-foreground mb-8 transition-colors"
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-foreground/60 hover:text-foreground mb-8 transition-colors cursor-pointer"
             >
-              <ArrowLeft className="h-4 w-4" /> Back to Knowledge Center
+              <ArrowLeft className="h-4 w-4" /> Back to Home
             </Link>
           </Reveal>
 
           <Reveal delay={50}>
             <div className="flex items-center gap-3 mb-6">
-              <span className="eyebrow-tag">Markets</span>
+              <span className="eyebrow-tag">Investment Guide</span>
               <span className="h-px w-8 bg-foreground/30" />
               <span className="rounded-full bg-amber-500/10 px-3 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-700">
                 ETF
               </span>
-              <span className="text-xs text-foreground/50">· 5 Min Read</span>
+              <span className="text-xs text-foreground/50">· 3 Min Read</span>
             </div>
           </Reveal>
 
           <Reveal delay={100}>
-            <h1 className="text-display text-[clamp(2.5rem,6vw,4.5rem)] leading-none">
-              Gold ETFs: A <span className="text-gold-gradient">Beginner-Friendly</span> Way to
-              Invest.
+            <h1 className="text-display text-[clamp(2.5rem,6vw,4.5rem)] leading-tight">
+              Gold ETFs
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-foreground/75 leading-relaxed font-sans max-w-3xl">
-              Discover how Exchange-Traded Funds offer the smartest way to gain exposure to gold
-              prices without the burden of storing physical bullion.
+            <p className="mt-4 text-display text-lg sm:text-2xl text-amber-500 font-medium">
+              Invest in Gold Without Physical Ownership
+            </p>
+            <p className="mt-8 text-base sm:text-lg text-foreground/80 leading-relaxed font-sans max-w-3xl">
+              Gold Exchange Traded Funds (ETFs) allow you to invest in gold digitally through stock exchanges. 
+              Each unit represents gold held by the fund, providing a convenient and secure way to participate 
+              in gold price movements without worrying about storage, security, or purity.
             </p>
           </Reveal>
         </section>
 
-        {/* Article Body */}
-        <section className="mx-auto max-w-4xl space-y-16">
-          {/* Section 1: Intro */}
+        {/* Benefits Grid Section */}
+        <section className="mx-auto max-w-4xl mb-24">
           <Reveal delay={150}>
-            <div className="space-y-6 text-foreground/80 leading-relaxed text-base">
-              <p>
-                Gold has fascinated people for thousands of years. Ancient civilizations used it as
-                money, kingdoms stored it in vaults, and families passed it down through generations
-                as a symbol of wealth and security. Even today, investors often turn to gold when
-                they worry about inflation, economic uncertainty, or stock market volatility.
-              </p>
-              <p>
-                Traditionally, investing in gold meant buying coins, bars, or jewelry. But physical
-                gold comes with practical challenges: storage, insurance, and the risk of loss or
-                theft. This is where Gold ETFs (Exchange-Traded Funds) come in.
-              </p>
-
-              {/* Digital Wrapper Callout */}
-              <div className="glass-dark p-8 rounded-3xl border border-border/40 text-white relative overflow-hidden my-8">
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-transparent pointer-events-none" />
-                <div className="relative z-10 flex gap-4 items-start">
-                  <span className="text-display text-4xl text-amber-400 leading-none">“</span>
-                  <div className="space-y-2">
-                    <h3 className="text-display text-xl sm:text-2xl text-white">
-                      Think of a Gold ETF as a digital wrapper around gold.
-                    </h3>
-                    <p className="text-sm text-white/70">
-                      Instead of buying a gold bar and storing it yourself, you buy units of a fund
-                      that owns gold on behalf of investors. Your investment rises and falls with
-                      the price of gold, but you avoid the hassle of handling the metal directly.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <p>
-                For many beginners, Gold ETFs are one of the simplest and most accessible ways to
-                get exposure to gold.
-              </p>
-            </div>
+            <h2 className="text-display text-2xl sm:text-3xl mb-10 border-b border-border/20 pb-4">
+              Why Invest in Gold ETFs?
+            </h2>
           </Reveal>
 
-          {/* Section 2: Benefits of Gold ETFs */}
-          <Reveal>
-            <div className="space-y-8">
-              <div className="flex items-center gap-3">
-                <ShieldCheck className="h-5 w-5 text-amber-600" />
-                <h2 className="text-display text-2xl">Benefits of Gold ETFs</h2>
-              </div>
-
-              <div className="grid gap-6 sm:grid-cols-2">
-                {[
-                  {
-                    title: "No Storage Worries",
-                    desc: "When you buy physical gold, you need a secure place to keep it (home safe, bank locker). With an ETF, the fund handles storage and security. You simply hold the units in your brokerage account.",
-                  },
-                  {
-                    title: "Easy to Buy and Sell",
-                    desc: "Gold ETFs trade on stock exchanges just like regular shares. You can buy or sell them instantly during market hours with zero physical friction.",
-                  },
-                  {
-                    title: "Lower Entry Barrier",
-                    desc: "Buying a full gold bar is expensive. An ETF allows you to invest smaller amounts (starting with a few thousand rupees) and build exposure gradually.",
-                  },
-                  {
-                    title: "Transparent Pricing",
-                    desc: "Gold ETF prices track the live market price of gold transparently. You see the exact value during trading hours without negotiating with dealers.",
-                  },
-                ].map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="rounded-2xl border border-border/30 bg-background/30 p-6 space-y-2"
-                  >
-                    <h3 className="font-semibold text-foreground">{item.title}</h3>
-                    <p className="text-sm text-foreground/70 leading-relaxed">{item.desc}</p>
+          <div className="grid gap-6 md:grid-cols-2">
+            {[
+              {
+                icon: Activity,
+                title: "High Liquidity",
+                desc: "Buy and sell Gold ETFs easily during market hours through your demat and trading account.",
+              },
+              {
+                icon: ShieldCheck,
+                title: "No Storage Hassles",
+                desc: "No lockers, insurance, or physical handling required. Your investment remains completely digital.",
+              },
+              {
+                icon: Coins,
+                title: "Transparent Pricing",
+                desc: "ETF prices closely track the market value of gold, ensuring fair and transparent valuation.",
+              },
+              {
+                icon: Layers,
+                title: "Diversification Benefits",
+                desc: "Add gold exposure to your portfolio and reduce overall investment risk.",
+              },
+              {
+                icon: Award,
+                title: "Regulated Investment",
+                desc: "Gold ETFs are regulated by market authorities and managed by professional fund houses.",
+              },
+              {
+                icon: DollarSign,
+                title: "Cost Efficient",
+                desc: "Avoid making charges and storage costs associated with physical gold.",
+              },
+            ].map((item, idx) => (
+              <Reveal key={idx} delay={50 * idx}>
+                <div className="group h-full rounded-2xl border border-border/30 bg-background/25 p-6 hover:border-amber-500/40 hover:bg-foreground/[0.01] transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-600 group-hover:bg-amber-500/20 transition-colors">
+                      <item.icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="font-semibold text-foreground text-lg">{item.title}</h3>
                   </div>
-                ))}
-              </div>
-
-              {/* Extra benefit row */}
-              <div className="rounded-2xl border border-border/30 bg-background/30 p-6 space-y-2">
-                <h3 className="font-semibold text-foreground flex items-center gap-2">
-                  <Briefcase className="h-4 w-4 text-amber-600" /> Portfolio Diversification
-                </h3>
-                <p className="text-sm text-foreground/70 leading-relaxed">
-                  Gold often behaves differently from stocks and bonds. When equity markets
-                  struggle, gold may hold its value better or even rise, helping to reduce overall
-                  portfolio volatility.
-                </p>
-              </div>
-
-              {/* Crisis Example Case Study */}
-              <div className="border-l-2 border-amber-500 pl-6 space-y-2 my-4">
-                <span className="text-xs uppercase tracking-wider text-amber-700 font-semibold block">
-                  Historical Focus · 2008 Financial Crisis
-                </span>
-                <p className="text-sm text-foreground/75 italic">
-                  Many stock markets experienced steep declines. Gold, meanwhile, attracted
-                  investors seeking a perceived safe haven. While the exact performance varied, gold
-                  generally held up better than many risk assets during periods of extreme
-                  uncertainty.
-                </p>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Section 3: How Gold ETFs Work */}
-          <Reveal>
-            <div className="space-y-8">
-              <div className="flex items-center gap-3">
-                <Layers className="h-5 w-5 text-amber-600" />
-                <h2 className="text-display text-2xl">How Gold ETFs Work</h2>
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {[
-                  {
-                    step: "1",
-                    title: "Fund Vaulting",
-                    desc: "The ETF buys physical gold and stores it in secure vaults through custodians.",
-                  },
-                  {
-                    step: "2",
-                    title: "Buy Units",
-                    desc: "You purchase ETF units, effectively buying a proportional interest in the fund's gold.",
-                  },
-                  {
-                    step: "3",
-                    title: "Price Tracking",
-                    desc: "The unit price tracks the gold price closely. It rises or falls as the gold market changes.",
-                  },
-                  {
-                    step: "4",
-                    title: "Trade Instantly",
-                    desc: "You trade units through your standard brokerage account without physical deliveries.",
-                  },
-                ].map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="rounded-2xl bg-amber-500/[0.02] border border-amber-300/20 p-5 relative overflow-hidden"
-                  >
-                    <span className="absolute right-4 top-2 text-[4rem] font-bold text-amber-600/5 leading-none">
-                      {item.step}
-                    </span>
-                    <h4 className="font-semibold text-foreground text-sm mb-2">{item.title}</h4>
-                    <p className="text-xs text-foreground/75 leading-relaxed">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Simple Example Calculations */}
-              <div className="rounded-3xl border border-border/40 bg-background/20 p-6 md:p-8 space-y-6">
-                <h3 className="font-semibold text-lg flex items-center gap-2">
-                  <BarChart3 className="h-5 w-5 text-amber-600" /> Simple Investment Example
-                </h3>
-                <p className="text-sm text-foreground/75">
-                  Imagine a Gold ETF unit is priced at <strong>₹60</strong>:
-                </p>
-                <div className="grid gap-3 sm:grid-cols-5 text-xs text-foreground/75">
-                  <div className="bg-background/40 p-4 rounded-xl border border-border/30">
-                    <span className="block text-foreground/45 mb-1">Buy Units</span>
-                    <span className="font-semibold text-sm">100 units</span>
-                  </div>
-                  <div className="bg-background/40 p-4 rounded-xl border border-border/30">
-                    <span className="block text-foreground/45 mb-1">Initial Capital</span>
-                    <span className="font-semibold text-sm">₹6,000</span>
-                  </div>
-                  <div className="bg-background/40 p-4 rounded-xl border border-border/30">
-                    <span className="block text-foreground/45 mb-1">Gold Price Gain</span>
-                    <span className="font-semibold text-sm text-emerald-700">+10%</span>
-                  </div>
-                  <div className="bg-background/40 p-4 rounded-xl border border-border/30">
-                    <span className="block text-foreground/45 mb-1">New Unit Value</span>
-                    <span className="font-semibold text-sm">₹66 / unit</span>
-                  </div>
-                  <div className="bg-background/40 p-4 rounded-xl border border-border/30">
-                    <span className="block text-foreground/45 mb-1">Final Capital</span>
-                    <span className="font-semibold text-sm text-emerald-700">₹6,600*</span>
-                  </div>
+                  <p className="text-sm text-foreground/70 leading-relaxed">{item.desc}</p>
                 </div>
-                <p className="text-[11px] text-foreground/55 italic">
-                  * Note: The exact return may differ slightly due to fund expenses, management
-                  fees, and tracking differences.
-                </p>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Historical Context Panel */}
-          <Reveal>
-            <div className="rounded-3xl bg-amber-500/[0.03] border border-amber-300/30 p-8 flex gap-6 items-start">
-              <History className="h-8 w-8 text-amber-600 shrink-0 mt-1" />
-              <div className="space-y-2">
-                <h3 className="font-semibold text-lg">Historical Context</h3>
-                <p className="text-sm text-foreground/75 leading-relaxed">
-                  The first major Gold ETFs appeared in the early 2000s. They quickly became popular
-                  because they allowed ordinary investors to access gold through the stock market
-                  without dealing with physical delivery. Today, Gold ETFs are widely used by retail
-                  investors, financial advisors, and institutional investors around the world.
-                </p>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Section 4: Investment Strategies for Beginners */}
-          <Reveal>
-            <div className="space-y-8">
-              <div className="flex items-center gap-3">
-                <BarChart3 className="h-5 w-5 text-amber-600" />
-                <h2 className="text-display text-2xl">Investment Strategies for Beginners</h2>
-              </div>
-
-              {/* 1. Start Small */}
-              <div className="space-y-3">
-                <h3 className="font-semibold text-lg text-foreground">1. Start Small</h3>
-                <p className="text-sm text-foreground/75">
-                  If you're new to investing, avoid putting a large portion of your money into gold
-                  immediately.
-                </p>
-                <div className="bg-background/30 border border-border/30 rounded-2xl p-4 text-xs italic text-foreground/70">
-                  <strong>Example:</strong> Suppose you have ₹1,00,000 invested across stocks,
-                  bonds, and cash. A beginner might allocate 5%–10% (₹5,000–₹10,000) to a Gold ETF
-                  rather than making gold the majority of the portfolio.
-                </div>
-              </div>
-
-              {/* 2. Use Gold as a Diversifier */}
-              <div className="space-y-4">
-                <h3 className="font-semibold text-lg text-foreground">
-                  2. Use Gold as a Diversifier
-                </h3>
-                <p className="text-sm text-foreground/75">
-                  Gold works best for many investors as a supporting asset, not the entire
-                  investment plan.
-                </p>
-
-                {/* Example Allocation Table */}
-                <div className="glass-light rounded-3xl overflow-hidden max-w-md border border-border/30">
-                  <table className="w-full text-left text-xs sm:text-sm">
-                    <thead>
-                      <tr className="bg-foreground/5 border-b border-border/30">
-                        <th className="px-5 py-3 font-semibold text-foreground/85">Asset</th>
-                        <th className="px-5 py-3 font-semibold text-foreground/85">Allocation</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-border/20">
-                      {[
-                        { asset: "Stocks", allocation: "60%" },
-                        { asset: "Bonds", allocation: "25%" },
-                        { asset: "Gold ETF", allocation: "10%" },
-                        { asset: "Cash", allocation: "5%" },
-                      ].map((item, i) => (
-                        <tr key={i} className="hover:bg-foreground/[0.01]">
-                          <td className="px-5 py-3.5 font-medium text-foreground/80">
-                            {item.asset}
-                          </td>
-                          <td className="px-5 py-3.5 text-amber-700 font-semibold">
-                            {item.allocation}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                <p className="text-xs text-foreground/55 italic">
-                  This type of mix aims to balance growth potential with stability.
-                </p>
-              </div>
-
-              {/* 3. Invest Regularly */}
-              <div className="space-y-3">
-                <h3 className="font-semibold text-lg text-foreground">3. Invest Regularly</h3>
-                <p className="text-sm text-foreground/75">
-                  Instead of trying to guess the perfect time to buy gold, many investors use a
-                  systematic investment approach.
-                </p>
-                <div className="bg-background/30 border border-border/30 rounded-2xl p-4 text-xs text-foreground/70 space-y-1">
-                  <p>
-                    <strong>Example (Systematic Plan):</strong> Invest ₹1,000 into a Gold ETF every
-                    month.
-                  </p>
-                  <p>• When prices are high, you buy fewer units.</p>
-                  <p>• When prices are low, you buy more units.</p>
-                  <p>Over time, this can reduce the impact of short-term price swings.</p>
-                </div>
-              </div>
-
-              {/* 4. Avoid Emotional Decisions */}
-              <div className="space-y-3">
-                <h3 className="font-semibold text-lg text-foreground">
-                  4. Avoid Emotional Decisions
-                </h3>
-                <p className="text-sm text-foreground/75 font-medium">
-                  Gold often receives a lot of attention during crises. Headlines may suggest that
-                  gold will either soar forever or crash dramatically.
-                </p>
-                <div className="rounded-2xl border border-border/30 bg-background/25 p-5 space-y-3">
-                  <span className="text-xs uppercase tracking-wider text-amber-700 font-semibold block">
-                    A Practical Rule:
-                  </span>
-                  <ul className="space-y-2 text-xs text-foreground/80">
-                    <li className="flex gap-2">
-                      <span className="text-amber-600 font-bold">1.</span>
-                      Decide your target allocation in advance.
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-amber-600 font-bold">2.</span>
-                      Review it periodically (for example, once or twice a year).
-                    </li>
-                    <li className="flex gap-2">
-                      <span className="text-amber-600 font-bold">3.</span>
-                      Rebalance if gold becomes much larger or smaller than your target.
-                    </li>
-                  </ul>
-                  <p className="text-[11px] text-foreground/55 pt-2 border-t border-border/20">
-                    This disciplined approach is usually more effective than reacting to daily news.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Section 5: Long-Term Perspective */}
-          <Reveal>
-            <div className="space-y-6">
-              <h2 className="text-display text-2xl">A Simple Long-Term Perspective</h2>
-              <p className="text-sm sm:text-base text-foreground/80 leading-relaxed">
-                Gold has survived empires, wars, currency changes, and financial crises. Its
-                enduring appeal comes from scarcity, global acceptance, and its role as a store of
-                value. However, gold is not a magic investment. It can experience long periods of
-                flat or disappointing returns, and it does not generate income like dividends or
-                interest.
-              </p>
-
-              <div className="rounded-3xl border border-border/40 bg-background/40 p-6 md:p-8 space-y-4">
-                <span className="text-xs uppercase tracking-wider text-amber-700 font-bold block">
-                  For most beginners, Gold ETFs offer a practical middle ground:
-                </span>
-                <ul className="space-y-2 text-xs sm:text-sm text-foreground/75">
-                  <li>
-                    ✔ <strong>Easier:</strong> No hassle of storing physical gold bars or coins.
-                  </li>
-                  <li>
-                    ✔ <strong>Affordable:</strong> More affordable than buying large bullion bars.
-                  </li>
-                  <li>
-                    ✔ <strong>Transparent:</strong> More transparent pricing than traditional gold
-                    purchases.
-                  </li>
-                  <li>
-                    ✔ <strong>Diversifying:</strong> Highly useful as a diversification tool within
-                    a broader portfolio.
-                  </li>
-                </ul>
-              </div>
-
-              {/* Takeaway Container */}
-              <div className="rounded-2xl bg-amber-500/10 border border-amber-300/30 p-6 space-y-2">
-                <span className="text-xs uppercase tracking-wider text-amber-700 font-semibold block">
-                  Key Takeaway
-                </span>
-                <p className="text-sm text-foreground/85">
-                  If you're considering your first gold investment, a Gold ETF can be a sensible
-                  starting point. Begin with a modest allocation, invest regularly, and view gold as
-                  one component of a diversified long-term financial plan rather than a shortcut to
-                  quick profits.
-                </p>
-              </div>
-
-              {/* Disclaimer */}
-              <p className="text-[11px] text-foreground/50 italic leading-relaxed pt-4 border-t border-border/20">
-                Disclaimer: This article is for educational purposes only and is not financial
-                advice. Investment values can rise or fall, and past performance does not guarantee
-                future results.
-              </p>
-            </div>
-          </Reveal>
+              </Reveal>
+            ))}
+          </div>
         </section>
 
-        {/* BOTTOM CTA */}
-        <section className="mx-auto max-w-4xl mt-24">
+        {/* Contact Form Section */}
+        <section className="mx-auto max-w-2xl">
           <Reveal>
-            <div className="glass-dark relative overflow-hidden p-8 text-center text-white sm:p-12">
-              <span className="eyebrow-tag" style={{ color: "var(--gold-bright)" }}>
-                Take Action
-              </span>
-              <h2 className="text-display text-2xl sm:text-4xl mt-4">Start your ETF investment.</h2>
-              <p className="mx-auto mt-4 max-w-lg text-sm text-white/70">
-                Model target allocations and project SIP returns with precision before taking the
-                next step.
-              </p>
-              <div className="mt-8 flex justify-center gap-4 flex-wrap">
-                <button className="btn-gold btn-gold-hover btn-shine inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs font-semibold cursor-pointer">
-                  Start Investing <ArrowRight className="h-3.5 w-3.5" />
-                </button>
-                <button className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-xs font-semibold text-white hover:bg-white/10 transition-colors cursor-pointer">
-                  Contact Advisor
-                </button>
-              </div>
+            <div className="glass-dark border border-border/30 rounded-3xl p-6 sm:p-10 relative overflow-hidden text-white">
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] to-transparent pointer-events-none" />
+              
+              {!isSubmitted ? (
+                <>
+                  <div className="mb-8">
+                    <span className="eyebrow-tag" style={{ color: "var(--gold-bright)" }}>Inquire Now</span>
+                    <h3 className="text-display text-2xl sm:text-3xl mt-3">Connect with an Advisor</h3>
+                    <p className="text-sm text-white/60 mt-2">
+                      Ready to start your digital gold journey? Submit this form and our investment team will guide you.
+                    </p>
+                  </div>
+
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider text-white/60 mb-2 font-medium">
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="John Doe"
+                        value={formState.name}
+                        onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                        className={`w-full bg-white/5 border rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 transition-all ${
+                          errors.name ? "border-rose-500/60 ring-1 ring-rose-500/60" : "border-white/10"
+                        }`}
+                      />
+                      {errors.name && <p className="text-xs text-rose-400 mt-1">{errors.name}</p>}
+                    </div>
+
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <div>
+                        <label className="block text-xs uppercase tracking-wider text-white/60 mb-2 font-medium">
+                          Email Address
+                        </label>
+                        <input
+                          type="email"
+                          placeholder="john@example.com"
+                          value={formState.email}
+                          onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                          className={`w-full bg-white/5 border rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 transition-all ${
+                            errors.email ? "border-rose-500/60 ring-1 ring-rose-500/60" : "border-white/10"
+                          }`}
+                        />
+                        {errors.email && <p className="text-xs text-rose-400 mt-1">{errors.email}</p>}
+                      </div>
+
+                      <div>
+                        <label className="block text-xs uppercase tracking-wider text-white/60 mb-2 font-medium">
+                          Phone Number
+                        </label>
+                        <input
+                          type="tel"
+                          placeholder="+91 98765 43210"
+                          value={formState.phone}
+                          onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
+                          className={`w-full bg-white/5 border rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 transition-all ${
+                            errors.phone ? "border-rose-500/60 ring-1 ring-rose-500/60" : "border-white/10"
+                          }`}
+                        />
+                        {errors.phone && <p className="text-xs text-rose-400 mt-1">{errors.phone}</p>}
+                      </div>
+                    </div>
+
+                    <div className="relative">
+                      <label className="block text-xs uppercase tracking-wider text-white/60 mb-2 font-medium">
+                        Expected Investment Size
+                      </label>
+                      <button
+                        type="button"
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white flex items-center justify-between focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 transition-all text-left cursor-pointer"
+                      >
+                        <span>{formState.amount}</span>
+                        <ChevronDown className={`h-4 w-4 text-white/60 transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""}`} />
+                      </button>
+                      
+                      {isDropdownOpen && (
+                        <>
+                          <div 
+                            className="fixed inset-0 z-40" 
+                            onClick={() => setIsDropdownOpen(false)}
+                          />
+                          <ul className="absolute z-50 left-0 right-0 mt-2 bg-zinc-950/95 border border-white/10 rounded-xl shadow-2xl overflow-hidden backdrop-blur-md transition-all">
+                            {investmentOptions.map((opt) => (
+                              <li
+                                key={opt}
+                                onClick={() => {
+                                  setFormState({ ...formState, amount: opt });
+                                  setIsDropdownOpen(false);
+                                }}
+                                className="px-4 py-3 text-sm text-white/80 hover:text-white hover:bg-amber-500/20 cursor-pointer transition-colors"
+                              >
+                                {opt}
+                              </li>
+                            ))}
+                          </ul>
+                        </>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="block text-xs uppercase tracking-wider text-white/60 mb-2 font-medium">
+                        Message / Comments
+                      </label>
+                      <textarea
+                        rows={4}
+                        placeholder="Tell us about your investment goals..."
+                        value={formState.message}
+                        onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 transition-all resize-none"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full btn-gold btn-gold-hover inline-flex items-center justify-center gap-2 rounded-xl py-4 text-sm font-semibold cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed mt-4 transition-all"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="h-4 w-4 animate-spin" /> Sending Inquiry...
+                        </>
+                      ) : (
+                        <>
+                          Submit Inquiry <ArrowRight className="h-4 w-4" />
+                        </>
+                      )}
+                    </button>
+                  </form>
+                </>
+              ) : (
+                <div className="text-center py-8 px-4 flex flex-col items-center">
+                  <div className="p-3 bg-emerald-500/10 text-emerald-400 rounded-full mb-6">
+                    <CheckCircle2 className="h-12 w-12" />
+                  </div>
+                  <h3 className="text-display text-2xl sm:text-3xl mb-3">Inquiry Submitted!</h3>
+                  <p className="text-sm text-white/70 max-w-md mx-auto mb-8 leading-relaxed">
+                    Thank you, <span className="font-semibold text-amber-400">{formState.name}</span>. 
+                    We have registered your interest in investing <span className="font-semibold text-white">{formState.amount}</span>. 
+                    One of our expert gold advisors will contact you at <span className="font-semibold text-white">{formState.email}</span> or <span className="font-semibold text-white">{formState.phone}</span> within the next 2 hours.
+                  </p>
+                  <button
+                    onClick={() => {
+                      setIsSubmitted(false);
+                      setFormState({
+                        name: "",
+                        email: "",
+                        phone: "",
+                        amount: "₹1 Lakh - ₹5 Lakhs",
+                        message: "",
+                      });
+                    }}
+                    className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-2.5 text-xs font-semibold text-white hover:bg-white/10 transition-colors cursor-pointer"
+                  >
+                    Send Another Message
+                  </button>
+                </div>
+              )}
             </div>
           </Reveal>
         </section>
       </main>
 
-      {/* FOOTER */}
       <Footer />
     </div>
   );
 }
-
