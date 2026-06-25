@@ -15,8 +15,11 @@ import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as PrdRouteImport } from './routes/prd'
 import { Route as LumpsumCalculatorRouteImport } from './routes/lumpsum-calculator'
 import { Route as GoldTaxationRouteImport } from './routes/gold-taxation'
+import { Route as GoldMutualFundsRouteImport } from './routes/gold-mutual-funds'
+import { Route as GoldMiningStocksRouteImport } from './routes/gold-mining-stocks'
 import { Route as GoldEtfsRouteImport } from './routes/gold-etfs'
 import { Route as GoldAndInflationRouteImport } from './routes/gold-and-inflation'
+import { Route as FuturesAndOptionsRouteImport } from './routes/futures-and-options'
 import { Route as DigitalVsPhysicalGoldRouteImport } from './routes/digital-vs-physical-gold'
 import { Route as BeginnersGuideRouteImport } from './routes/beginners-guide'
 import { Route as IndexRouteImport } from './routes/index'
@@ -53,6 +56,16 @@ const GoldTaxationRoute = GoldTaxationRouteImport.update({
   path: '/gold-taxation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GoldMutualFundsRoute = GoldMutualFundsRouteImport.update({
+  id: '/gold-mutual-funds',
+  path: '/gold-mutual-funds',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GoldMiningStocksRoute = GoldMiningStocksRouteImport.update({
+  id: '/gold-mining-stocks',
+  path: '/gold-mining-stocks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GoldEtfsRoute = GoldEtfsRouteImport.update({
   id: '/gold-etfs',
   path: '/gold-etfs',
@@ -61,6 +74,11 @@ const GoldEtfsRoute = GoldEtfsRouteImport.update({
 const GoldAndInflationRoute = GoldAndInflationRouteImport.update({
   id: '/gold-and-inflation',
   path: '/gold-and-inflation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FuturesAndOptionsRoute = FuturesAndOptionsRouteImport.update({
+  id: '/futures-and-options',
+  path: '/futures-and-options',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DigitalVsPhysicalGoldRoute = DigitalVsPhysicalGoldRouteImport.update({
@@ -93,8 +111,11 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/beginners-guide': typeof BeginnersGuideRoute
   '/digital-vs-physical-gold': typeof DigitalVsPhysicalGoldRoute
+  '/futures-and-options': typeof FuturesAndOptionsRoute
   '/gold-and-inflation': typeof GoldAndInflationRoute
   '/gold-etfs': typeof GoldEtfsRoute
+  '/gold-mining-stocks': typeof GoldMiningStocksRoute
+  '/gold-mutual-funds': typeof GoldMutualFundsRoute
   '/gold-taxation': typeof GoldTaxationRoute
   '/lumpsum-calculator': typeof LumpsumCalculatorRoute
   '/prd': typeof PrdRoute
@@ -108,8 +129,11 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/beginners-guide': typeof BeginnersGuideRoute
   '/digital-vs-physical-gold': typeof DigitalVsPhysicalGoldRoute
+  '/futures-and-options': typeof FuturesAndOptionsRoute
   '/gold-and-inflation': typeof GoldAndInflationRoute
   '/gold-etfs': typeof GoldEtfsRoute
+  '/gold-mining-stocks': typeof GoldMiningStocksRoute
+  '/gold-mutual-funds': typeof GoldMutualFundsRoute
   '/gold-taxation': typeof GoldTaxationRoute
   '/lumpsum-calculator': typeof LumpsumCalculatorRoute
   '/prd': typeof PrdRoute
@@ -124,8 +148,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/beginners-guide': typeof BeginnersGuideRoute
   '/digital-vs-physical-gold': typeof DigitalVsPhysicalGoldRoute
+  '/futures-and-options': typeof FuturesAndOptionsRoute
   '/gold-and-inflation': typeof GoldAndInflationRoute
   '/gold-etfs': typeof GoldEtfsRoute
+  '/gold-mining-stocks': typeof GoldMiningStocksRoute
+  '/gold-mutual-funds': typeof GoldMutualFundsRoute
   '/gold-taxation': typeof GoldTaxationRoute
   '/lumpsum-calculator': typeof LumpsumCalculatorRoute
   '/prd': typeof PrdRoute
@@ -141,8 +168,11 @@ export interface FileRouteTypes {
     | '/'
     | '/beginners-guide'
     | '/digital-vs-physical-gold'
+    | '/futures-and-options'
     | '/gold-and-inflation'
     | '/gold-etfs'
+    | '/gold-mining-stocks'
+    | '/gold-mutual-funds'
     | '/gold-taxation'
     | '/lumpsum-calculator'
     | '/prd'
@@ -156,8 +186,11 @@ export interface FileRouteTypes {
     | '/'
     | '/beginners-guide'
     | '/digital-vs-physical-gold'
+    | '/futures-and-options'
     | '/gold-and-inflation'
     | '/gold-etfs'
+    | '/gold-mining-stocks'
+    | '/gold-mutual-funds'
     | '/gold-taxation'
     | '/lumpsum-calculator'
     | '/prd'
@@ -171,8 +204,11 @@ export interface FileRouteTypes {
     | '/'
     | '/beginners-guide'
     | '/digital-vs-physical-gold'
+    | '/futures-and-options'
     | '/gold-and-inflation'
     | '/gold-etfs'
+    | '/gold-mining-stocks'
+    | '/gold-mutual-funds'
     | '/gold-taxation'
     | '/lumpsum-calculator'
     | '/prd'
@@ -187,8 +223,11 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BeginnersGuideRoute: typeof BeginnersGuideRoute
   DigitalVsPhysicalGoldRoute: typeof DigitalVsPhysicalGoldRoute
+  FuturesAndOptionsRoute: typeof FuturesAndOptionsRoute
   GoldAndInflationRoute: typeof GoldAndInflationRoute
   GoldEtfsRoute: typeof GoldEtfsRoute
+  GoldMiningStocksRoute: typeof GoldMiningStocksRoute
+  GoldMutualFundsRoute: typeof GoldMutualFundsRoute
   GoldTaxationRoute: typeof GoldTaxationRoute
   LumpsumCalculatorRoute: typeof LumpsumCalculatorRoute
   PrdRoute: typeof PrdRoute
@@ -243,6 +282,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GoldTaxationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gold-mutual-funds': {
+      id: '/gold-mutual-funds'
+      path: '/gold-mutual-funds'
+      fullPath: '/gold-mutual-funds'
+      preLoaderRoute: typeof GoldMutualFundsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gold-mining-stocks': {
+      id: '/gold-mining-stocks'
+      path: '/gold-mining-stocks'
+      fullPath: '/gold-mining-stocks'
+      preLoaderRoute: typeof GoldMiningStocksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gold-etfs': {
       id: '/gold-etfs'
       path: '/gold-etfs'
@@ -255,6 +308,13 @@ declare module '@tanstack/react-router' {
       path: '/gold-and-inflation'
       fullPath: '/gold-and-inflation'
       preLoaderRoute: typeof GoldAndInflationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/futures-and-options': {
+      id: '/futures-and-options'
+      path: '/futures-and-options'
+      fullPath: '/futures-and-options'
+      preLoaderRoute: typeof FuturesAndOptionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/digital-vs-physical-gold': {
@@ -299,8 +359,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BeginnersGuideRoute: BeginnersGuideRoute,
   DigitalVsPhysicalGoldRoute: DigitalVsPhysicalGoldRoute,
+  FuturesAndOptionsRoute: FuturesAndOptionsRoute,
   GoldAndInflationRoute: GoldAndInflationRoute,
   GoldEtfsRoute: GoldEtfsRoute,
+  GoldMiningStocksRoute: GoldMiningStocksRoute,
+  GoldMutualFundsRoute: GoldMutualFundsRoute,
   GoldTaxationRoute: GoldTaxationRoute,
   LumpsumCalculatorRoute: LumpsumCalculatorRoute,
   PrdRoute: PrdRoute,

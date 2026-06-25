@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav } from "@/components/site/Nav";
 import { Reveal } from "@/components/site/Reveal";
@@ -18,34 +18,26 @@ import {
   CheckCircle2,
   Loader2,
   ChevronDown,
+  Wallet,
+  Clock,
+  Briefcase,
 } from "lucide-react";
 
-export const Route = createFileRoute("/gold-etfs")({
+export const Route = createFileRoute("/gold-mutual-funds")({
   head: () => ({
     meta: [
-      { title: "Gold ETFs — Invest in Gold Digitally | FINGOLD" },
+      { title: "Gold Mutual Funds — Professional Gold Management | FINGOLD" },
       {
         name: "description",
         content:
-          "Gold Exchange Traded Funds (ETFs) allow you to invest in gold digitally through stock exchanges. Safe, liquid, and convenient.",
+          "Gold Mutual Funds invest in Gold ETFs, allowing you to build gold wealth through SIPs without a demat account.",
       },
     ],
   }),
-  component: GoldEtfsPage,
+  component: GoldMutualFundsPage,
 });
 
-function GoldEtfsPage() {
-  useEffect(() => {
-    if (window.location.hash === "#contact-form") {
-      setTimeout(() => {
-        const element = document.getElementById("contact-form");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-    }
-  }, []);
-
+function GoldMutualFundsPage() {
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -103,14 +95,14 @@ function GoldEtfsPage() {
         Phone: formState.phone,
         "Investment Size": formState.amount,
         Message: formState.message,
-        "Inquiry Source": "Gold ETFs"
+        "Inquiry Source": "Gold Mutual Funds"
       })
     })
       .then((res) => {
         setIsSubmitting(false);
         if (res.ok) {
           setIsSubmitted(true);
-          toast.success("Thank you! Your ETF investment inquiry has been received.", {
+          toast.success("Thank you! Your Mutual Fund investment inquiry has been received.", {
             description: "An advisor will get in touch with you shortly.",
           });
         } else {
@@ -153,15 +145,15 @@ function GoldEtfsPage() {
 
           <Reveal delay={100}>
             <h1 className="text-display text-[clamp(2.5rem,6vw,4.5rem)] leading-tight">
-              Gold ETFs
+              Gold Mutual Funds
             </h1>
             <p className="mt-4 text-display text-lg sm:text-2xl text-amber-500 font-medium">
-              Invest in Gold Without Physical Ownership
+              Professional Gold Management Without a Demat Account
             </p>
             <p className="mt-8 text-base sm:text-lg text-foreground/80 leading-relaxed font-sans max-w-3xl">
-              Gold Exchange Traded Funds (ETFs) allow you to invest in gold digitally through stock exchanges. 
-              Each unit represents gold held by the fund, providing a convenient and secure way to participate 
-              in gold price movements without worrying about storage, security, or purity.
+              Gold Mutual Funds are open-ended investment schemes that invest primarily in Gold ETFs. 
+              They allow retail investors to gain exposure to gold prices easily, offering options 
+              like Systematic Investment Plans (SIPs) without needing a Demat account or managing physical gold.
             </p>
           </Reveal>
         </section>
@@ -170,41 +162,41 @@ function GoldEtfsPage() {
         <section className="mx-auto max-w-4xl mb-24">
           <Reveal delay={150}>
             <h2 className="text-display text-2xl sm:text-3xl mb-10 border-b border-border/20 pb-4">
-              Why Invest in Gold ETFs?
+              Why Invest in Gold Mutual Funds?
             </h2>
           </Reveal>
 
           <div className="grid gap-6 md:grid-cols-2">
             {[
               {
+                icon: Wallet,
+                title: "No Demat Needed",
+                desc: "Start investing easily through standard mutual fund platforms without opening a trading or Demat account.",
+              },
+              {
+                icon: Clock,
+                title: "SIP Friendly",
+                desc: "Build your gold portfolio systematically with monthly or weekly SIPs starting from as low as ₹100.",
+              },
+              {
+                icon: Briefcase,
+                title: "Professional Management",
+                desc: "Managed by experienced fund managers who oversee the allocation to underlying Gold ETFs and cash assets.",
+              },
+              {
                 icon: Activity,
                 title: "High Liquidity",
-                desc: "Buy and sell Gold ETFs easily during market hours through your demat and trading account.",
-              },
-              {
-                icon: ShieldCheck,
-                title: "No Storage Hassles",
-                desc: "No lockers, insurance, or physical handling required. Your investment remains completely digital.",
-              },
-              {
-                icon: Coins,
-                title: "Transparent Pricing",
-                desc: "ETF prices closely track the market value of gold, ensuring fair and transparent valuation.",
+                desc: "Redeem your units directly with the fund house at the closing Net Asset Value (NAV) of the business day.",
               },
               {
                 icon: Layers,
-                title: "Diversification Benefits",
-                desc: "Add gold exposure to your portfolio and reduce overall investment risk.",
+                title: "Fractional Investing",
+                desc: "Purchase fractional units matching any budget or investment goal, making wealth building accessible.",
               },
               {
-                icon: Award,
-                title: "Regulated Investment",
-                desc: "Gold ETFs are regulated by market authorities and managed by professional fund houses.",
-              },
-              {
-                icon: DollarSign,
-                title: "Cost Efficient",
-                desc: "Avoid making charges and storage costs associated with physical gold.",
+                icon: Coins,
+                title: "Rupee Cost Averaging",
+                desc: "Mitigate gold market price volatility automatically by investing fixed amounts at regular intervals.",
               },
             ].map((item, idx) => (
               <Reveal key={idx} delay={50 * idx}>
@@ -223,7 +215,7 @@ function GoldEtfsPage() {
         </section>
 
         {/* Contact Form Section */}
-        <section id="contact-form" className="mx-auto max-w-2xl">
+        <section className="mx-auto max-w-2xl">
           <Reveal>
             <div className="glass-dark border border-border/30 rounded-3xl p-6 sm:p-10 relative overflow-hidden text-white">
               <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] to-transparent pointer-events-none" />

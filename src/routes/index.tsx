@@ -123,14 +123,21 @@ const options = [
   {
     icon: Wallet,
     title: "Gold Mutual Funds",
-    benefits: ["Pro management", "No demat needed", "SIP enabled"],
+    benefits: ["Pro management", "No demat needed", "SIP enabled", "Fractional investing"],
+    href: "/gold-mutual-funds",
   },
-  { icon: Factory, title: "Gold Mining Stocks", benefits: ["Higher upside", "Industry exposure"] },
+  {
+    icon: Factory,
+    title: "Gold Mining Stocks",
+    benefits: ["Higher upside", "Industry exposure", "Dividend potential", "High liquidity"],
+    href: "/gold-mining-stocks",
+  },
   {
     icon: Activity,
     title: "Futures & Options",
-    benefits: ["Trading edge", "Portfolio hedge"],
+    benefits: ["Trading edge", "Portfolio hedge", "High leverage", "Short selling"],
     risk: "High",
+    href: "/futures-and-options",
   },
 ];
 
@@ -519,7 +526,7 @@ function Home() {
                     className="mt-6 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.18em]"
                     style={{ color: "var(--gold-bright)" }}
                   >
-                    Learn More <ArrowUpRight className="h-3.5 w-3.5" />
+                    Invest <ArrowUpRight className="h-3.5 w-3.5" />
                   </div>
                 </article>
               );
@@ -809,12 +816,13 @@ function Home() {
                 >
                   Start Investing <ArrowRight className="h-4 w-4" />
                 </button>
-                <a
-                  href="#footer"
+                <Link
+                  to="/gold-etfs"
+                  hash="contact-form"
                   className="inline-flex items-center gap-2 rounded-full border border-white/25 px-8 py-4 text-sm font-semibold text-white transition hover:bg-white/10"
                 >
                   Contact Us
-                </a>
+                </Link>
               </div>
             </div>
           </Reveal>

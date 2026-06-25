@@ -1,4 +1,5 @@
 import { Mail, Phone, Linkedin, Instagram, Facebook, Twitter } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 export function Footer({ className = "" }: { className?: string }) {
   return (
@@ -46,12 +47,12 @@ export function Footer({ className = "" }: { className?: string }) {
                 { label: "Calculators", href: "/#tools" },
                 { label: "Learning Center", href: "/#learn" },
                 { label: "FAQ", href: "/#faq" },
-                { label: "Contact", href: "/#cta" },
+                { label: "Contact", href: "/gold-etfs#contact-form" },
               ].map((item) => (
                 <li key={item.label}>
-                  <a href={item.href} className="hover:text-foreground">
+                  <Link to={item.href} className="hover:text-foreground">
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

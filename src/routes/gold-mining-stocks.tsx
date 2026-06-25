@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav } from "@/components/site/Nav";
 import { Reveal } from "@/components/site/Reveal";
@@ -18,34 +18,26 @@ import {
   CheckCircle2,
   Loader2,
   ChevronDown,
+  Factory,
+  Globe2,
+  LineChart,
 } from "lucide-react";
 
-export const Route = createFileRoute("/gold-etfs")({
+export const Route = createFileRoute("/gold-mining-stocks")({
   head: () => ({
     meta: [
-      { title: "Gold ETFs — Invest in Gold Digitally | FINGOLD" },
+      { title: "Gold Mining Stocks — Invest in Gold Exploration | FINGOLD" },
       {
         name: "description",
         content:
-          "Gold Exchange Traded Funds (ETFs) allow you to invest in gold digitally through stock exchanges. Safe, liquid, and convenient.",
+          "Gold Mining Stocks offer operational leverage and dividend income by investing in gold production and exploration companies.",
       },
     ],
   }),
-  component: GoldEtfsPage,
+  component: GoldMiningStocksPage,
 });
 
-function GoldEtfsPage() {
-  useEffect(() => {
-    if (window.location.hash === "#contact-form") {
-      setTimeout(() => {
-        const element = document.getElementById("contact-form");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-    }
-  }, []);
-
+function GoldMiningStocksPage() {
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -103,14 +95,14 @@ function GoldEtfsPage() {
         Phone: formState.phone,
         "Investment Size": formState.amount,
         Message: formState.message,
-        "Inquiry Source": "Gold ETFs"
+        "Inquiry Source": "Gold Mining Stocks"
       })
     })
       .then((res) => {
         setIsSubmitting(false);
         if (res.ok) {
           setIsSubmitted(true);
-          toast.success("Thank you! Your ETF investment inquiry has been received.", {
+          toast.success("Thank you! Your Mining Stocks investment inquiry has been received.", {
             description: "An advisor will get in touch with you shortly.",
           });
         } else {
@@ -153,15 +145,15 @@ function GoldEtfsPage() {
 
           <Reveal delay={100}>
             <h1 className="text-display text-[clamp(2.5rem,6vw,4.5rem)] leading-tight">
-              Gold ETFs
+              Gold Mining Stocks
             </h1>
             <p className="mt-4 text-display text-lg sm:text-2xl text-amber-500 font-medium">
-              Invest in Gold Without Physical Ownership
+              Equity Exposure to Gold Exploration and Mining Businesses
             </p>
             <p className="mt-8 text-base sm:text-lg text-foreground/80 leading-relaxed font-sans max-w-3xl">
-              Gold Exchange Traded Funds (ETFs) allow you to invest in gold digitally through stock exchanges. 
-              Each unit represents gold held by the fund, providing a convenient and secure way to participate 
-              in gold price movements without worrying about storage, security, or purity.
+              Gold Mining Stocks represent equity ownership in companies that explore, mine, and process gold. 
+              Unlike direct gold investments, mining stocks offer operational leverage, potentially 
+              delivering amplified returns when gold prices rise.
             </p>
           </Reveal>
         </section>
@@ -170,41 +162,41 @@ function GoldEtfsPage() {
         <section className="mx-auto max-w-4xl mb-24">
           <Reveal delay={150}>
             <h2 className="text-display text-2xl sm:text-3xl mb-10 border-b border-border/20 pb-4">
-              Why Invest in Gold ETFs?
+              Why Invest in Gold Mining Stocks?
             </h2>
           </Reveal>
 
           <div className="grid gap-6 md:grid-cols-2">
             {[
               {
-                icon: Activity,
-                title: "High Liquidity",
-                desc: "Buy and sell Gold ETFs easily during market hours through your demat and trading account.",
-              },
-              {
-                icon: ShieldCheck,
-                title: "No Storage Hassles",
-                desc: "No lockers, insurance, or physical handling required. Your investment remains completely digital.",
-              },
-              {
-                icon: Coins,
-                title: "Transparent Pricing",
-                desc: "ETF prices closely track the market value of gold, ensuring fair and transparent valuation.",
-              },
-              {
-                icon: Layers,
-                title: "Diversification Benefits",
-                desc: "Add gold exposure to your portfolio and reduce overall investment risk.",
-              },
-              {
-                icon: Award,
-                title: "Regulated Investment",
-                desc: "Gold ETFs are regulated by market authorities and managed by professional fund houses.",
+                icon: TrendingUp,
+                title: "Leverage to Gold",
+                desc: "Mining companies' corporate earnings often grow at a faster rate than the price of raw gold bullion, amplifying gains.",
               },
               {
                 icon: DollarSign,
-                title: "Cost Efficient",
-                desc: "Avoid making charges and storage costs associated with physical gold.",
+                title: "Dividend Income",
+                desc: "Many established gold mining companies distribute regular dividends to shareholders, offering cash flow.",
+              },
+              {
+                icon: Factory,
+                title: "Operational Upside",
+                desc: "Benefit from business growth, new mine discoveries, production efficiency, and strong management decisions.",
+              },
+              {
+                icon: LineChart,
+                title: "Easy Trading",
+                desc: "Traded on major stock exchanges just like any other corporate stock, ensuring straightforward transaction logistics.",
+              },
+              {
+                icon: ShieldCheck,
+                title: "Inflation Hedge",
+                desc: "Retains stock equity value and gold market exposure, serving as a dual-action protective asset during cycles.",
+              },
+              {
+                icon: Globe2,
+                title: "Strategic Diversification",
+                desc: "Combines corporate growth potential with the defensive, resilient traits of commodity gold investments.",
               },
             ].map((item, idx) => (
               <Reveal key={idx} delay={50 * idx}>
@@ -223,7 +215,7 @@ function GoldEtfsPage() {
         </section>
 
         {/* Contact Form Section */}
-        <section id="contact-form" className="mx-auto max-w-2xl">
+        <section className="mx-auto max-w-2xl">
           <Reveal>
             <div className="glass-dark border border-border/30 rounded-3xl p-6 sm:p-10 relative overflow-hidden text-white">
               <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] to-transparent pointer-events-none" />
