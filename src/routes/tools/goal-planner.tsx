@@ -65,4 +65,3 @@ function GoalPlannerPage() {
     </div>
   );
 }
-

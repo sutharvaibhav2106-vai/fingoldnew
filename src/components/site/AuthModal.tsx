@@ -34,7 +34,7 @@ const cityToStateMap: Record<string, string> = {
   jalgaon: "Maharashtra",
   amravati: "Maharashtra",
   nanded: "Maharashtra",
-  
+
   adipur: "Gujarat",
   gandhidham: "Gujarat",
   ahmedabad: "Gujarat",
@@ -52,7 +52,7 @@ const cityToStateMap: Record<string, string> = {
   gandhinagar: "Gujarat",
   vapi: "Gujarat",
   porbandar: "Gujarat",
-  
+
   delhi: "Delhi",
   "new delhi": "Delhi",
   noida: "Uttar Pradesh",
@@ -60,29 +60,29 @@ const cityToStateMap: Record<string, string> = {
   gurugram: "Haryana",
   gurgaon: "Haryana",
   faridabad: "Haryana",
-  
+
   bengaluru: "Karnataka",
   bangalore: "Karnataka",
   mysore: "Karnataka",
   mangalore: "Karnataka",
   hubli: "Karnataka",
   belgaum: "Karnataka",
-  
+
   chennai: "Tamil Nadu",
   coimbatore: "Tamil Nadu",
   madurai: "Tamil Nadu",
   trichy: "Tamil Nadu",
   salem: "Tamil Nadu",
   tirunelveli: "Tamil Nadu",
-  
+
   hyderabad: "Telangana",
   warangal: "Telangana",
-  
+
   kolkata: "West Bengal",
   howrah: "West Bengal",
   darjeeling: "West Bengal",
   siliguri: "West Bengal",
-  
+
   jaipur: "Rajasthan",
   jodhpur: "Rajasthan",
   udaipur: "Rajasthan",
@@ -90,7 +90,7 @@ const cityToStateMap: Record<string, string> = {
   ajmer: "Rajasthan",
   bikaner: "Rajasthan",
   alwar: "Rajasthan",
-  
+
   lucknow: "Uttar Pradesh",
   kanpur: "Uttar Pradesh",
   agra: "Uttar Pradesh",
@@ -101,50 +101,50 @@ const cityToStateMap: Record<string, string> = {
   bareilly: "Uttar Pradesh",
   aligarh: "Uttar Pradesh",
   gorakhpur: "Uttar Pradesh",
-  
+
   patna: "Bihar",
   gaya: "Bihar",
   bhagalpur: "Bihar",
   muzaffarpur: "Bihar",
-  
+
   bhopal: "Madhya Pradesh",
   indore: "Madhya Pradesh",
   gwalior: "Madhya Pradesh",
   jabalpur: "Madhya Pradesh",
   ujjain: "Madhya Pradesh",
-  
+
   chandigarh: "Chandigarh",
-  
+
   amritsar: "Punjab",
   ludhiana: "Punjab",
   jalandhar: "Punjab",
   patiala: "Punjab",
-  
+
   kochi: "Kerala",
   trivandrum: "Kerala",
   kozhikode: "Kerala",
   thrissur: "Kerala",
   kollam: "Kerala",
-  
+
   panaji: "Goa",
   margao: "Goa",
-  
+
   dehradun: "Uttarakhand",
   haridwar: "Uttarakhand",
-  
+
   shimla: "Himachal Pradesh",
-  
+
   ranchi: "Jharkhand",
   jamshedpur: "Jharkhand",
   dhanbad: "Jharkhand",
-  
+
   raipur: "Chhattisgarh",
   bilaspur: "Chhattisgarh",
-  
+
   bhubaneswar: "Odisha",
   cuttack: "Odisha",
   rourkela: "Odisha",
-  
+
   guwahati: "Assam",
 };
 
@@ -181,14 +181,22 @@ export function AuthModal() {
       const {
         data: { session },
       } = await supabase.auth.getSession();
-      
+
       const forceEdit = e.type === "edit-profile";
       const customEvent = e as CustomEvent;
       const eventMode = customEvent.detail?.mode; // "login" | "register"
 
       if (session?.user) {
         if (forceEdit) {
-          let dbProfile: any = null;
+          let dbProfile: {
+            name?: string;
+            email?: string;
+            date_of_birth?: string;
+            gender?: string;
+            profession?: string;
+            city?: string;
+            state?: string;
+          } | null = null;
           try {
             const { data } = await supabase
               .from("profiles")
@@ -196,7 +204,9 @@ export function AuthModal() {
               .eq("id", session.user.id)
               .single();
             dbProfile = data;
-          } catch (e) {}
+          } catch (e) {
+            console.error("Failed to fetch profiles:", e);
+          }
 
           const userMeta = session.user.user_metadata || {};
           setName(dbProfile?.name || userMeta.name || userMeta.full_name || "");
@@ -223,7 +233,7 @@ export function AuthModal() {
         setProfession("");
         setCity("");
         setStateVal("");
-        
+
         if (eventMode === "login") {
           setAuthSubMode("signin");
         } else if (eventMode === "register") {
@@ -231,7 +241,7 @@ export function AuthModal() {
         } else {
           setAuthSubMode("signin"); // default fallback
         }
-        
+
         setIsOpen(true);
       }
     };
@@ -253,10 +263,10 @@ export function AuthModal() {
 
       if (session?.user) {
         const userMeta = session.user.user_metadata || {};
-        const hasMetadata = 
-          userMeta.gender && 
-          (userMeta.date_of_birth || userMeta.dob) && 
-          userMeta.city && 
+        const hasMetadata =
+          userMeta.gender &&
+          (userMeta.date_of_birth || userMeta.dob) &&
+          userMeta.city &&
           userMeta.state;
 
         if (hasMetadata) {
@@ -270,11 +280,11 @@ export function AuthModal() {
             .eq("id", session.user.id)
             .single();
 
-          const hasDbProfile = 
-            dbProfile && 
-            dbProfile.gender && 
-            (dbProfile.date_of_birth || dbProfile.dob || dbProfile.date_of_birth === "") && 
-            dbProfile.city && 
+          const hasDbProfile =
+            dbProfile &&
+            dbProfile.gender &&
+            (dbProfile.date_of_birth || dbProfile.dob || dbProfile.date_of_birth === "") &&
+            dbProfile.city &&
             dbProfile.state;
 
           if (hasDbProfile) {
@@ -300,10 +310,10 @@ export function AuthModal() {
     } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (event === "SIGNED_IN" && session?.user) {
         const userMeta = session.user.user_metadata || {};
-        const hasMetadata = 
-          userMeta.gender && 
-          (userMeta.date_of_birth || userMeta.dob) && 
-          userMeta.city && 
+        const hasMetadata =
+          userMeta.gender &&
+          (userMeta.date_of_birth || userMeta.dob) &&
+          userMeta.city &&
           userMeta.state;
 
         if (hasMetadata) return;
@@ -318,7 +328,9 @@ export function AuthModal() {
           if (dbProfile?.gender && dbProfile?.city && dbProfile?.state) {
             return;
           }
-        } catch (e) {}
+        } catch (e) {
+          console.error("Failed to query profile on sign in:", e);
+        }
 
         setName(userMeta.name || userMeta.full_name || "");
         setEmail(session.user.email || "");
@@ -459,7 +471,9 @@ export function AuthModal() {
           toast.success("Registered and profile completed successfully!");
           setStep(3); // Success
         } else {
-          toast.success("Registration successful! Please check your email for a verification link.");
+          toast.success(
+            "Registration successful! Please check your email for a verification link.",
+          );
           setStep(3); // Success (Show success screen anyway instead of closing modal)
         }
         return;
@@ -585,7 +599,13 @@ export function AuthModal() {
             FIN<span className="text-gold-gradient">GOLD</span>
           </span>
           <p className="text-xs text-white/50 mt-1 uppercase tracking-widest">
-            {step === 1 ? (authSubMode === "signin" ? "Sign In" : "Register") : step === 2 ? "Complete Profile" : "Success"}
+            {step === 1
+              ? authSubMode === "signin"
+                ? "Sign In"
+                : "Register"
+              : step === 2
+                ? "Complete Profile"
+                : "Success"}
           </p>
         </div>
 

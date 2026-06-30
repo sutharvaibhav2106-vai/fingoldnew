@@ -87,7 +87,7 @@ function GoldMiningStocksPage() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json"
+        Accept: "application/json",
       },
       body: JSON.stringify({
         Name: formState.name,
@@ -95,8 +95,8 @@ function GoldMiningStocksPage() {
         Phone: formState.phone,
         "Investment Size": formState.amount,
         Message: formState.message,
-        "Inquiry Source": "Gold Mining Stocks"
-      })
+        "Inquiry Source": "Gold Mining Stocks",
+      }),
     })
       .then((res) => {
         setIsSubmitting(false);
@@ -141,8 +141,6 @@ function GoldMiningStocksPage() {
             </Link>
           </Reveal>
 
-
-
           <Reveal delay={100}>
             <h1 className="text-display text-[clamp(2.5rem,6vw,4.5rem)] leading-tight">
               Gold Mining Stocks
@@ -151,9 +149,9 @@ function GoldMiningStocksPage() {
               Equity Exposure to Gold Exploration and Mining Businesses
             </p>
             <p className="mt-8 text-base sm:text-lg text-foreground/80 leading-relaxed font-sans max-w-3xl">
-              Gold Mining Stocks represent equity ownership in companies that explore, mine, and process gold. 
-              Unlike direct gold investments, mining stocks offer operational leverage, potentially 
-              delivering amplified returns when gold prices rise.
+              Gold Mining Stocks represent equity ownership in companies that explore, mine, and
+              process gold. Unlike direct gold investments, mining stocks offer operational
+              leverage, potentially delivering amplified returns when gold prices rise.
             </p>
           </Reveal>
         </section>
@@ -219,14 +217,19 @@ function GoldMiningStocksPage() {
           <Reveal>
             <div className="glass-dark border border-border/30 rounded-3xl p-6 sm:p-10 relative overflow-hidden text-white">
               <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.03] to-transparent pointer-events-none" />
-              
+
               {!isSubmitted ? (
                 <>
                   <div className="mb-8">
-                    <span className="eyebrow-tag" style={{ color: "var(--gold-bright)" }}>Inquire Now</span>
-                    <h3 className="text-display text-2xl sm:text-3xl mt-3">Connect with an Advisor</h3>
+                    <span className="eyebrow-tag" style={{ color: "var(--gold-bright)" }}>
+                      Inquire Now
+                    </span>
+                    <h3 className="text-display text-2xl sm:text-3xl mt-3">
+                      Connect with an Advisor
+                    </h3>
                     <p className="text-sm text-white/60 mt-2">
-                      Ready to start your digital gold journey? Submit this form and our investment team will guide you.
+                      Ready to start your digital gold journey? Submit this form and our investment
+                      team will guide you.
                     </p>
                   </div>
 
@@ -241,7 +244,9 @@ function GoldMiningStocksPage() {
                         value={formState.name}
                         onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                         className={`w-full bg-white/5 border rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 transition-all ${
-                          errors.name ? "border-rose-500/60 ring-1 ring-rose-500/60" : "border-white/10"
+                          errors.name
+                            ? "border-rose-500/60 ring-1 ring-rose-500/60"
+                            : "border-white/10"
                         }`}
                       />
                       {errors.name && <p className="text-xs text-rose-400 mt-1">{errors.name}</p>}
@@ -258,10 +263,14 @@ function GoldMiningStocksPage() {
                           value={formState.email}
                           onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                           className={`w-full bg-white/5 border rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 transition-all ${
-                            errors.email ? "border-rose-500/60 ring-1 ring-rose-500/60" : "border-white/10"
+                            errors.email
+                              ? "border-rose-500/60 ring-1 ring-rose-500/60"
+                              : "border-white/10"
                           }`}
                         />
-                        {errors.email && <p className="text-xs text-rose-400 mt-1">{errors.email}</p>}
+                        {errors.email && (
+                          <p className="text-xs text-rose-400 mt-1">{errors.email}</p>
+                        )}
                       </div>
 
                       <div>
@@ -274,10 +283,14 @@ function GoldMiningStocksPage() {
                           value={formState.phone}
                           onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
                           className={`w-full bg-white/5 border rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 transition-all ${
-                            errors.phone ? "border-rose-500/60 ring-1 ring-rose-500/60" : "border-white/10"
+                            errors.phone
+                              ? "border-rose-500/60 ring-1 ring-rose-500/60"
+                              : "border-white/10"
                           }`}
                         />
-                        {errors.phone && <p className="text-xs text-rose-400 mt-1">{errors.phone}</p>}
+                        {errors.phone && (
+                          <p className="text-xs text-rose-400 mt-1">{errors.phone}</p>
+                        )}
                       </div>
                     </div>
 
@@ -291,13 +304,15 @@ function GoldMiningStocksPage() {
                         className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white flex items-center justify-between focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 transition-all text-left cursor-pointer"
                       >
                         <span>{formState.amount}</span>
-                        <ChevronDown className={`h-4 w-4 text-white/60 transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""}`} />
+                        <ChevronDown
+                          className={`h-4 w-4 text-white/60 transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""}`}
+                        />
                       </button>
-                      
+
                       {isDropdownOpen && (
                         <>
-                          <div 
-                            className="fixed inset-0 z-40" 
+                          <div
+                            className="fixed inset-0 z-40"
                             onClick={() => setIsDropdownOpen(false)}
                           />
                           <ul className="absolute z-50 left-0 right-0 mt-2 bg-zinc-950/95 border border-white/10 rounded-xl shadow-2xl overflow-hidden backdrop-blur-md transition-all">
@@ -328,10 +343,14 @@ function GoldMiningStocksPage() {
                         value={formState.message}
                         onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                         className={`w-full bg-white/5 border rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 transition-all resize-none ${
-                          errors.message ? "border-rose-500/60 ring-1 ring-rose-500/60" : "border-white/10"
+                          errors.message
+                            ? "border-rose-500/60 ring-1 ring-rose-500/60"
+                            : "border-white/10"
                         }`}
                       />
-                      {errors.message && <p className="text-xs text-rose-400 mt-1">{errors.message}</p>}
+                      {errors.message && (
+                        <p className="text-xs text-rose-400 mt-1">{errors.message}</p>
+                      )}
                     </div>
 
                     <button
@@ -358,9 +377,14 @@ function GoldMiningStocksPage() {
                   </div>
                   <h3 className="text-display text-2xl sm:text-3xl mb-3">Inquiry Submitted!</h3>
                   <p className="text-sm text-white/70 max-w-md mx-auto mb-8 leading-relaxed">
-                    Thank you, <span className="font-semibold text-amber-400">{formState.name}</span>. 
-                    We have registered your interest in investing <span className="font-semibold text-white">{formState.amount}</span>. 
-                    One of our expert gold advisors will contact you at <span className="font-semibold text-white">{formState.email}</span> or <span className="font-semibold text-white">{formState.phone}</span> within the next 2 hours.
+                    Thank you,{" "}
+                    <span className="font-semibold text-amber-400">{formState.name}</span>. We have
+                    registered your interest in investing{" "}
+                    <span className="font-semibold text-white">{formState.amount}</span>. One of our
+                    expert gold advisors will contact you at{" "}
+                    <span className="font-semibold text-white">{formState.email}</span> or{" "}
+                    <span className="font-semibold text-white">{formState.phone}</span> within the
+                    next 2 hours.
                   </p>
                   <button
                     onClick={() => {

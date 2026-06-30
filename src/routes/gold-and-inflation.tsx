@@ -432,4 +432,3 @@ function GoldAndInflationPage() {
     </div>
   );
 }
-

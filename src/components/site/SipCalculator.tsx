@@ -105,6 +105,7 @@ export function SipCalculator() {
     targetAmount,
     durationTarget,
     expectedReturnTarget,
+    isMonthlyInvestError,
   ]);
 
   return (

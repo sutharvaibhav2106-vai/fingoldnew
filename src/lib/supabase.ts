@@ -18,7 +18,7 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   ...(isServer
     ? {
         realtime: {
-          transport: class DummyWebSocket {} as any,
+          transport: class DummyWebSocket {} as unknown as typeof WebSocket,
         },
       }
     : {}),

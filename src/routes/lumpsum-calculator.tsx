@@ -91,4 +91,3 @@ function LumpsumCalculatorPage() {
     </div>
   );
 }
-

@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/lib/supabase";
 import { Nav } from "@/components/site/Nav";
 import { Reveal } from "@/components/site/Reveal";
@@ -42,11 +42,11 @@ interface ProfileData {
 
 function ProfilePage() {
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState<any | null>(null);
+  const [user, setUser] = useState<import("@supabase/supabase-js").User | null>(null);
   const [profile, setProfile] = useState<ProfileData | null>(null);
   const navigate = useNavigate();
 
-  const fetchProfile = async () => {
+  const fetchProfile = useCallback(async () => {
     setLoading(true);
     try {
       const {
@@ -91,7 +91,7 @@ function ProfilePage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchProfile();
@@ -99,7 +99,7 @@ function ProfilePage() {
     // Listen for auth state changes
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((event, session) => {
+    } = supabase.auth.onAuthStateChange((event, _session) => {
       if (event === "SIGNED_OUT") {
         setUser(null);
         setProfile(null);
@@ -112,7 +112,7 @@ function ProfilePage() {
     return () => {
       subscription.unsubscribe();
     };
-  }, []);
+  }, [fetchProfile, navigate]);
 
   const handleEditProfile = () => {
     window.dispatchEvent(new CustomEvent("edit-profile"));
@@ -184,7 +184,9 @@ function ProfilePage() {
                       <UserIcon className="h-8 w-8" />
                     </div>
                     <div className="text-center sm:text-left">
-                      <h2 className="font-display text-2xl font-bold tracking-tight">{profile.name}</h2>
+                      <h2 className="font-display text-2xl font-bold tracking-tight">
+                        {profile.name}
+                      </h2>
                       <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase font-bold tracking-wider bg-white/5 border border-white/10 text-white/60 mt-1">
                         <Shield className="h-3 w-3 text-[#D4AF37]" /> Verified Account
                       </span>

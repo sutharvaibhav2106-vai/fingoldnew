@@ -20,6 +20,7 @@ import {
   Legend,
 } from "recharts";
 import { toast } from "sonner";
+import { useLiveGoldPrice } from "@/hooks/useLiveGoldPrice";
 
 export function FutureValueCalculator() {
   // Read state from URL query parameters if present for sharing
@@ -30,7 +31,7 @@ export function FutureValueCalculator() {
       sip: params.get("sip") || "5000",
       years: params.get("years") || "10",
       rate: params.get("rate") || "8",
-      goldPrice: params.get("goldPrice") || "10000",
+      goldPrice: params.get("goldPrice") || "",
       adjustInflation: params.get("adjustInflation") === "true",
       inflationRate: params.get("inflationRate") || "6",
     };
@@ -42,6 +43,14 @@ export function FutureValueCalculator() {
   const [durationYears, setDurationYears] = useState<string>(initial?.years || "10");
   const [expectedRate, setExpectedRate] = useState<string>(initial?.rate || "8");
   const [goldPrice, setGoldPrice] = useState<string>(initial?.goldPrice || "10000");
+
+  const { data: priceData } = useLiveGoldPrice();
+
+  useEffect(() => {
+    if (priceData?.metals?.gold && !initial?.goldPrice) {
+      setGoldPrice(Math.round(priceData.metals.gold).toString());
+    }
+  }, [priceData, initial]);
 
   // Inflation adjustment
   const [adjustInflation, setAdjustInflation] = useState<boolean>(
@@ -510,7 +519,7 @@ export function FutureValueCalculator() {
                           style={{ fontSize: 10, fontWeight: 500 }}
                         />
                         <Tooltip
-                          formatter={(value: any) => [formatINR(value), ""]}
+                          formatter={(value: number | string) => [formatINR(Number(value)), ""]}
                           contentStyle={{
                             borderRadius: "12px",
                             border: "1px solid rgba(0,0,0,0.08)",
@@ -538,7 +547,7 @@ export function FutureValueCalculator() {
                         <Legend
                           iconType="circle"
                           iconSize={8}
-                          wrapperStyle={{ fontSize: "11px", fontWeight: 600, pt: 10 }}
+                          wrapperStyle={{ fontSize: "11px", fontWeight: 600, paddingTop: 10 }}
                         />
                       </AreaChart>
                     </ResponsiveContainer>

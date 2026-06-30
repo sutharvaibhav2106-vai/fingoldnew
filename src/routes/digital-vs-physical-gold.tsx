@@ -2,11 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/site/Nav";
 import { Reveal } from "@/components/site/Reveal";
 import { Footer } from "@/components/site/Footer";
-import {
-  Smartphone,
-  ShieldCheck,
-  Check,
-} from "lucide-react";
+import { Smartphone, ShieldCheck, Check } from "lucide-react";
 
 export const Route = createFileRoute("/digital-vs-physical-gold")({
   head: () => ({
@@ -307,4 +303,3 @@ function CompareGoldPage() {
     </div>
   );
 }
-

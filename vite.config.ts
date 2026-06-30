@@ -13,8 +13,8 @@ export default defineConfig({
     }),
     viteReact(),
   ],
-    server: {
-      host:true,
-      allowedHosts:true,
-    },
+  server: {
+    host: true,
+    allowedHosts: true,
+  },
 });

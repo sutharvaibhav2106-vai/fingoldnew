@@ -26,6 +26,7 @@ import {
   Legend,
 } from "recharts";
 import { toast } from "sonner";
+import { useLiveGoldPrice } from "@/hooks/useLiveGoldPrice";
 
 interface GoalOption {
   id: string;
@@ -81,7 +82,7 @@ export function GoalPlanner() {
       years: params.get("years") || "10",
       rate: params.get("rate") || "8",
       stepup: params.get("stepup") || "0",
-      goldPrice: params.get("goldPrice") || "10000",
+      goldPrice: params.get("goldPrice") || "",
     };
   };
 
@@ -94,6 +95,14 @@ export function GoalPlanner() {
   const [growthRate, setGrowthRate] = useState<string>(initial?.rate || "8");
   const [stepUp, setStepUp] = useState<string>(initial?.stepup || "0");
   const [goldPrice, setGoldPrice] = useState<string>(initial?.goldPrice || "10000");
+
+  const { data: priceData } = useLiveGoldPrice();
+
+  useEffect(() => {
+    if (priceData?.metals?.gold && !initial?.goldPrice) {
+      setGoldPrice(Math.round(priceData.metals.gold).toString());
+    }
+  }, [priceData, initial]);
 
   const [animate, setAnimate] = useState(false);
   useEffect(() => {
@@ -584,7 +593,7 @@ export function GoalPlanner() {
                           style={{ fontSize: 10, fontWeight: 500 }}
                         />
                         <Tooltip
-                          formatter={(value: any) => [formatINR(value), ""]}
+                          formatter={(value: number | string) => [formatINR(Number(value)), ""]}
                           contentStyle={{
                             borderRadius: "12px",
                             border: "1px solid rgba(0,0,0,0.08)",
@@ -612,7 +621,7 @@ export function GoalPlanner() {
                         <Legend
                           iconType="circle"
                           iconSize={8}
-                          wrapperStyle={{ fontSize: "11px", fontWeight: 600, pt: 10 }}
+                          wrapperStyle={{ fontSize: "11px", fontWeight: 600, paddingTop: 10 }}
                         />
                       </AreaChart>
                     </ResponsiveContainer>

@@ -29,10 +29,7 @@ export function Footer({ className = "" }: { className?: string }) {
                 <Mail className="h-4 w-4" style={{ color: "var(--bronze)" }} />
                 fingoldgdm@gmail.com
               </a>
-              <a
-                href="tel:+919879150287"
-                className="flex items-center gap-2 hover:text-foreground"
-              >
+              <a href="tel:+919879150287" className="flex items-center gap-2 hover:text-foreground">
                 <Phone className="h-4 w-4" style={{ color: "var(--bronze)" }} />
                 +91 98791 50287
               </a>

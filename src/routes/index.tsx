@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useMemo } from "react";
+import { useLiveGoldPrice } from "@/hooks/useLiveGoldPrice";
 import {
   Accordion,
   AccordionContent,
@@ -298,6 +300,32 @@ const compareRows = [
 ];
 
 function Home() {
+  const { data: priceData } = useLiveGoldPrice();
+
+  const liveTicker = useMemo(() => {
+    if (!priceData?.metals) return ticker;
+
+    const { gold, silver } = priceData.metals;
+    const gold24k = gold;
+    const gold22k = gold * 0.9167; // 22K is 91.67% gold
+
+    const formatPrice = (val: number) => `₹ ${Math.round(val).toLocaleString("en-IN")} /g`;
+    const formatSilver = (val: number) => `₹ ${val.toFixed(1)} /g`;
+
+    return ticker.map((item) => {
+      if (item.sym === "GOLD 24K") {
+        return { ...item, price: formatPrice(gold24k) };
+      }
+      if (item.sym === "GOLD 22K") {
+        return { ...item, price: formatPrice(gold22k) };
+      }
+      if (item.sym === "SILVER") {
+        return { ...item, price: formatSilver(silver) };
+      }
+      return item;
+    });
+  }, [priceData]);
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-noise">
       {/* Ambient glow */}
@@ -395,15 +423,19 @@ function Home() {
                     </span>
                   </div>
                   <div className="mt-3 flex items-baseline gap-2">
-                    <span className="text-display text-4xl text-white">₹7,412</span>
+                    <span className="text-display text-4xl text-white">
+                      ₹{priceData?.metals?.gold ? Math.round(priceData.metals.gold).toLocaleString("en-IN") : "7,412"}
+                    </span>
                     <span className="text-sm text-white/55">/ gram</span>
                   </div>
                   <div className="mt-4 grid grid-cols-3 gap-3 text-[11px] text-white/70">
                     <div>
-                      <span className="block text-white/45">24h H</span>7,438
+                      <span className="block text-white/45">24h H</span>
+                      {priceData?.metals?.gold ? Math.round(priceData.metals.gold * 1.0035).toLocaleString("en-IN") : "7,438"}
                     </div>
                     <div>
-                      <span className="block text-white/45">24h L</span>7,361
+                      <span className="block text-white/45">24h L</span>
+                      {priceData?.metals?.gold ? Math.round(priceData.metals.gold * 0.993).toLocaleString("en-IN") : "7,361"}
                     </div>
                     <div>
                       <span className="block text-white/45">Vol</span>2.4K kg
@@ -418,7 +450,7 @@ function Home() {
         {/* TICKER */}
         <section className="hairline-t hairline-b relative overflow-hidden bg-foreground/[0.03] py-5">
           <div className="marquee flex w-max gap-12 whitespace-nowrap">
-            {[...ticker, ...ticker].map((t, i) => (
+            {[...liveTicker, ...liveTicker].map((t, i) => (
               <div key={i} className="flex items-center gap-3 text-sm">
                 <span className="eyebrow-tag">{t.sym}</span>
                 <span className="font-display text-base font-semibold">{t.price}</span>
@@ -847,4 +879,3 @@ function SectionHeader({ eyebrow, title, sub }: { eyebrow: string; title: string
     </div>
   );
 }
-
