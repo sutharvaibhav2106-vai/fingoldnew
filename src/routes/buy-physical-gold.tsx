@@ -179,6 +179,7 @@ function BuyPhysicalGoldPage() {
       errors.email = "Valid email address is required";
     }
     if (!shipping.addressLine1.trim()) errors.addressLine1 = "Address Line 1 is required";
+    if (!shipping.addressLine2.trim()) errors.addressLine2 = "Address Line 2 is required";
     if (!shipping.city.trim()) errors.city = "City is required";
     if (!shipping.pincode.trim() || !/^\d{6}$/.test(shipping.pincode.trim())) {
       errors.pincode = "Valid 6-digit pincode is required";
@@ -457,14 +458,15 @@ function BuyPhysicalGoldPage() {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-xs font-bold uppercase tracking-wider text-foreground/60">Address Line 2 (Optional)</label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-foreground/60">Address Line 2</label>
                     <input 
                       type="text" 
                       value={shipping.addressLine2}
                       onChange={(e) => setShipping({...shipping, addressLine2: e.target.value})}
                       placeholder="Landmark, Area, Colony"
-                      className="w-full p-3 rounded-xl border bg-background/30 border-border/60 focus:ring-2 focus:ring-foreground/10 outline-none text-sm"
+                      className={`w-full p-3 rounded-xl border bg-background/30 focus:ring-2 focus:ring-foreground/10 outline-none text-sm transition-all ${formErrors.addressLine2 ? 'border-destructive/60' : 'border-border/60'}`}
                     />
+                    {formErrors.addressLine2 && <p className="text-[11px] text-destructive/90">{formErrors.addressLine2}</p>}
                   </div>
 
                   <div className="grid gap-4 grid-cols-3">
