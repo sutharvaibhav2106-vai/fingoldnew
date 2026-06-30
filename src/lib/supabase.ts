@@ -1,25 +1,44 @@
 import { createClient } from "@supabase/supabase-js";
 
-// Use Vercel env variables if present, otherwise fall back to the project's public keys
-const supabaseUrl =
-  import.meta.env.VITE_SUPABASE_URL || "https://lowvtavqeukfapwniwxb.supabase.co";
-const supabaseAnonKey =
-  import.meta.env.VITE_SUPABASE_ANON_KEY ||
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxvd3Z0YXZxZXVrZmFwd25pd3hiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE1ODU0NzAsImV4cCI6MjA5NzE2MTQ3MH0.x-t8n3-wz-C-kkQuRBeyhWHSUuRYVBBz5ZUt8fG7PSs";
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || "";
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || "";
 
 const isServer = typeof window === "undefined";
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    persistSession: !isServer,
-    detectSessionInUrl: !isServer,
-  },
-  // Supply a WebSocket transport class on server side to avoid Node.js SSR errors
-  ...(isServer
-    ? {
-        realtime: {
-          transport: class DummyWebSocket {} as unknown as typeof WebSocket,
-        },
+function createSupabaseClient() {
+  if (!supabaseUrl || !supabaseAnonKey) {
+    console.warn("Supabase URL or Anon Key is missing in environment variables. Returning proxy client to avoid startup crashes.");
+    return new Proxy({} as any, {
+      get(target, prop) {
+        if (prop === 'auth') {
+          return new Proxy({} as any, {
+            get(authTarget, authProp) {
+              if (authProp === 'onAuthStateChange') {
+                return () => ({ data: { subscription: { unsubscribe: () => {} } } });
+              }
+              return async () => ({ data: { session: null }, error: new Error("Supabase is not configured.") });
+            }
+          });
+        }
+        return undefined;
       }
-    : {}),
-});
+    });
+  }
+
+  return createClient(supabaseUrl, supabaseAnonKey, {
+    auth: {
+      persistSession: !isServer,
+      detectSessionInUrl: !isServer,
+    },
+    // Supply a WebSocket transport class on server side to avoid Node.js SSR errors
+    ...(isServer
+      ? {
+          realtime: {
+            transport: class DummyWebSocket {} as unknown as typeof WebSocket,
+          },
+        }
+      : {}),
+  });
+}
+
+export const supabase = createSupabaseClient();

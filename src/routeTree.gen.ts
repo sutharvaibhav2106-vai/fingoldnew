@@ -21,6 +21,7 @@ import { Route as GoldEtfsRouteImport } from './routes/gold-etfs'
 import { Route as GoldAndInflationRouteImport } from './routes/gold-and-inflation'
 import { Route as FuturesAndOptionsRouteImport } from './routes/futures-and-options'
 import { Route as DigitalVsPhysicalGoldRouteImport } from './routes/digital-vs-physical-gold'
+import { Route as BuyPhysicalGoldRouteImport } from './routes/buy-physical-gold'
 import { Route as BeginnersGuideRouteImport } from './routes/beginners-guide'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ToolsGoalPlannerRouteImport } from './routes/tools/goal-planner'
@@ -86,6 +87,11 @@ const DigitalVsPhysicalGoldRoute = DigitalVsPhysicalGoldRouteImport.update({
   path: '/digital-vs-physical-gold',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BuyPhysicalGoldRoute = BuyPhysicalGoldRouteImport.update({
+  id: '/buy-physical-gold',
+  path: '/buy-physical-gold',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BeginnersGuideRoute = BeginnersGuideRouteImport.update({
   id: '/beginners-guide',
   path: '/beginners-guide',
@@ -110,6 +116,7 @@ const ToolsFutureValueRoute = ToolsFutureValueRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/beginners-guide': typeof BeginnersGuideRoute
+  '/buy-physical-gold': typeof BuyPhysicalGoldRoute
   '/digital-vs-physical-gold': typeof DigitalVsPhysicalGoldRoute
   '/futures-and-options': typeof FuturesAndOptionsRoute
   '/gold-and-inflation': typeof GoldAndInflationRoute
@@ -128,6 +135,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/beginners-guide': typeof BeginnersGuideRoute
+  '/buy-physical-gold': typeof BuyPhysicalGoldRoute
   '/digital-vs-physical-gold': typeof DigitalVsPhysicalGoldRoute
   '/futures-and-options': typeof FuturesAndOptionsRoute
   '/gold-and-inflation': typeof GoldAndInflationRoute
@@ -147,6 +155,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/beginners-guide': typeof BeginnersGuideRoute
+  '/buy-physical-gold': typeof BuyPhysicalGoldRoute
   '/digital-vs-physical-gold': typeof DigitalVsPhysicalGoldRoute
   '/futures-and-options': typeof FuturesAndOptionsRoute
   '/gold-and-inflation': typeof GoldAndInflationRoute
@@ -167,6 +176,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/beginners-guide'
+    | '/buy-physical-gold'
     | '/digital-vs-physical-gold'
     | '/futures-and-options'
     | '/gold-and-inflation'
@@ -185,6 +195,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/beginners-guide'
+    | '/buy-physical-gold'
     | '/digital-vs-physical-gold'
     | '/futures-and-options'
     | '/gold-and-inflation'
@@ -203,6 +214,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/beginners-guide'
+    | '/buy-physical-gold'
     | '/digital-vs-physical-gold'
     | '/futures-and-options'
     | '/gold-and-inflation'
@@ -222,6 +234,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BeginnersGuideRoute: typeof BeginnersGuideRoute
+  BuyPhysicalGoldRoute: typeof BuyPhysicalGoldRoute
   DigitalVsPhysicalGoldRoute: typeof DigitalVsPhysicalGoldRoute
   FuturesAndOptionsRoute: typeof FuturesAndOptionsRoute
   GoldAndInflationRoute: typeof GoldAndInflationRoute
@@ -324,6 +337,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DigitalVsPhysicalGoldRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/buy-physical-gold': {
+      id: '/buy-physical-gold'
+      path: '/buy-physical-gold'
+      fullPath: '/buy-physical-gold'
+      preLoaderRoute: typeof BuyPhysicalGoldRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/beginners-guide': {
       id: '/beginners-guide'
       path: '/beginners-guide'
@@ -358,6 +378,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BeginnersGuideRoute: BeginnersGuideRoute,
+  BuyPhysicalGoldRoute: BuyPhysicalGoldRoute,
   DigitalVsPhysicalGoldRoute: DigitalVsPhysicalGoldRoute,
   FuturesAndOptionsRoute: FuturesAndOptionsRoute,
   GoldAndInflationRoute: GoldAndInflationRoute,

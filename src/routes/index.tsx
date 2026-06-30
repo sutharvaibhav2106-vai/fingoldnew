@@ -103,6 +103,7 @@ const options = [
     title: "Physical Gold",
     includes: ["Coins", "Bars", "Jewelry"],
     benefits: ["Tangible asset", "Long-term storage", "Inheritable"],
+    href: "/buy-physical-gold",
   },
   {
     icon: Smartphone,
