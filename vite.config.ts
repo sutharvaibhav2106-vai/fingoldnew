@@ -15,6 +15,9 @@ export default defineConfig({
     nitro(),
     viteReact(),
   ],
+  build: {
+    chunkSizeWarningLimit: 1000,
+  },
   server: {
     host: true,
     allowedHosts: true,
