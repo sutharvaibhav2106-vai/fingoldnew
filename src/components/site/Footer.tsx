@@ -1,4 +1,4 @@
-import { Mail, Phone, Linkedin, Instagram, Facebook, Twitter } from "lucide-react";
+import { Mail, Phone, Linkedin, Instagram, Facebook, Twitter, FileText } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import logo from "@/assets/logo.jpg";
 
@@ -29,6 +29,10 @@ export function Footer({ className = "" }: { className?: string }) {
                 <Phone className="h-4 w-4" style={{ color: "var(--bronze)" }} />
                 +91 98791 50287
               </a>
+              <div className="flex items-center gap-2 text-foreground/70">
+                <FileText className="h-4 w-4" style={{ color: "var(--bronze)" }} />
+                <span>GSTIN: 24AGAPC5579J2ZD</span>
+              </div>
             </div>
           </div>
           <div>
