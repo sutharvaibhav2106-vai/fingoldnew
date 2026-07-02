@@ -1,4 +1,4 @@
-import { Mail, Phone, Linkedin, Instagram, Facebook, Twitter, FileText } from "lucide-react";
+import { Mail, Phone, Instagram, Facebook, FileText } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import logo from "@/assets/logo.jpg";
 
@@ -58,13 +58,11 @@ export function Footer({ className = "" }: { className?: string }) {
             <h4 className="eyebrow-tag">Follow</h4>
             <div className="mt-5 flex gap-3">
               {[
-                { Icon: Linkedin, href: "#" },
                 {
                   Icon: Instagram,
                   href: "https://www.instagram.com/fingold.online?igsh=eWhhanlhZGVlb3ls",
                 },
                 { Icon: Facebook, href: "https://www.facebook.com/share/1EbEgxrHC5/" },
-                { Icon: Twitter, href: "#" },
               ].map(({ Icon, href }, i) => (
                 <a
                   key={i}
