@@ -373,8 +373,8 @@ function Home() {
                 </div>
                 <dl className="hairline-t grid max-w-xl grid-cols-3 gap-3 sm:gap-6 pt-8">
                   {[
-                    { v: "₹10Cr+", l: "AUM" },
-                    { v: "25,000+", l: "Investors" },
+                    { v: "₹100Cr+", l: "AUM" },
+                    { v: "1,000+", l: "Investors" },
                     { v: "99.99%", l: "Vault Purity" },
                   ].map((s) => (
                     <div key={s.l}>
