@@ -342,7 +342,7 @@ function Home() {
             <Reveal>
               <div className="space-y-8">
                 <div className="flex items-center gap-3">
-                  <span className="eyebrow-tag">Est. 2025 — Bullion Grade</span>
+                  <span className="eyebrow-tag">Est. 2016 — Bullion Grade</span>
                   <span className="h-px w-16 bg-foreground/20" />
                 </div>
                 <h1 className="text-display text-[clamp(3rem,8.5vw,7.5rem)]">
