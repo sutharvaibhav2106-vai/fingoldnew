@@ -1,5 +1,6 @@
 import { Mail, Phone, Linkedin, Instagram, Facebook, Twitter } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import logo from "@/assets/logo.jpg";
 
 export function Footer({ className = "" }: { className?: string }) {
   return (
@@ -8,12 +9,7 @@ export function Footer({ className = "" }: { className?: string }) {
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-2">
             <div className="flex items-center gap-2">
-              <span
-                className="grid h-10 w-10 place-items-center rounded-full"
-                style={{ background: "var(--gradient-gold)" }}
-              >
-                <span className="font-display text-base font-bold text-[#1B1B1B]">F</span>
-              </span>
+              <img src={logo} alt="Fingold Logo" className="h-10 w-10 object-contain rounded-full" />
               <span className="font-display text-2xl font-bold">
                 FIN<span className="text-gold-gradient">GOLD</span>
               </span>

@@ -7,6 +7,8 @@ import { toast } from "sonner";
 
 import { triggerAuthModal } from "../../lib/utils";
 
+import logo from "@/assets/logo.jpg";
+
 const links = [
   { href: "/#", label: "Home" },
   { href: "/#why", label: "Why Gold" },
@@ -59,12 +61,7 @@ export function Nav() {
       <div className="mx-auto mt-4 max-w-7xl px-4 relative">
         <nav className="glass-light flex items-center justify-between rounded-full px-5 py-3">
           <Link to="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
-            <span
-              className="grid h-9 w-9 place-items-center rounded-full"
-              style={{ background: "var(--gradient-gold)" }}
-            >
-              <span className="font-display text-sm font-bold text-[#1B1B1B]">F</span>
-            </span>
+            <img src={logo} alt="Fingold Logo" className="h-9 w-9 object-contain rounded-full" />
             <span className="font-display text-lg font-bold tracking-tight">
               FIN<span className="text-gold-gradient">GOLD</span>
             </span>
