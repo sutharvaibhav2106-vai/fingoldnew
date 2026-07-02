@@ -16,6 +16,7 @@ import {
   DollarSign,
   Activity,
   Award,
+  ArrowRight,
 } from "lucide-react";
 
 export const Route = createFileRoute("/digital-vs-physical-gold")({

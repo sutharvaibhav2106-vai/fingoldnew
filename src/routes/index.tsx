@@ -106,12 +106,6 @@ const options = [
     href: "/buy-physical-gold",
   },
   {
-    icon: Smartphone,
-    title: "Digital Gold",
-    benefits: ["Start from ₹100", "Buy & sell anytime", "Insured storage", "Online instant"],
-    href: "/digital-vs-physical-gold",
-  },
-  {
     icon: LineChart,
     title: "Gold ETFs",
     benefits: ["High liquidity", "Zero storage", "Transparent pricing", "Easy diversification"],
@@ -522,7 +516,7 @@ function Home() {
           <Reveal>
             <SectionHeader
               eyebrow="Portfolio"
-              title="Seven ways to own gold."
+              title="Six ways to own gold."
               sub="From bullion to bonds — pick your strategy."
             />
           </Reveal>
